@@ -5,6 +5,7 @@ import Nav from "./components/Nav";
 import Members from "./pages/Members";
 import Wishlist from "./pages/Wishlist";
 import Login from "./pages/Login";
+import Maps from "./pages/Maps";
 
 import "./App.css";
 
@@ -17,6 +18,7 @@ class App extends Component {
         <Route exact path="/" component={Members} />
         <Route exact path="/wishlist" component={Wishlist} /> 
         <Route exact path="/Login" component={Login} /> 
+        <Route path="/map" component={Maps} />
       </div>
       </Router>
     );
