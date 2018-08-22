@@ -5,13 +5,7 @@ import Nav from "./components/Nav";
 import Members from "./pages/Members";
 import Wishlist from "./pages/Wishlist";
 import Login from "./pages/Login";
-
-import {
-  ComposableMap,
-  ZoomableGroup,
-  Geographies,
-  Geography,
-} from "react-simple-maps";
+import Maps from "./pages/Maps";
 
 import "./App.css";
 
