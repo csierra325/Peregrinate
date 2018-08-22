@@ -1,29 +1,43 @@
-# Create React Express App
+Peregrinate
 
-## About This Boilerplate
+**Version 1.0.0
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+Purpose:
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+This app gives you the ability to save locations you would like to visit one day, receive recommendations from friends about a trip/s they have taken and keep track of your trips along with any activities done on the trip. 
 
-## Starting the app locally
+Features:
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+User profile
+User Photos
+Interactive Map
+Random Trip Generator
 
-```
-yarn install
-```
+Technologies Used:
 
-This should install node modules within the server and the client folder.
+ Bootstrap, CSS Grid
+ Node, Express Servers
+ Deployed with Heroku
+ Mongoose
+ React
 
-After both installations complete, run the following command in your terminal:
+Team Members:
 
-```
-yarn start
-```
+Nivi Nagar
+Camille Sierra
+Cameron Taylor
+Marlee Gerard
+Sabrina Carbo
 
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
 
-## Deployment (Heroku)
+Development:
 
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+Build using MVC format, users reach a landing page and then develop a profile, which is then saved to a mongoDB database. After which, the application will authenticate the user allowing them to update their lists, interactive map to visually show where users have traveled and review profiles of other users. The front end is rendered by means of react with, which works in conjunction with Express.
+
+Deployment:
+
+Deployed to **UPDATE**
+
+Acknowledgments:
+
+Many thanks to our awesome instructor and TA's.
