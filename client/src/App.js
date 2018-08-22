@@ -4,6 +4,8 @@ import {BrowserRouter as Router, Route} from "react-router-dom";
 import Nav from "./components/Nav";
 import Members from "./pages/Members";
 import Wishlist from "./pages/Wishlist";
+import Login from "./pages/Login";
+
 import "./App.css";
 
 class App extends Component {
@@ -14,6 +16,7 @@ class App extends Component {
         <Nav />
         <Route exact path="/" component={Members} />
         <Route exact path="/wishlist" component={Wishlist} /> 
+        <Route exact path="/Login" component={Login} /> 
       </div>
       </Router>
     );

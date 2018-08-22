@@ -11,6 +11,9 @@ const Nav = () => (
     <a className="navbar-brand" href="/Wishlist">
       Wish List
     </a>
+    <a className="navbar-brand" href="/Login">
+      Login
+    </a>
   </nav>
 );
 
