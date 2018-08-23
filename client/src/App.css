@@ -44,6 +44,35 @@ body{
   margin: 10px;
 }
 
+.rowC{
+  display:flex; flex-direction:row;
+}
+
+.friendlist{
+  margin: 20px;
+}
+.buckettitle{
+  color:blue;
+}
+.bucketList{
+  margin: 4%;
+}
+.friendTitle{
+  color: red;
+}
+.friendList{
+  margin: 4%;
+}
+
+.traveledList {
+  margin: 4%;
+  color: green;
+}
+  
+  .travelTitle{
+    margin: 4%;
+  }
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

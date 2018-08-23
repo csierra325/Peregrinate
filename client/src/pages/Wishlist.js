@@ -1,22 +1,22 @@
 import React from "react";
-
+import Friendlist from "../components/Friendlist/Friendlist";
+import Traveledlist from "../components/Traveledlist/Traveledlist";
+import Bucketlist from "../components/Bucketlist/Bucketlist";
 
 const Wishlist = () => (
-  <div>
+  <div className = "rowC">
   
-    <h1>Wishlist</h1>
+    <Friendlist />
+    <Traveledlist/>
+    <Bucketlist/>
+
   </div>
 );
+
 export default Wishlist;
 
 
 
-// class List extends Component {
-//     state = {
-//         location: [],
-//         notes: "",
-//       };
-      
 // render() {
 //     return (
 //       <Container fluid>
