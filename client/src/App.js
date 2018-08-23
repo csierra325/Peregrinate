@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import Nav from "./components/Nav";
+import NavTabs from "./components/NavTabs"
+import Profile from "./pages/Profile";
 import Members from "./pages/Members";
 import Wishlist from "./pages/Wishlist";
 import Login from "./pages/Login";
@@ -15,9 +17,11 @@ class App extends Component {
       <Router>
         <div>       
         <Nav />
+    
         <Route exact path="/" component={Members} />
+        <Route exact path="/profile" component={Profile} />
         <Route exact path="/wishlist" component={Wishlist} /> 
-        <Route exact path="/Login" component={Login} /> 
+        <Route exact path="/login" component={Login} /> 
         <Route path="/map" component={Maps} />
       </div>
       </Router>

@@ -5,12 +5,6 @@ const Nav = () => (
     <a className="navbar-brand" href="/">
       Peregrinate
     </a>
-    <a className="navbar-brand" href="/">
-      Profile
-    </a>
-    <a className="navbar-brand" href="/Wishlist">
-      Wish List
-    </a>
     <a className="navbar-brand" href="/Login">
       Login
     </a>
