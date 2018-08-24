@@ -2,11 +2,10 @@ import React from "react";
 import Friendlist from "../components/Friendlist/Friendlist";
 import Traveledlist from "../components/Traveledlist/Traveledlist";
 import Bucketlist from "../components/Bucketlist/Bucketlist";
-import Jumbotron from "../components/Jumbotron/Jumbotron"
+import Jumbotron from "../components/Jumbotron/Jumbotron";
 
 const Wishlist = () => (
   <div className = "wrapper">
-  
   <Jumbotron>
   <div className = "rowC" 
   style={{ height: 800, clear: "both", textAlign: "center" }}>
@@ -17,7 +16,6 @@ const Wishlist = () => (
    
     </div>
   </Jumbotron>
-    
     </div>
 );
 

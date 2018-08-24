@@ -1,10 +1,10 @@
 // https://medium.com/@zimrick/how-to-create-pure-react-svg-maps-with-topojson-and-d3-geo-e4a6b6848a98
-
 import React, { Component } from "react";
 import { geoMercator, geoPath } from "d3-geo";
 import { feature } from "topojson-client";
 import worldData from "../../components/Map/world-110m.json";
 import Jumbotron from "../../components/Jumbotron";
+// import NavTabs from "../../components/NavTabs/NavTabs.js";
 
 class WorldMap extends Component {
   constructor() {
