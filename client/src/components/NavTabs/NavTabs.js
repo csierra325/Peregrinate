@@ -19,7 +19,7 @@ const NavTabs = props => (
           props.currentPage === "Maps" ? "nav-link active" : "nav-link"
         }
       >
-        Maps
+        My Map
       </a>
     </li>
     <li className="nav-item">
@@ -34,12 +34,12 @@ const NavTabs = props => (
     </li>
     <li className="nav-item">
       <a
-        onClick={() => props.handlePageChange("RandomPick")}
+        onClick={() => props.handlePageChange("TripPlanner")}
         className={
-          props.currentPage === "RandomPick" ? "nav-link active" : "nav-link"
+          props.currentPage === "TripPlanner" ? "nav-link active" : "nav-link"
         }
       >
-        Random Pick
+        Trip Planner
       </a>
     </li>
     <li className="nav-item">

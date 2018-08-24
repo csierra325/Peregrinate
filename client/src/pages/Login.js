@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 // import axios from "axios";
 import API from "../utils/API";
-import Profile from "./Profile/Profile"
 
 class Login extends Component {
     // Setting the initial values of this.state.username and this.state.password
