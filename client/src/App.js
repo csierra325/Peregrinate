@@ -19,7 +19,7 @@ class App extends Component {
         <Nav />
     
         <Route exact path="/" component={Members} />
-        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/profile/:id" component={Profile} />
         <Route exact path="/wishlist" component={Wishlist} /> 
         <Route exact path="/login" component={Login} /> 
         <Route path="/map" component={Maps} />

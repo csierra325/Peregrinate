@@ -1,14 +1,33 @@
 import React, { Component } from "react";
-import axios from "axios";
+// import axios from "axios";
+import API from "../utils/API";
+import Profile from "./Profile/Profile"
 
 class Login extends Component {
     // Setting the initial values of this.state.username and this.state.password
+   
     state = {
         existing_username: "",
         existing_password: "",
         new_username: "",
         new_password_one: "",
         new_password_two: ""
+    };
+    // componentDidMount() {
+    //     this.addUser();
+    // }
+
+    addUser = () => {
+        API.saveUser({username: this.state.new_username, password: this.state.new_password_one})
+            .then(res =>
+               console.log(res.data),
+               this.setState({ new_username: "", new_password_one: "", new_password_two: "" }),
+               console.log(`Props: ${JSON.stringify(this.props)} \nPath: ${this.props.match.path}`),
+            //    this.props.match.path = "/Profile/",
+               this.props.history.push(`/profile/${this.state.new_username}`)
+
+            )
+            .catch(err => console.log(err))
     };
 
     // handle any changes to the input fields
@@ -32,25 +51,22 @@ class Login extends Component {
     handleFormSubmitNewUser = event => {
         event.preventDefault();
         console.log(`New User\n----------------\nUsername: ${this.state.new_username}\nPassword One: ${this.state.new_password_one} \nPassword Two:${this.state.new_password_two}\n--------------`);
-        this.setState({ new_username: "", new_password_one: "", new_password_two: "" });
+        // this.setState({ new_username: "", new_password_one: "", new_password_two: "" });
         if (this.state.new_password_one === this.state.new_password_two) {
             alert(`Passwords match!`);
-            // axios.post('/Login', {
-            //     new_username: this.state.new_username,
-            //     password: this.state.new_password_two
-            // });
+            this.addUser();
+
         } else {
             alert(`Passwords don't match`);
         }
-
-
     }
-
 
     render() {
         return (
             <div>
+                 {/* <Profile username={}/> */}
                 <h4>Existing User</h4>
+                
                 <form>
                     {/* <p>Username: {this.state.username}</p>
                 <p>Password: {this.state.password}</p> */}
