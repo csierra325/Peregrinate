@@ -1,15 +1,13 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const mongoose = require("mongoose");
 // const apiRoutes = require("./routes/api");
 const routes = require("./routes");
 
-var db = require("./models");
-console.log(`db: ${JSON.stringify(db)}`);
+
 
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
