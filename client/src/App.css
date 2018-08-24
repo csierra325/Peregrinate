@@ -19,6 +19,7 @@
 }
 
 body{
+  background-image:url("./img/coolbackground.png");
   background-repeat: no-repeat;
   background-size: 100%;
   background-attachment: fixed;
@@ -26,50 +27,79 @@ body{
 }
 
 .jumbotron{
-  background-color: white;
-  opacity: 0.6;
+  background-color: rgba(255, 255, 255, 0.87);
   width: 80%;
   margin-left: 10%;
   margin-top: 4%;
 }
-.navbar{
-  background-color: pink;
-   padding: 20px;
-}
 .navbar-brand{
-  color: white;
+  color:  rgba(255, 255, 255, 0.87);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 30px;
   margin: 10px;
+  
 }
+
+.bg-primary{
+  background-color: grey !important;
+ }
+
+ /* .navbar-default {
+  background-color: rgb(248, 248, 248);
+  border-color:#222;
+} */
 
 .rowC{
-  display:flex; flex-direction:row;
+  display:flex;
+  flex-direction:row;
+  justify-content: space-around;
+  
 }
 
+.nav{
+  background-color: oldlace;
+}
 .friendlist{
-  margin: 20px;
+  
 }
 .buckettitle{
   color:blue;
+  color: #bfadc3;
+  -webkit-text-fill-color: #bfadc3;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  font-size: 2em;
 }
 .bucketList{
-  margin: 4%;
+  
 }
 .friendTitle{
-  color: red;
+  color: #bfadc3;
+  -webkit-text-fill-color: #bfadc3; 
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  font-size: 2em;
 }
+
 .friendList{
-  margin: 4%;
+align-content: center;
 }
 
 .traveledList {
-  margin: 4%;
-  color: green;
+
+}
+
+ul{
+  padding: 0px;
+  list-style: none;
 }
   
   .travelTitle{
-    margin: 4%;
+    color: #bfadc3;
+    -webkit-text-fill-color: #bfadc3; 
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    font-size: 2em;
   }
 
 @keyframes App-logo-spin {
