@@ -2,15 +2,23 @@ import React from "react";
 import Friendlist from "../components/Friendlist/Friendlist";
 import Traveledlist from "../components/Traveledlist/Traveledlist";
 import Bucketlist from "../components/Bucketlist/Bucketlist";
+import Jumbotron from "../components/Jumbotron/Jumbotron"
 
 const Wishlist = () => (
-  <div className = "rowC">
+  <div className = "wrapper">
+  
+  <Jumbotron>
+  <div className = "rowC" 
+  style={{ height: 800, clear: "both", textAlign: "center" }}>
   
     <Friendlist />
-    <Traveledlist/>
+    <Traveledlist />
     <Bucketlist/>
-
-  </div>
+   
+    </div>
+  </Jumbotron>
+    
+    </div>
 );
 
 export default Wishlist;
