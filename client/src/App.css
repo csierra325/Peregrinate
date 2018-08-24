@@ -19,8 +19,7 @@
 }
 
 body{
-  background-image:url("./img/ocean.jpg");
-  background-color: #a3a3a3;
+  background-image:url("./img/coolbackground.png");
   background-repeat: no-repeat;
   background-size: 100%;
   background-attachment: fixed;
@@ -43,12 +42,18 @@ body{
 }
 
 .bg-primary{
-  background-color: #ff6347 !important;
+  background-color: grey !important;
  }
+
+ /* .navbar-default {
+  background-color: rgb(248, 248, 248);
+  border-color:#222;
+} */
 
 .rowC{
   display:flex;
   flex-direction:row;
+  justify-content: space-around;
   
 }
 
@@ -60,23 +65,42 @@ body{
 }
 .buckettitle{
   color:blue;
+  color: #bfadc3;
+  -webkit-text-fill-color: #bfadc3;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  font-size: 2em;
 }
 .bucketList{
   
 }
 .friendTitle{
-  color: red;
+  color: #bfadc3;
+  -webkit-text-fill-color: #bfadc3; 
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  font-size: 2em;
 }
-.friendList{
 
+.friendList{
+align-content: center;
 }
 
 .traveledList {
 
 }
+
+ul{
+  padding: 0px;
+  list-style: none;
+}
   
   .travelTitle{
-  
+    color: #bfadc3;
+    -webkit-text-fill-color: #bfadc3; 
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    font-size: 2em;
   }
 
 @keyframes App-logo-spin {

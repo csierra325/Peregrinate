@@ -7,11 +7,12 @@ import Jumbotron from "../components/Jumbotron/Jumbotron"
 const Wishlist = () => (
   <div className = "wrapper">
   
-  {/* <div className = "rowC"> */}
   <Jumbotron>
-  <div className = "rowC" >
+  <div className = "rowC" 
+  style={{ height: 800, clear: "both", textAlign: "center" }}>
+  
     <Friendlist />
-    <Traveledlist/>
+    <Traveledlist />
     <Bucketlist/>
    
     </div>
