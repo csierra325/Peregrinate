@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 // import axios from "axios";
 import API from "../utils/API";
+import Profile from "./Profile/Profile"
 
 class Login extends Component {
     // Setting the initial values of this.state.username and this.state.password
+   
     state = {
         existing_username: "",
         existing_password: "",
@@ -18,7 +20,12 @@ class Login extends Component {
     addUser = () => {
         API.saveUser({username: this.state.new_username, password: this.state.new_password_one})
             .then(res =>
-               console.log(res.data)
+               console.log(res.data),
+               this.setState({ new_username: "", new_password_one: "", new_password_two: "" }),
+               console.log(`Props: ${JSON.stringify(this.props)} \nPath: ${this.props.match.path}`),
+            //    this.props.match.path = "/Profile/",
+               this.props.history.push(`/profile/${this.state.new_username}`)
+
             )
             .catch(err => console.log(err))
     };
@@ -57,7 +64,9 @@ class Login extends Component {
     render() {
         return (
             <div>
+                 {/* <Profile username={}/> */}
                 <h4>Existing User</h4>
+                
                 <form>
                     {/* <p>Username: {this.state.username}</p>
                 <p>Password: {this.state.password}</p> */}
