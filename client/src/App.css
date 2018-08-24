@@ -19,7 +19,8 @@
 }
 
 body{
-  /* background-image: url("./img/background2.jpg"); */
+  background-image:url("./img/trees.jpg");
+  background-color: #a3a3a3;
   background-repeat: no-repeat;
   background-size: 100%;
   background-attachment: fixed;
@@ -27,50 +28,55 @@ body{
 }
 
 .jumbotron{
-  background-color: white;
-  opacity: 0.6;
+  background-color: rgba(255, 255, 255, 0.87);
   width: 80%;
   margin-left: 10%;
   margin-top: 4%;
 }
-.navbar{
-  background-color: #2eaf73;
-   padding: 20px;
-}
+
 .navbar-brand{
-  color: white;
+  color:  rgba(255, 255, 255, 0.87);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 30px;
   margin: 10px;
+  
 }
+
+.bg-primary{
+  background-color: #ff6347 !important;
+ }
 
 .rowC{
-  display:flex; flex-direction:row;
+  display:flex;
+  flex-direction:row;
+  
 }
 
+.nav{
+  background-color: oldlace;
+}
 .friendlist{
-  margin: 20px;
+  
 }
 .buckettitle{
   color:blue;
 }
 .bucketList{
-  margin: 4%;
+  
 }
 .friendTitle{
   color: red;
 }
 .friendList{
-  margin: 4%;
+
 }
 
 .traveledList {
-  margin: 4%;
-  color: green;
+
 }
   
   .travelTitle{
-    margin: 4%;
+  
   }
 
 @keyframes App-logo-spin {
