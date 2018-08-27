@@ -1,7 +1,7 @@
 import React from "react";
 
-const NavTabs = props => (
-  <ul className="nav nav-tabs">
+const TravelTabs = props => (
+  <ul className="nav travel-tabs">
     <li className="nav-item">
       <a
         onClick={() => props.handlePageChange("Members")}
@@ -9,7 +9,7 @@ const NavTabs = props => (
           props.currentPage === "Members" ? "nav-link active" : "nav-link"
         }
       >
-        Profile
+        Flight
       </a>
     </li>
     <li className="nav-item">
@@ -19,7 +19,7 @@ const NavTabs = props => (
           props.currentPage === "Maps" ? "nav-link active" : "nav-link"
         }
       >
-        My Map
+        Hotel
       </a>
     </li>
     <li className="nav-item">
@@ -29,30 +29,10 @@ const NavTabs = props => (
           props.currentPage === "Wishlist" ? "nav-link active" : "nav-link"
         }
       >
-        Wishlist
-      </a>
-    </li>
-    <li className="nav-item">
-      <a
-        onClick={() => props.handlePageChange("TripPlanner")}
-        className={
-          props.currentPage === "TripPlanner" ? "nav-link active" : "nav-link"
-        }
-      >
-        Trip Planner
-      </a>
-    </li>
-    <li className="nav-item">
-      <a
-        onClick={() => props.handlePageChange("Friends")}
-        className={
-          props.currentPage === "Friends" ? "nav-link active" : "nav-link"
-        }
-      >
-        Friends
+        Car
       </a>
     </li>
   </ul>
 );
 
-export default NavTabs;
+export default TravelTabs;

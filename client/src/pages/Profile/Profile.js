@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import NavTabs from "../../components/NavTabs/NavTabs.js";
-import Maps from "../Maps/WorldMap.js";
+// import Jumbotron from "../../components/Jumbotron";
 
+//Importing pages for navigation
+import Maps from "../Maps/WorldMap.js";
+import Friends from '../Friends';
+import TripPlanner from '../TripPlanner';
 import Members from "../Members.js";
 import Wishlist from "../Wishlist";
 
@@ -22,10 +26,15 @@ class Profile extends Component {
       return <Members username={this.state.username}/>;
     } else if (this.state.currentPage === "Maps") {
       return <Maps />;
-    } else {
+    } else if (this.state.currentPage === "TripPlanner") {
+      return <TripPlanner />;
+    }else if (this.state.currentPage === "Wishlist") {
       return <Wishlist />;
-    }
+    }else if (this.state.currentPage === "Friends") {
+      return <Friends />;
+    } 
   };
+
 
   render() {
     return (
@@ -35,10 +44,15 @@ class Profile extends Component {
           handlePageChange={this.handlePageChange}
         />
         {this.renderPage()}
-    
       </div>
-    );
+
+    //   <div className = "wrapper">
+    //   <Jumbotron>
+    //   <h1>I'm the profile page!</h1> 
+    //   </Jumbotron>
+    //   </div>
+    )
   }
-}
+};
 
 export default Profile;
