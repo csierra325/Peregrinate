@@ -4,9 +4,7 @@ import Maps from "../Maps/WorldMap.js";
 
 import Members from "../Members.js";
 import Wishlist from "../Wishlist";
-import Login from '../Login';
 
-console.log(`Logins: ${Login}`)
 class Profile extends Component {
   state = {
     currentPage: "ProfileTabPage",
@@ -17,9 +15,6 @@ class Profile extends Component {
     this.setState({ currentPage: page });
   };
 
-  componentDidMount (){
-
-  }
 
   // username={this.props.match.params.id}
   renderPage = () => {
