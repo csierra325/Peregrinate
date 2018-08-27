@@ -1,56 +1,59 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+
 
 const NavTabs = props => (
   <ul className="nav nav-tabs">
     <li className="nav-item">
-      <a
-        onClick={() => props.handlePageChange("Members")}
+      <Link
+        to="/profile"
         className={
-          props.currentPage === "Members" ? "nav-link active" : "nav-link"
+          window.location.pathname === "/profile" ? "nav-link active" : "nav-link"
         }
       >
         Profile
-      </a>
+      </Link>
     </li>
     <li className="nav-item">
-      <a
-        onClick={() => props.handlePageChange("Maps")}
+    <Link
+        to="/map"
         className={
-          props.currentPage === "Maps" ? "nav-link active" : "nav-link"
+          window.location.pathname === "/map" ? "nav-link active" : "nav-link"
         }
       >
-        My Map
-      </a>
+       Map
+      </Link>
     </li>
     <li className="nav-item">
-      <a
-        onClick={() => props.handlePageChange("Wishlist")}
+    <Link
+        to="/wishlist"
         className={
-          props.currentPage === "Wishlist" ? "nav-link active" : "nav-link"
+          window.location.pathname === "/wishlist" ? "nav-link active" : "nav-link"
         }
       >
         Wishlist
-      </a>
+      </Link>
     </li>
     <li className="nav-item">
-      <a
-        onClick={() => props.handlePageChange("TripPlanner")}
+    <Link
+        to="/tripplanner"
         className={
-          props.currentPage === "TripPlanner" ? "nav-link active" : "nav-link"
+          window.location.pathname === "/tripplanner" ? "nav-link active" : "nav-link"
         }
       >
         Trip Planner
-      </a>
+      </Link>
     </li>
     <li className="nav-item">
-      <a
-        onClick={() => props.handlePageChange("Friends")}
+    <Link
+        to="/friends"
         className={
-          props.currentPage === "Friends" ? "nav-link active" : "nav-link"
+          window.location.pathname === "/friends" ? "nav-link active" : "nav-link"
         }
       >
         Friends
-      </a>
+      </Link>
     </li>
   </ul>
 );
