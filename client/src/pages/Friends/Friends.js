@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
 
+import Maps from "../Maps/WorldMap.js";
+import Profile from "../Profile/Profile.js"
+import TripPlanner from '../TripPlanner';
+import Members from "../Members.js";
+import Wishlist from "../Wishlist";
+import Login from '../Login';
+
+
 
 class Friends extends Component {
   state = {
