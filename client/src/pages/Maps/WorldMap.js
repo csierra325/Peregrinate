@@ -1,10 +1,10 @@
 // https://medium.com/@zimrick/how-to-create-pure-react-svg-maps-with-topojson-and-d3-geo-e4a6b6848a98
-
 import React, { Component } from "react";
 import { geoMercator, geoPath } from "d3-geo";
 import { feature } from "topojson-client";
 import worldData from "../../components/Map/world-110m.json";
 import Jumbotron from "../../components/Jumbotron";
+
 
 class WorldMap extends Component {
   constructor() {
@@ -43,10 +43,12 @@ class WorldMap extends Component {
         { name: "Paris", coordinates: [2.3522,48.8566], population: 10858000 },
         { name: "Lima", coordinates: [-77.0428,-12.0464], population: 10750000 },
       ],
+      
     }
 
     this.handleCountryClick = this.handleCountryClick.bind(this);
     this.handleMarkerClick = this.handleMarkerClick.bind(this);
+    
   };
 
   projection() {
@@ -63,6 +65,8 @@ class WorldMap extends Component {
     console.log("Marker: ", this.state.cities[markerIndex])
   };
 
+ 
+
   componentDidMount() {
           this.setState({
             worlddata: feature(worldData, worldData.objects.ne_110m_admin_0_countries).features,
@@ -72,6 +76,7 @@ class WorldMap extends Component {
   render() {
     return (
     <div className = "wrapper">
+   
     <Jumbotron>
       <svg width={ 800 } height={ 450 } viewBox="0 0 800 450">
         <g className="countries">

@@ -1,29 +1,35 @@
-import React from "react";
+import React, { Component } from "react";
+
 import Friendlist from "../components/Friendlist/Friendlist";
 import Traveledlist from "../components/Traveledlist/Traveledlist";
 import Bucketlist from "../components/Bucketlist/Bucketlist";
-import Jumbotron from "../components/Jumbotron/Jumbotron"
 
-const Wishlist = () => (
-  <div className = "wrapper">
-  
-  <Jumbotron>
-  <div className = "rowC" 
-  style={{ height: 800, clear: "both", textAlign: "center" }}>
-  
-    <Friendlist />
-    <Traveledlist />
-    <Bucketlist/>
-   
-    </div>
-  </Jumbotron>
-    
-    </div>
-);
+import Jumbotron from "../components/Jumbotron/Jumbotron";
+
+
+class Wishlist extends Component {
+ 
+
+  render() {
+    return (
+      <div className="wrapper">
+        
+        <Jumbotron>
+          <div
+            className="rowC"
+            style={{ height: 800, clear: "both", textAlign: "center" }}
+          >
+            <Friendlist />
+            <Traveledlist />
+            <Bucketlist />
+          </div>
+        </Jumbotron>
+      </div>
+    );
+  }
+}
 
 export default Wishlist;
-
-
 
 // render() {
 //     return (
@@ -33,22 +39,22 @@ export default Wishlist;
 //             <Jumbotron>
 //               <h1>Where Should I go?</h1>
 //             </Jumbotron>
-//             <form>   
+//             <form>
 //               <Input
 //               value={this.state.location}
 //               onChange = {this.handleInputChange}
-//               name="location" 
+//               name="location"
 //               placeholder="Location (required)"
 //                />
-//               <TextArea 
+//               <TextArea
 //               value={this.state.notes}
 //               onChange = {this.handleInputChange}
-//               name="notes" 
+//               name="notes"
 //               placeholder="Notes (Optional)"
 //                />
 //               <FormBtn
 //               disable={!(this.state.location)}
-//               onClick = {this.handleFormSubmit}         
+//               onClick = {this.handleFormSubmit}
 //               >Submit Location</FormBtn>
 //             </form>
 //           </Col>
