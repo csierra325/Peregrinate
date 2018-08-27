@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import axios from "axios";
 import API from "../utils/API";
 // var bcrypt = require('bcrypt');
-const bcrypt = require('bcryptjs');
+// const bcrypt = require('bcryptjs');
 // import bcrypt from 'bcrypt'
 
 
@@ -146,6 +146,7 @@ class Login extends Component {
         } else {
             alert(`Passwords don't match`);
         }
+
     }
 
     render() {
