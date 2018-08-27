@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 // import API from "../../../../routes/api/friendlist"
-
-
+// import DeleteBtn from "../DeleteBtn/DeleteBtn.js"
 class Friendlist extends Component {
   state = {
     friends: ["Brazil"],
