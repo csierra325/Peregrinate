@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 // import axios from "axios";
 import API from "../utils/API";
-// var bcrypt = require('bcrypt');
 const bcrypt = require('bcryptjs');
-// import bcrypt from 'bcrypt'
-
 
 class Login extends Component {
     // Setting the initial values of this.state.username and this.state.password
