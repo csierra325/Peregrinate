@@ -8,13 +8,21 @@ import Jumbotron from "../components/Jumbotron/Jumbotron";
 
 
 class Wishlist extends Component {
+  state = {
+    currentPage: "WishList",
+    username: this.props.match.params.id
+ }; 
  
-
   render() {
+
+    window.username = this.state.username;
+    
     return (
       <div className="wrapper">
         
         <Jumbotron>
+
+          <p>{this.state.username}</p>
           <div
             className="rowC"
             style={{ height: 800, clear: "both", textAlign: "center" }}
