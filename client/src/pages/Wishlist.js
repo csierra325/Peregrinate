@@ -9,9 +9,15 @@ import NavTabs from "../components/NavTabs"
 
 
 class Wishlist extends Component {
+  state = {
+    currentPage: "WishList",
+    username: this.props.match.params.id
+ }; 
  
-
   render() {
+
+    window.username = this.state.username;
+    
     return (
       <div className="wrapper">
          <NavTabs />

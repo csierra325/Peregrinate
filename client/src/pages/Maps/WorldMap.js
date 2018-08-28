@@ -51,6 +51,11 @@ class WorldMap extends Component {
     
   };
 
+  state = {
+    currentPage: "WorldMap",
+    // username: this.props.match.params.id
+  };
+
   projection() {
     return geoMercator()
       .scale(100)
