@@ -11,7 +11,7 @@ import Login from "./pages/Login";
 import Maps from "./pages/Maps";
 import Friends from './pages/Friends';
 import TripPlanner from './pages/TripPlanner';
-import NavTabs from "./components/NavTabs/NavTabs";
+
 //Import styling
 import "./App.css";
 
@@ -34,7 +34,7 @@ class App extends Component {
       <Router>
         <div>
           <Nav />
-          <NavTabs {...this.props}/>
+          
 
 
           <Route exact path="/" component={Members} />
