@@ -31,6 +31,7 @@ body{
   width: 80%;
   margin-left: 10%;
   margin-top: 4%;
+  margin-bottom: 4%;
 }
 .navbar-brand{
   color:  rgba(255, 255, 255, 0.87);
@@ -49,12 +50,34 @@ body{
   border-color:#222;
 } */
 
+/* Wishlist */
 .rowC{
   display:flex;
   flex-direction:row;
   justify-content: space-around;
   
 }
+
+
+/* Profile */
+.rowD {
+  display:flex;
+  flex-direction:row;
+  /* justify-content: space-around; */
+  margin: 5% 15% 15% 15%;
+
+}
+
+.form-group {
+  text-align: left;
+}
+
+
+
+
+
+
+/* Profile */
 
 .nav{
   background-color: oldlace;
@@ -106,3 +129,5 @@ ul{
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+

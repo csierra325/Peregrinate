@@ -1,7 +1,11 @@
 // Import React from "react";
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom";
+
+//Import Components
 import Nav from "./components/Nav";
+import NavTabs from "./components/NavTabs/NavTabs";
+
 
 //Import pages for navigation
 import Profile from "./pages/Profile";
@@ -11,11 +15,17 @@ import Login from "./pages/Login";
 import Maps from "./pages/Maps";
 import Friends from './pages/Friends';
 import TripPlanner from './pages/TripPlanner';
-import NavTabs from "./components/NavTabs/NavTabs";
+
+
 //Import styling
 import "./App.css";
 
+
+
 class App extends Component {
+
+ 
+
   render() {
     return (
       <Router>
@@ -33,7 +43,10 @@ class App extends Component {
         <Route exact path="/friends" component={Friends} />
         <Route exact path="/tripplanner" component={TripPlanner} />
       </div>
+
       </Router>
+
+      
     );
   }
 }
