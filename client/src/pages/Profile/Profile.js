@@ -4,9 +4,6 @@ import Jumbotron from "../../components/Jumbotron";
 import Form from "../../components/Form";
 
 
-
-import Login from '../Login';
-
 class Profile extends Component {
   state = {
     currentPage: "Profile",
