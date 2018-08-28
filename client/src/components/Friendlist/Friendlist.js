@@ -1,7 +1,7 @@
 import React, {Component} from "react";
+import ListItem from "../ListItem";
 // import API from "../../../../routes/api/friendlist"
-
-
+// import DeleteBtn from "../DeleteBtn/DeleteBtn.js"
 class Friendlist extends Component {
   state = {
     friends: ["Brazil"],
@@ -62,7 +62,7 @@ class Friendlist extends Component {
       >Submit</button>
       <ul>
         {this.state.friends.map(friend => (
-          <li>{friend}</li>
+          <ListItem text={friend} />
         ))}
         </ul>
     </div>
