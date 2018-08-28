@@ -39,6 +39,7 @@ p{
 }
 
 
+
 h1{
 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 font-weight: bold;
@@ -51,6 +52,7 @@ margin: 2%;
   width: 80%;
   margin-left: 10%;
   margin-top: 4%;
+  margin-bottom: 4%;
 }
 
 .navbar{
@@ -66,12 +68,34 @@ margin: 2%;
 }
 
 
+/* Wishlist */
 .rowC{
   display:flex;
   flex-direction:row;
   justify-content: space-around;
   
 }
+
+
+/* Profile */
+.rowD {
+  display:flex;
+  flex-direction:row;
+  /* justify-content: space-around; */
+  margin: 5% 15% 15% 15%;
+
+}
+
+.form-group {
+  text-align: left;
+}
+
+
+
+
+
+
+/* Profile */
 
 .nav{
   background-color: oldlace;
@@ -131,3 +155,5 @@ ul{
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+

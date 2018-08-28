@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Nav from "./components/Nav";
+import NavTabs from "./components/NavTabs/NavTabs";
+
 
 //Import pages for navigation
 import Profile from "./pages/Profile";
@@ -27,6 +29,9 @@ var username = localStorage.getItem("username");
 
 
 class App extends Component {
+
+ 
+
   render() {
 
     return (

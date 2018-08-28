@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 
 import Jumbotron from "../../components/Jumbotron";
+// import Form from "../../components/Form";
+import Greeting from "../../components/Greeting";
+import ProfileCard from "../../components/ProfileCard";
+import ProfileForm from "../../components/ProfileForm";
 import Form from "../../components/Form";
 import Login from '../Login';
 import NavTabs from "../../components/NavTabs"
@@ -16,14 +20,23 @@ class Profile extends Component {
       <div className = "wrapper">
         <NavTabs />
       <Jumbotron>
-        <h1>I'm the profile page!</h1> 
-        <Form />
-        </Jumbotron>
-       
+        <Greeting />
+        
+          <div class="rowD">
+            <div className="col-s-3">
+           
+              <ProfileCard />
+              </div>
+              <div className="col-s-9">
+              <ProfileForm />
+              </div>
+          </div>
+          
+        
+      </Jumbotron>
       </div>
-
-    )
+    );
   }
-};
+}
 
 export default Profile;
