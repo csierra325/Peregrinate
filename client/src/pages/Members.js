@@ -8,10 +8,6 @@ import Slideshow from "../components/Slideshow/Slideshow"
 const Members = (props) => (
   <div className = "wrapper">
     <Jumbotron>
-<<<<<<< HEAD
-    <h1>I'm the members page</h1> 
-    
-=======
     <Slideshow/>
 
     <h1>Welcome to Pereginate</h1> 
@@ -21,7 +17,6 @@ const Members = (props) => (
       keep track of your favorite places you want to travel, and if you are feeling spontaneous have us pick out a trip for you! All you need to 
       to is sign up! 
     </p>
->>>>>>> c58788bc2cacb44eebf088141065b6844279d332
     </Jumbotron>
 
 
