@@ -4,9 +4,6 @@ const Schema = mongoose.Schema;
 const usersSchema = new Schema({
   username: { type: String, required: true , unique: true},
   password: { type: String, required: true },
-  firstName: {type: String, required: true},
-  lastName: {type: String, required: true},
-  friendItem: [{ type: Schema.Types.ObjectId, ref: "Friends"}, {timestamps: true}],
   date: { type: Date, default: Date.now },
   bucketlist: [
     {
@@ -43,7 +40,18 @@ const usersSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'carsearch'
     }
-  ]
+  ],
+  carsearch: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'carsearch'
+    }
+  ],
+  friendItem: [
+    { type: Schema.Types.ObjectId, 
+      ref: "Friends"}, 
+    {timestamps: true}
+  ],
 });
 
 const User = mongoose.model("User", usersSchema);
