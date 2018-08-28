@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import ListItem from "../ListItem";
 
 
 class Traveledlist extends Component {
@@ -44,7 +45,8 @@ class Traveledlist extends Component {
       >Submit</button>
       <ul>
         {this.state.travels.map(travel => (
-          <li>{travel}</li>
+            <ListItem text={travel} />  
+
         ))}
         </ul>
     </div>

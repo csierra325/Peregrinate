@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import axios from "axios";
 import API from "../utils/API";
 const bcrypt = require('bcryptjs');
 
@@ -10,7 +9,9 @@ class Login extends Component {
         existing_password: "",
         new_username: "",
         new_password_one: "",
-        new_password_two: ""
+        new_password_two: "",
+        currentPage: "Login",
+        username: this.props.match.params.id
     };
 
     // componentDidMount() {
@@ -86,7 +87,9 @@ class Login extends Component {
             alert("username and passwords match!");
             console.log(this.props.match);
             this.props.history.push(`/profile/${databaseUsername}`)
-
+            // this.props.navigation.getParam(paramName, defaultValue)
+            localStorage.setItem("username", databaseUsername)
+            console.log(this.props)
         } else {
             alert('Try again!')
         }
@@ -100,8 +103,9 @@ class Login extends Component {
                 this.setState({ new_username: "", new_password_one: "", new_password_two: "" }),
                 console.log(`Props: ${JSON.stringify(this.props)} \nPath: ${this.props.match.path}`),
                 //    this.props.match.path = "/Profile/",
-                this.props.history.push(`/profile/${this.state.new_username}`)
-
+                this.props.history.push(`/profile/${this.state.new_username}`),
+                console.log(`this.props: ${(JSON.stringify(this.props))}`),
+                localStorage.setItem("username", this.state.new_username)
             )
             .catch(err => console.log(err))
     };
@@ -110,6 +114,11 @@ class Login extends Component {
     handleInputChange = event => {
         // Pull the name and value properties off of the event.target (the element which triggered the event)
         const { name, value } = event.target;
+        
+        if (name === 'existing_username' || name === 'new_username') {
+            window.username = value; // update username
+        }
+        
 
         // Set the state for the appropriate input field
         this.setState({

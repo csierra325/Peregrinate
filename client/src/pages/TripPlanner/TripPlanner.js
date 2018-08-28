@@ -4,6 +4,7 @@ import Jumbotron from "../../components/Jumbotron";
 import TripGenerator from "../../components/TripGenerator";
 import Globe from "../../components/Globe";
 import TravelTabs from "../../components/TravelTabs";
+import NavTabs from "../../components/NavTabs"
 
 class TripPlanner extends Component {
   state = {
@@ -13,15 +14,16 @@ class TripPlanner extends Component {
   render() {
     return (
     <div className = "wrapper">
+      <NavTabs />
       <Jumbotron>
         <div className="tripGen" align="left">
         <Globe />
         <TripGenerator />
         </div>
         <div>
+          <TravelTabs />
           {/* <PlanATrip /> */}
-        </div>
-        <TravelTabs />
+        </div>       
       </Jumbotron>     
     </div>
         );
