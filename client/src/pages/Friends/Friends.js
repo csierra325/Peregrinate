@@ -7,6 +7,10 @@ import TripPlanner from '../TripPlanner';
 import Members from "../Members.js";
 import Wishlist from "../Wishlist";
 import Login from '../Login';
+import "./friends.css";
+import CurrentFriends from "../../components/CurrentFriends/currentfriends";
+import FriendsSearch from "../../components/FriendSearch/friendsearch";
+// import FriendsResult from "../../components/FriendsResult/friendsresult";
 
 
 
@@ -22,7 +26,11 @@ class Friends extends Component {
         
         <Jumbotron>
           <h1>I'm the friends page!</h1>
+          <CurrentFriends />
+          <FriendsSearch />
+          {/* <FriendsResult /> */}
         </Jumbotron>
+       
       </div>
     );
   }

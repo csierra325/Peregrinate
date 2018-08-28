@@ -4,6 +4,9 @@ const Schema = mongoose.Schema;
 const usersSchema = new Schema({
   username: { type: String, required: true , unique: true},
   password: { type: String, required: true },
+  firstName: {type: String, required: true},
+  lastName: {type: String, required: true},
+  friendItem: [{ type: Schema.Types.ObjectId, ref: "Friends"}, {timestamps: true}],
   date: { type: Date, default: Date.now }
 });
 
