@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 const usersSchema = new Schema({
   username: { type: String, required: true , unique: true},
   password: { type: String, required: true },
@@ -27,12 +25,26 @@ const usersSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'traveledlist'
     }
+  ],
+  randomflight: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'randomflight'
+    }
+  ],
+  flightsearch: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'flightsearch'
+    }
+  ],
+  carsearch: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'carsearch'
+    }
   ]
 });
-const User = mongoose.model("User", usersSchema);
-module.exports = User;
-
 
 const User = mongoose.model("User", usersSchema);
-
 module.exports = User;

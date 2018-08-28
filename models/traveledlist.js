@@ -5,6 +5,6 @@ const travellistSchema = new Schema({
   travelItem: { type: String, required: true },
 });
 
-const travellist = mongoose.model("Friend List", travellistSchema);
+const travellist = mongoose.model("Traveled List", travellistSchema);
 
 module.exports = travellist;
