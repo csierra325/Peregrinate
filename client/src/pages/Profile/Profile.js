@@ -30,13 +30,11 @@ class Profile extends Component {
               <div className="col-s-9">
               <ProfileForm />
               </div>
-
-              
-              
-            
           </div>
+          
         
       </Jumbotron>
+      </div>
     );
   }
 }
