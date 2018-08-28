@@ -3,21 +3,15 @@ import React, { Component } from "react";
 import Friendlist from "../components/Friendlist/Friendlist";
 import Traveledlist from "../components/Traveledlist/Traveledlist";
 import Bucketlist from "../components/Bucketlist/Bucketlist";
-import Gallery from "../components/Gallery/Gallery"
+
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import NavTabs from "../components/NavTabs"
 
 
 class Wishlist extends Component {
-  state = {
-    currentPage: "WishList",
-    username: this.props.match.params.id
- }; 
  
-  render() {
 
-    window.username = this.state.username;
-    
+  render() {
     return (
       <div className="wrapper">
          <NavTabs />
@@ -34,10 +28,9 @@ class Wishlist extends Component {
           </div>
         
         </Jumbotron>
-      
+        <Jumbotron>
         <div className= "bucketlistIdeas">Bucket List Ideas</div>
-        <Gallery/>
-        
+        </Jumbotron>
       </div>
     );
   }

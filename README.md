@@ -21,7 +21,7 @@ Technologies Used:
  Mongoose
  React
 
-Team Members:
+Team :
 
 Nivi Nagar
 Camille Sierra

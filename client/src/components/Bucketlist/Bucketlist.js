@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-
+import ListItem from "../ListItem";
 
 class Bucketlist extends Component {
   state = {
@@ -44,7 +44,9 @@ class Bucketlist extends Component {
       >Submit</button>
       <ul>
         {this.state.buckets.map(bucket => (
-          <li>{bucket}</li>
+      
+          <ListItem  text={bucket}  /> 
+          
         ))}
         </ul>
     </div>

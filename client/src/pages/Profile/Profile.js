@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import Jumbotron from "../../components/Jumbotron";
 import Form from "../../components/Form";
+import Login from '../Login';
+import NavTabs from "../../components/NavTabs"
 
 class Profile extends Component {
   state = {
@@ -12,7 +14,7 @@ class Profile extends Component {
   render() {
     return (
       <div className = "wrapper">
-       
+        <NavTabs />
       <Jumbotron>
         <h1>I'm the profile page!</h1> 
         <Form />

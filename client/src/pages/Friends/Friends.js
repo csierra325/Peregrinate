@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
-
-// console.log(this.props.history.location.pathname);
-
+import NavTabs from "../../components/NavTabs"
 
 class Friends extends Component {
 
@@ -22,7 +20,7 @@ class Friends extends Component {
   render() {
     return (
       <div className="wrapper">
-
+        <NavTabs />
         <Jumbotron>
           <h2><strong>{this.state.username}</strong></h2>
           <h1>I'm the friends page!</h1>
