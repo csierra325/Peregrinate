@@ -21,7 +21,7 @@ class App extends Component {
       <Router>
         <div>       
         <Nav />
-        <NavTabs />
+        {/* <NavTabs /> */}
         
     
         <Route exact path="/" component={Members} />

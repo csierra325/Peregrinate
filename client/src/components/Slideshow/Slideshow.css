@@ -1,0 +1,13 @@
+
+.w3-content{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+}
+.mySlides{
+    height: 250px;
+    width: 350px;
+    border-radius: 100%;
+    display: inline-block;
+    
+}

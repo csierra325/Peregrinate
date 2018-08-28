@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
-
+import NavTabs from "../../components/NavTabs"
 
 class Friends extends Component {
   state = {
@@ -11,7 +11,7 @@ class Friends extends Component {
   render() {
     return (
       <div className="wrapper">
-        
+        <NavTabs />
         <Jumbotron>
           <h1>I'm the friends page!</h1>
         </Jumbotron>
