@@ -5,6 +5,7 @@ import TripGenerator from "../../components/TripGenerator";
 import Globe from "../../components/Globe";
 import TravelTabs from "../../components/TravelTabs";
 import NavTabs from "../../components/NavTabs"
+import NavTabs from "../../components/NavTabs"
 
 class TripPlanner extends Component {
   state = {
@@ -21,8 +22,9 @@ class TripPlanner extends Component {
         <TripGenerator />
         </div>
         <div>
-          <TravelTabs />
+          
           {/* <PlanATrip /> */}
+          <TravelTabs />
         </div>       
       </Jumbotron>     
     </div>
