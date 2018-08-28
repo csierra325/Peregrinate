@@ -32,6 +32,11 @@ class App extends Component {
         <Route exact path="/map" component={Maps} />
         <Route exact path="/friends" component={Friends} />
         <Route exact path="/tripplanner" component={TripPlanner} />
+
+        {/* Set up paths for TravelTabs */}
+        {/* <Route exact path="/tripplanner/flight" component={TripPlanner} />
+        <Route exact path="/tripplanner/hotel" component={TripPlanner} />
+        <Route exact path="/tripplanner/car" component={TripPlanner} /> */}
       </div>
       </Router>
     );
