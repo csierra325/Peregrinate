@@ -27,27 +27,33 @@ class Form extends Component {
 
   render() {
     return (
+      <div className="wrapper">
       <form>
-        <p>Username: {this.state.username}</p>
-        <p>Password: {this.state.password}</p>
-        <input
+        <p>Username:  <input
           type="text"
           placeholder="Username"
           name="username"
           value={this.state.username}
           onChange={this.handleInputChange}
         />
-        <input
+        </p>
+        <p>Password:  <input
           type="password"
           placeholder="Password"
           name="password"
           value={this.state.password}
           onChange={this.handleInputChange}
         />
+        </p>
+       
+       
         <button onClick={this.handleFormSubmit}>Submit</button>
       </form>
+      </div>
     );
   }
 }
 
 export default Form;
+
+
