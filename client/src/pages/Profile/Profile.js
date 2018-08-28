@@ -30,15 +30,18 @@ class Profile extends Component {
               <div className="col-s-9">
               <ProfileForm />
               </div>
-
-              
-              
-            
           </div>
+<<<<<<< HEAD
          
         
       </Jumbotron>
       </div> 
+=======
+          
+        
+      </Jumbotron>
+      </div>
+>>>>>>> caa3a21f82cc5b9728a78e30b88b1615ffa1f7fa
     );
   }
 }
