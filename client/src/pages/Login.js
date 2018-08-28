@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-// var bcrypt = require('bcrypt');
-// const bcrypt = require('bcryptjs');
-// import bcrypt from 'bcrypt'
-
+const bcrypt = require('bcryptjs');
 
 class Login extends Component {
     // Setting the initial values of this.state.username and this.state.password
@@ -17,8 +14,6 @@ class Login extends Component {
         username: this.props.match.params.id
     };
 
-
-    
     // componentDidMount() {
     //     this.getUser();
     // }
@@ -111,8 +106,6 @@ class Login extends Component {
                 this.props.history.push(`/profile/${this.state.new_username}`),
                 console.log(`this.props: ${(JSON.stringify(this.props))}`),
                 localStorage.setItem("username", this.state.new_username)
-        
-
             )
             .catch(err => console.log(err))
     };
