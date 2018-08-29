@@ -91,10 +91,18 @@ margin: 2%;
 }
 
 
+/* Contact page */
+.contactUs{
+  color: black;
+  margin: 2%;
+}
 
+/* about us */
 
-
-
+.aboutUs{
+  color: black;
+  margin: 2%;
+}
 /* Profile */
 
 .nav{
