@@ -15,20 +15,7 @@ import TripPlanner from './pages/TripPlanner';
 //Import styling
 import "./App.css";
 
-// import Profile from "./pages/Profile/Profile";
-console.log(Profile.state);
-
-// const Child = ({match}) =>(
-//   <div>
-//     <h3>{match.params.id}</h3>
-//   </div>
-// )
-var username = localStorage.getItem("username");
-
-
 class App extends Component {
-
- 
 
   render() {
 
@@ -49,7 +36,6 @@ class App extends Component {
           <Route exact path="/tripplanner/:id" component={TripPlanner} />
 
 
-          {/* <Route path='/:id' component={Child} /> */}
         </div>
 
       </Router>

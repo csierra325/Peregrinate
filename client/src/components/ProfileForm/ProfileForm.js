@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import API from "../../utils/API";
 
 class ProfileForm extends Component {
   // Setting the initial values of this.state.username and this.state.password
+  // const id = window.username || 1;
   state = {
     firstname: "",
     lastname: "",
@@ -10,7 +12,8 @@ class ProfileForm extends Component {
     flyerNumber: "",
     car: "",
     rentalNumber: "",
-    local: ""
+    local: "",
+    userID: window.id
   };
 
   handleInputChange = event => {
@@ -37,42 +40,62 @@ class ProfileForm extends Component {
       rentalNumber: "",
       local: ""
     });
+
+    console.log(`First name: ${this.state.firstname}\nLast name: ${this.state.lastname} \nEmal: ${this.state.email}`);
+    console.log(`airline: ${this.state.airline}\nflyerNumber: ${this.state.flyerNumber} \ncar: ${this.state.car}`)
+    console.log(`rentalNumber: ${this.state.rentalNumber}\nlocal: ${this.state.local}`)
+
+    // API.getUser(users_name)
+    //   .then(res => {
+    //     // console.log(`returned user from database: ${res.data[0].username}`);
+    //     // console.log(`this.state.existing_username: ${users_name}`);
+    //     // window.id = res.data[0]._id;
+    //     // databaseUsername = res.data[0].username;
+    //     // databasePassword = res.data[0].password;
+    //     // usernameEntered = users_name;
+    //     // passwordEntered = users_password;
+    //   })
+    // .catch(err => console.log(err));
+
+    console.log(`Window.id: ${window.id} \n this.userId: ${this.state.userID}`);
   };
 
   render() {
+    // const id = window.id || 000;
+    // console.log(id);
     return (
       <form>
         <div class="form-row">
-        <div class="form-group col-md-4">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="First name"
-            name="firstname"
-            value={this.state.firstname}
-            onChange={this.handleInputChange}
-          />
-        </div>
-        <div class="form-group col-md-4">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Last name"
-            name="lastname"
-            value={this.state.lastname}
-            onChange={this.handleInputChange}
-          />
-        </div>
-        <div class="form-group col-md-4">
-          <input
-            class="form-control"
-            type="email"
-            placeholder="email"
-            name="email"
-            value={this.state.email}
-            onChange={this.handleInputChange}
-          />
-        </div>
+          <div class="form-group col-md-4">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="First name"
+              name="firstname"
+              value={this.state.firstname}
+              onChange={this.handleInputChange}
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Last name"
+              name="lastname"
+              value={this.state.lastname}
+              onChange={this.handleInputChange}
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <input
+              class="form-control"
+              type="email"
+              placeholder="email"
+              name="email"
+              value={this.state.email}
+              onChange={this.handleInputChange}
+            />
+          </div>
         </div>
 
         <div class="form-group">
@@ -165,7 +188,7 @@ class ProfileForm extends Component {
         </div>
 
         <div class="form-group">
-        <label for="inputAddress2">Travel Info</label>
+          <label for="inputAddress2">Travel Info</label>
           <select
             class="form-control"
             type="text"

@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { PromiseProvider } from "mongoose";
-
-
+// import { PromiseProvider } from "mongoose";
 
 const NavTabs = props => {
   // const id = this.props.match.params.id;
