@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import ListItem from "../ListItem";
+import API from "../../utils/API";
 
 
 class Traveledlist extends Component {
@@ -8,6 +9,16 @@ class Traveledlist extends Component {
     travelItem: "",
   
   };
+
+  getList = (travels, travelItem) => {
+    // console.log(users_name);
+    API.getTravelList(travels, travelItem)
+        .then(res => {
+          console.log(`travels from database: ${res.data[0].travels}`);
+            console.log(`list items from database: ${res.data[0].travelItem}`);
+        })
+        .catch(err => console.log(err));
+};
 
   handleInputChange = event => {
       const {name, value} = event.target;

@@ -5,7 +5,7 @@ import Jumbotron from "../../components/Jumbotron";
 import Greeting from "../../components/Greeting";
 import ProfileCard from "../../components/ProfileCard";
 import ProfileForm from "../../components/ProfileForm";
-import NavTabs from "../../components/NavTabs";
+import NavTabs from "../../components/NavTabs"
 
 class Profile extends Component {
   state = {

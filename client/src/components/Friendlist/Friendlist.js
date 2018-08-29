@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import API from "../../utils/API";
 import ListItem from "../ListItem";
 // import API from "../../../../routes/api/friendlist"
 // import DeleteBtn from "../DeleteBtn/DeleteBtn.js"
