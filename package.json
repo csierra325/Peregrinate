@@ -30,8 +30,10 @@
     "if-env": "^1.0.4",
     "mongoose": "^5.2.9",
     "node-gyp": "^3.8.0",
+    "react-dropzone": "^5.0.1",
     "react-router-dom": "^4.3.1",
     "react-simple-maps": "^0.12.1",
+    "superagent": "^3.8.3",
     "topojson-client": "^3.0.0"
   }
 }

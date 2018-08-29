@@ -1,18 +1,21 @@
 import React, { Component } from "react";
-import request from 'superagent';
 import Dropzone from "react-dropzone";
+import request from "superagent";
 
 //import statements
 const CLOUDINARY_UPLOAD_PRESET = "peregrinate";
 const CLOUDINARY_UPLOAD_URL =
   "https://api.cloudinary.com/v1_1/peregrinate/upload";
 
+class Upload extends Component {
 
-class ProfileCard extends Component {
-  // Setting the initial values of this.state.username and this.state.password
-  state = {
-    uploadedFileCloudinaryUrl: ""
-  };
+    state = {
+        uploadedFileCloudinaryUrl: ""
+      };
+  
+
+    
+  
 
   onImageDrop(files) {
     this.setState({
@@ -41,16 +44,8 @@ class ProfileCard extends Component {
     });
   }
 
-
-
-
-
-
-  
-
   render() {
     return (
-      <div >
       <form>
         <div className="FileUpload">
           <Dropzone
@@ -74,9 +69,8 @@ class ProfileCard extends Component {
           )}
         </div>
       </form>
-      </div>
     );
   }
 }
 
-export default ProfileCard;
+export default Upload;

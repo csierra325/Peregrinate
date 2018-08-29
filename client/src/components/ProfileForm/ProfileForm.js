@@ -42,8 +42,8 @@ class ProfileForm extends Component {
   render() {
     return (
       <form>
-        <div class="form-row">
-        <div class="form-group col-md-4">
+        <div className="form-row">
+        <div className="form-group col-md-4">
           <input
             type="text"
             class="form-control"
