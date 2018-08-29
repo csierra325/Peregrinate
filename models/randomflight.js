@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const randomflightSchema = new Schema({
+const randomFlightSchema = new Schema({
   origin: { type: String, required: true },
   destination: { type: String, required: false },
   departureDate: { type: Date, required: false },
@@ -9,6 +9,6 @@ const randomflightSchema = new Schema({
   maxPrice: { type: Number, required: false }
 });
 
-const randomflight = mongoose.model("Random Flight", randomflightSchema);
+const randomFlight = mongoose.model("Random Flight", randomFlightSchema);
 
-module.exports = randomflight;
+module.exports = randomFlight;

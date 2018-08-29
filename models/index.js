@@ -4,6 +4,9 @@ module.exports = {
     friendlist: require("./friendlist"),
     travellist: require("./traveledlist"),
     friendspage: require("./friendspage"),
-    randomflight: require("./randomflight")
+    randomflight: require("./randomFlight"),
+    carSearch: require("./carSearch"),
+    hotelSearch: require("./hotelSearch"),
+    flightSearch: require("./flightSearch")   
 };
   

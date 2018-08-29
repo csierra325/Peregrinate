@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-const bcrypt = require('bcryptjs');
+// const bcrypt = require('bcryptjs');
 
 class Login extends Component {
     // Setting the initial values of this.state.username and this.state.password

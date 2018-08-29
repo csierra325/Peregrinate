@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const carsearchSchema = new Schema({
+const carSearchSchema = new Schema({
   origin: { type: String, required: true },
   destination: { type: String, required: true },
   pickUp: { type: Date, required: true },
   dropOff: { type: Date, required: true },
 });
 
-const carsearch = mongoose.model("Car Search", carsearchSchema);
+const carSearch = mongoose.model("Car Search", carSearchSchema);
 
-module.exports = carsearch;
+module.exports = carSearch;

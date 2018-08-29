@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const flightsearchSchema = new Schema({
+const flightSearchSchema = new Schema({
   origin: { type: String, required: true },
   destination: { type: String, required: false },
   departureDate: { type: Date, required: false },
@@ -9,6 +9,6 @@ const flightsearchSchema = new Schema({
   maxPrice: { type: Number, required: false }
 });
 
-const flightsearch = mongoose.model("Flight Search", flightsearchSchema);
+const flightSearch = mongoose.model("Flight Search", flightSearchSchema);
 
-module.exports = flightsearch;
+module.exports = flightSearch;

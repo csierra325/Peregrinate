@@ -23,33 +23,33 @@ const usersSchema = new Schema({
       ref: 'traveledlist'
     }
   ],
-  randomflight: [
+  randomFlight: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'randomflight'
+      ref: 'randomFlight'
     }
   ],
-  flightsearch: [
+  flightSearch: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'flightsearch'
+      ref: 'flightSearch'
     }
   ],
-  carsearch: [
+  carSearch: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'carsearch'
+      ref: 'carSearch'
     }
   ],
-  carsearch: [
+  hotelSearch: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'carsearch'
+      ref: 'hotelSearch'
     }
   ],
-  friendItem: [
+  friendspage: [
     { type: Schema.Types.ObjectId, 
-      ref: "Friends"}, 
+      ref: "friendspage"}, 
     {timestamps: true}
   ],
 });
