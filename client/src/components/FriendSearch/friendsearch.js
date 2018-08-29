@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./friendsearch.css";
 
 class FriendsSearch extends Component {
     state = {
@@ -16,25 +17,21 @@ class FriendsSearch extends Component {
         });
     };
 
-    handleFormSubmit = event => {
-        event.preventDefault();
-        this.setState({
-            username: ""
-        })
-    }
-
     render() {
         return (
             <div className="friendsSearch">
-                <h2>Make New Friends:</h2>
-                <form>
-                    <p>Username: <input
+                <div className = "currentFriendSearchTitle">Make New Friends:</div>
+                
+                <form class="form">
+                    <p>Username: </p>
+                    <input
                         type="text"
                         placeholder="Username"
                         name="origin"
                         value={this.state.username}
                         onChange={this.handleInputChange}
-                    /></p>
+                    />
+                    <button onClick={this.props.handleFormSubmit}>Submit</button>
                 </form>
             </div>
         )

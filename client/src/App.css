@@ -1,3 +1,5 @@
+
+
 .App {
   text-align: center;
 }
@@ -26,12 +28,37 @@ body{
   background-position: center; 
 }
 
+p{
+  margin: 2%;
+ 
+}
+
+.intro{
+  margin: 4%;
+  font-size: 20px;
+}
+
+
+
+h1{
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+font-weight: bold;
+font-size: 5em;
+margin: 2%;
+}
+
 .jumbotron{
   background-color: rgba(255, 255, 255, 0.87);
   width: 80%;
   margin-left: 10%;
   margin-top: 4%;
+  margin-bottom: 4%;
 }
+
+.navbar{
+  background-color: grey;
+}
+
 .navbar-brand{
   color:  rgba(255, 255, 255, 0.87);
   font-family: Arial, Helvetica, sans-serif;
@@ -40,15 +67,8 @@ body{
   
 }
 
-.bg-primary{
-  background-color: grey !important;
- }
 
- /* .navbar-default {
-  background-color: rgb(248, 248, 248);
-  border-color:#222;
-} */
-
+/* Wishlist */
 .rowC{
   display:flex;
   flex-direction:row;
@@ -56,12 +76,31 @@ body{
   
 }
 
+
+/* Profile */
+.rowD {
+  display:flex;
+  flex-direction:row;
+  /* justify-content: space-around; */
+  margin: 5% 15% 15% 15%;
+
+}
+
+.form-group {
+  text-align: left;
+}
+
+
+
+
+
+
+/* Profile */
+
 .nav{
   background-color: oldlace;
 }
-.friendlist{
-  
-}
+
 .buckettitle{
   color:blue;
   color: #bfadc3;
@@ -70,9 +109,8 @@ body{
   -webkit-text-stroke-color: black;
   font-size: 2em;
 }
-.bucketList{
-  
-}
+
+
 .friendTitle{
   color: #bfadc3;
   -webkit-text-fill-color: #bfadc3; 
@@ -85,13 +123,20 @@ body{
 align-content: center;
 }
 
-.traveledList {
-
-}
 
 ul{
   padding: 0px;
   list-style: none;
+}
+
+.bucketlistIdeas{
+  color: #bfadc3;
+  -webkit-text-fill-color: #bfadc3; 
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  font-size: 4em;
+  background-color: rgba(255, 255, 255, 0.87);
+  text-align: center;
 }
   
   .travelTitle{
@@ -102,7 +147,13 @@ ul{
     font-size: 2em;
   }
 
+  traveledList{
+    background-color: #bfadc3;
+  }
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+

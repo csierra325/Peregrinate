@@ -9,6 +9,9 @@ export default {
   getUser: function(id) {
     return axios.get("/api/users/" + id);
   },
+  // getUsername: function(username) {
+  //   return axios.get("/api/user/" + username);
+  // },
   // Deletes the user with the given id
   deleteUser: function(id) {
     return axios.delete("/api/users/" + id);
@@ -16,5 +19,11 @@ export default {
   // Saves a user to the database
   saveUser: function(userData) {
     return axios.post("/api/users", userData);
-  }
+  },
+
+  getCurrentFriends: function () {
+    return axios.post("/api/")
+  },
+
+  getFriendSearch: function () {},
 };

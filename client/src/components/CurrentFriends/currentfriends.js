@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./currentfriends.css";
 
 class Currentfriends extends Component{
     state = {
@@ -26,8 +27,12 @@ class Currentfriends extends Component{
   render() {
       return(
           <div className="currentFriends">
-              <h2>Current Friends:</h2>
+              <div className = "currentFriendsTitle">Current Friends:</div>               
           </div>
+
+          
+
+          
       )
   }
 }
