@@ -15,6 +15,7 @@ import TripPlanner from './pages/TripPlanner';
 //Import styling
 import "./App.css";
 
+
 class App extends Component {
 
   render() {
@@ -24,9 +25,6 @@ class App extends Component {
       <Router>
         <div>
           <Nav />
-          
-
-
           <Route exact path="/" component={Members} />
           <Route exact path="/profile/:id" component={Profile} />
           <Route exact path="/wishlist/:id" component={Wishlist} />

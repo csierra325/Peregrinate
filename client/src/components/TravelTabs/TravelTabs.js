@@ -1,36 +1,37 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const TravelTabs = props => (
-  <ul className="nav travel-tabs">
+  <ul className="nav nav-tabs">
     <li className="nav-item">
-      <a
-        onClick={() => props.handlePageChange("Members")}
+      <Link
+        to="TripPlanner/Flight"
         className={
-          props.currentPage === "Members" ? "nav-link active" : "nav-link"
+          window.location.pathname === "TripPlanner/Flight" ? "nav-link active" : "nav-link"
         }
       >
         Flight
-      </a>
+      </Link>
     </li>
     <li className="nav-item">
-      <a
-        onClick={() => props.handlePageChange("Maps")}
+    <Link
+        to="TripPlanner/Car"
         className={
-          props.currentPage === "Maps" ? "nav-link active" : "nav-link"
+          window.location.pathname === "TripPlanner/Car" ? "nav-link active" : "nav-link"
+        }
+      >
+       Car
+      </Link>
+    </li>
+    <li className="nav-item">
+    <Link
+        to="TripPlanner/Hotel"
+        className={
+          window.location.pathname === "TripPlanner/Hotel" ? "nav-link active" : "nav-link"
         }
       >
         Hotel
-      </a>
-    </li>
-    <li className="nav-item">
-      <a
-        onClick={() => props.handlePageChange("Wishlist")}
-        className={
-          props.currentPage === "Wishlist" ? "nav-link active" : "nav-link"
-        }
-      >
-        Car
-      </a>
+      </Link>
     </li>
   </ul>
 );

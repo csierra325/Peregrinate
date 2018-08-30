@@ -91,7 +91,6 @@ class Login extends Component {
         } else {
             alert('Try again!')
         }
-        // console.log(`Username Ented: ${usernameEntered} \nDatabase username: ${databaseUsername}`)
     }
 
     addUser = () => {

@@ -13,7 +13,19 @@ class ProfileForm extends Component {
     car: "",
     rentalNumber: "",
     local: "",
+    departureCity: "",
+    addressOne: "",
+    addressTwo: "",
+    zip: "",
     userID: window.id
+  };
+
+  getUserProfile = (id) => {
+    API.getProfile(id)
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => console.log(err));
   };
 
   handleInputChange = event => {
@@ -38,26 +50,62 @@ class ProfileForm extends Component {
       flyerNumber: "",
       car: "",
       rentalNumber: "",
-      local: ""
+      local: "",
+      addressOne: "",
+      zip: "",
+      departureCity: "",
     });
 
-    console.log(`First name: ${this.state.firstname}\nLast name: ${this.state.lastname} \nEmal: ${this.state.email}`);
-    console.log(`airline: ${this.state.airline}\nflyerNumber: ${this.state.flyerNumber} \ncar: ${this.state.car}`)
-    console.log(`rentalNumber: ${this.state.rentalNumber}\nlocal: ${this.state.local}`)
+    // name, email,
+    var name = {
+      first: this.state.firstname,
+      last: this.state.lastname
+    }
+    var { email } = this.state;
 
-    // API.getUser(users_name)
-    //   .then(res => {
-    //     // console.log(`returned user from database: ${res.data[0].username}`);
-    //     // console.log(`this.state.existing_username: ${users_name}`);
-    //     // window.id = res.data[0]._id;
-    //     // databaseUsername = res.data[0].username;
-    //     // databasePassword = res.data[0].password;
-    //     // usernameEntered = users_name;
-    //     // passwordEntered = users_password;
-    //   })
-    // .catch(err => console.log(err));
+    var stateValue = document.getElementById("inputState").value;
+    var airline = document.getElementById("flight").value;
+    var carRental = document.getElementById("carRental").value;
+    var local = document.getElementById("localCommute").value;
 
-    console.log(`Window.id: ${window.id} \n this.userId: ${this.state.userID}`);
+
+    var address = {
+      addressOne: this.state.addressOne,
+      adressTwo: this.state.addressTwo,
+      city: this.state.city,
+      state: stateValue,
+      zip: this.state.zip,
+    }
+
+    var travelInfo = {
+      frequentFlyer: this.state.flyerNumber,
+      rentalNum: this.state.rentalNumber,
+      departureCity: this.state.departureCity
+    }
+    // var {airline} = this.state;
+
+
+    console.log(`
+    First name: ${name.first}
+    Last name: ${name.last}
+    Email: ${email}
+    Address_One: ${address.addressOne}
+    Address_Two: ${address.adressTwo}
+    City: ${address.city}
+    State: ${address.state}
+    Zip: ${address.zip}
+    Airline: ${airline}
+    Frequent Flyer Num: ${travelInfo.frequentFlyer}
+    car: ${carRental}
+    Rental Num: ${travelInfo.rentalNum}
+    Departure City: ${travelInfo.departureCity}
+    Local: ${local}
+    `);
+
+    this.getUserProfile(this.state.userID);
+
+    console.log(`Window.id: ${window.id} \n this.state.userId: ${this.state.userID}`);
+
   };
 
   render() {
@@ -105,6 +153,9 @@ class ProfileForm extends Component {
             class="form-control"
             id="inputAddress"
             placeholder="1234 Main St"
+            name="addressOne"
+            value={this.state.addressOne}
+            onChange={this.handleInputChange}
           />
         </div>
 
@@ -115,13 +166,17 @@ class ProfileForm extends Component {
             class="form-control"
             id="inputAddress2"
             placeholder="Apartment, studio, or floor"
+            name="addressTwo"
+            value={this.state.addressTwo}
+            onChange={this.handleInputChange}
           />
         </div>
 
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputCity">City</label>
-            <input type="text" class="form-control" id="inputCity" />
+            <input type="text" class="form-control" id="inputCity" name="city" value={this.state.city}
+              onChange={this.handleInputChange} />
           </div>
 
           <div class="form-group col-md-4">
@@ -183,7 +238,8 @@ class ProfileForm extends Component {
 
           <div class="form-group col-md-2">
             <label for="inputZip">Zip</label>
-            <input type="text" class="form-control" id="inputZip" />
+            <input type="text" class="form-control" id="inputZip" name="zip" value={this.state.zip}
+              onChange={this.handleInputChange} />
           </div>
         </div>
 
@@ -193,15 +249,15 @@ class ProfileForm extends Component {
             class="form-control"
             type="text"
             placeholder="Airline"
-            id="exampleFormControlSelect1"
+            id="flight"
             name="airline"
             onChange={this.state.handleInputChange}
           >
-            <option value={this.state.airline}>American Airlines</option>
-            <option value={this.state.airline}>Delta Airlines</option>
-            <option value={this.state.airline}>Frontier Airlines</option>
-            <option value={this.state.airline}>SouthWest Airlines</option>
-            <option value={this.state.airline}>United Airlines</option>
+            <option value="American Airlines">American Airlines</option>
+            <option value="Delta Airlines">Delta Airlines</option>
+            <option value="Frontier Airlines">Frontier Airlines</option>
+            <option value="SouthWest Airlines">SouthWest Airlines</option>
+            <option value="United Airlines">United Airlines</option>
           </select>
 
           <input
@@ -221,12 +277,13 @@ class ProfileForm extends Component {
             placeholder="Car Rental"
             name="car"
             onChange={this.state.handleInputChange}
+            id="carRental"
           >
-            <option value={this.state.car}>Alamo</option>
-            <option value={this.state.car}>Avis</option>
-            <option value={this.state.car}>Enterprise</option>
-            <option value={this.state.car}>Hertz</option>
-            <option value={this.state.car}>National</option>
+            <option value="Alamo">Alamo</option>
+            <option value="Avis">Avis</option>
+            <option value="Enterprise">Enterprise</option>
+            <option value="Hertz">Hertz</option>
+            <option value="National">National</option>
           </select>
 
           <input
@@ -237,6 +294,16 @@ class ProfileForm extends Component {
             value={this.state.rentalNumber}
             onChange={this.handleInputChange}
           />
+
+          <input
+            class="form-control"
+            type="text"
+            placeholder="preferred departure city"
+            name="departureCity"
+            value={this.state.departureCity}
+            onChange={this.handleInputChange}
+          />
+
         </div>
         <div class="form-group">
           <select
@@ -245,12 +312,13 @@ class ProfileForm extends Component {
             placeholder="Perferred Airline"
             name="local"
             onChange={this.state.handleInputChange}
+            id="localCommute"
           >
-            <option value={this.state.local}>Bus</option>
-            <option value={this.state.local}>Lyft</option>
-            <option value={this.state.local}>Taxi</option>
-            <option value={this.state.local}>Train/Railway</option>
-            <option value={this.state.local}>Uber</option>
+            <option value="Bus">Bus</option>
+            <option value="Lyft">Lyft</option>
+            <option value="Taxi">Taxi</option>
+            <option value="Train/Railway">Train/Railway</option>
+            <option value="Uber">Uber</option>
           </select>
         </div>
 
