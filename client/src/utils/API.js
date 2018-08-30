@@ -1,7 +1,9 @@
 import axios from "axios";
 
 export default {
-  // Gets all books
+
+  //***** USERS COLLECTION *****
+  // Gets all users
   getUsers: function() {
     return axios.get("/api/users");
   },
@@ -21,9 +23,25 @@ export default {
     return axios.post("/api/users", userData);
   },
 
+  //friends page: 
   getCurrentFriends: function () {
-    return axios.post("/api/")
+    return axios.post("/api/friendspage/")
   },
 
-  getFriendSearch: function () {},
+  // getFriendSearch: function () {},
+
+ //***** TRAVELED LIST COLLECTION *****
+  getTravelList: function(id) {
+    return axios.get("/api/travellist/" + id);
+  },
+
+
+ //***** BUCKETLIST COLLECTION *****
+
+
+
+ //***** FRIEND TRAVEL LIST COLLECTION *****
+
+
+
 };

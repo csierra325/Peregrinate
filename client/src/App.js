@@ -2,8 +2,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Nav from "./components/Nav";
-import NavTabs from "./components/NavTabs/NavTabs";
-
 
 //Import pages for navigation
 import Profile from "./pages/Profile";
@@ -25,8 +23,8 @@ console.log(Profile.state);
 //     <h3>{match.params.id}</h3>
 //   </div>
 // )
-var username = localStorage.getItem("username");
 
+// var username = localStorage.getItem("username");
 
 class App extends Component {
 
@@ -39,9 +37,6 @@ class App extends Component {
       <Router>
         <div>
           <Nav />
-          
-
-
           <Route exact path="/" component={Members} />
           <Route exact path="/profile/:id" component={Profile} />
           <Route exact path="/wishlist/:id" component={Wishlist} />
