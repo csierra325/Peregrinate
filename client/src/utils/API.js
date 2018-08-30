@@ -23,6 +23,13 @@ export default {
     return axios.post("/api/users", userData);
   },
 
+  //friends page: 
+  getCurrentFriends: function () {
+    return axios.post("/api/friendspage/")
+  },
+
+  // getFriendSearch: function () {},
+
  //***** TRAVELED LIST COLLECTION *****
   getTravelList: function(id) {
     return axios.get("/api/travellist/" + id);

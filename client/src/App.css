@@ -102,10 +102,18 @@ margin-bottom: 10%;
 }
 
 
+/* Contact page */
+.contactUs{
+  color: black;
+  margin: 2%;
+}
 
+/* about us */
 
-
-
+.aboutUs{
+  color: black;
+  margin: 2%;
+}
 /* Profile */
 
 .nav{

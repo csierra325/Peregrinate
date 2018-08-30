@@ -4,7 +4,9 @@ import { geoMercator, geoPath } from "d3-geo";
 import { feature } from "topojson-client";
 import worldData from "../../components/Map/world-110m.json";
 import Jumbotron from "../../components/Jumbotron";
-import NavTabs from "../../components/NavTabs"
+import NavTabs from "../../components/NavTabs";
+import '../../components/Map/usaMap.css'; /* optional for styling like the :hover pseudo-class */
+import USAMap from "react-usa-map";
 
 class WorldMap extends Component {
   constructor() {
@@ -70,12 +72,29 @@ class WorldMap extends Component {
     console.log("Marker: ", this.state.cities[markerIndex])
   };
 
- 
-
   componentDidMount() {
           this.setState({
             worlddata: feature(worldData, worldData.objects.ne_110m_admin_0_countries).features,
           })
+  };
+
+
+  //USA MAP
+  mapHandler = (event) => {
+    alert(event.target.dataset.name);
+  };
+
+  /* optional customization of filling per state and calling custom callbacks per state */
+  statesCustomConfig = () => {
+    return {
+      "NJ": {
+        fill: "navy",
+        clickHandler: (event) => console.log('Custom handler for NJ', event.target.dataset)
+      },
+      "NY": {
+        fill: "#CC0000"
+      }
+    };
   };
 
   render() {
@@ -83,6 +102,12 @@ class WorldMap extends Component {
     <div className = "wrapper">
    <NavTabs />
     <Jumbotron>
+      <div className="usaMap">
+        <USAMap customize={this.statesCustomConfig()} onClick={this.mapHandler} />
+      </div>
+      <br/><br/>
+      <hr/>
+      <br/><br/>
       <svg width={ 800 } height={ 450 } viewBox="0 0 800 450">
         <g className="countries">
           {
