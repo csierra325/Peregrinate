@@ -13,7 +13,10 @@ module.exports = {
   },
   findById: function (req, res) {
     db.User
-      .find({ username: req.params.id })
+    //NEED TO UPDATE ************************ !!*!*!*!*!*
+//     .find({username: req.params.id})
+    //ALLOWS YOU TO PULL BY USER 
+      .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -58,5 +61,6 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  }
+  },
+
 };
