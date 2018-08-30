@@ -2,8 +2,14 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const friendspageSchema = new Schema({
-  requester: {type: Schema.Types.ObjectId, ref: 'User'},
-  recipient: {type: Schema.Types.ObjectId, ref: 'User'},
+  requester: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  recipient: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
   status: {
     type: Number,
     enums: [

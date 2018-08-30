@@ -1,15 +1,16 @@
 const router = require("express").Router();
-const friendsPage = require("../../controllers/currentFriendController.js");
+const friends = require("../../controllers/currentFriendController.js");
 
 // Matches with "/api/books"
-router.route("/friends")
-  .post(friendsPage.create);
+router.route("/")
+  .get(friends.findAll)
+  .post(friends.request);
+  //new route for accepting 
 
 // Matches with "/api/wishlist/:id"
-router
-  .route("/:id")
-  .get(friendsPage.findById)
-  .put(friendsPage.update)
-  .delete(friendsPage.remove);
+router.route("/:id")
+  .get(friends.findById)
+  .put(friends.update)
+  .delete(friends.remove);
 
 module.exports = router;

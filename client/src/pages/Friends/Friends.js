@@ -12,8 +12,11 @@ class Friends extends Component {
 
   state = {
     currentPage: "Friends",
-    username: this.props.match.params.id
+    username: this.props.match.params.id,
+    currentfriends: []
   };
+
+
 
   
 
@@ -25,11 +28,11 @@ class Friends extends Component {
   //   this.location.pathname = "/friends/" + localStorage.getItem("username");
   // }
 
-  handleFormSubmit = event => {
-      event.preventDefault();
-      // execute AJAX request for current friends
-      // -> .then setState for friendSearchResults to response from AJAX request
-  }
+  // handleFormSubmit = event => {
+  //     event.preventDefault();
+  //     // execute AJAX request for current friends
+  //     // -> .then setState for friendSearchResults to response from AJAX request
+  // }
 
   render() {
     return (

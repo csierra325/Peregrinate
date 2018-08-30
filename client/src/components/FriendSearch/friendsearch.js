@@ -17,6 +17,13 @@ class FriendsSearch extends Component {
         });
     };
 
+    handleFormSubmit = event => {
+        event.preventDefault();
+        this.setState({
+            username: ""
+        });
+    }
+
     render() {
         return (
             <div className="friendsSearch">
