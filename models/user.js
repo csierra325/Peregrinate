@@ -31,46 +31,46 @@ const usersSchema = new Schema({
 
 
   bucketlist: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'bucketlist'
-    }
+    // {
+    //   type: Schema.Types.ObjectId,
+    //   ref: 'bucketlist'
+    // }
   ],
   friendlist: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'friendlist'
-    }
+    // {
+    //   type: Schema.Types.ObjectId,
+    //   ref: 'friendlist'
+    // }
   ],
   traveledlist: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'traveledlist'
-    }
+    // {
+    //   type: Schema.Types.ObjectId,
+    //   ref: 'traveledlist'
+    // }
   ],
   randomFlight: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'randomFlight'
-    }
+    // {
+    //   type: Schema.Types.ObjectId,
+    //   ref: 'randomFlight'
+    // }
   ],
   flightSearch: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'flightSearch'
-    }
+    // {
+    //   type: Schema.Types.ObjectId,
+    //   ref: 'flightSearch'
+    // }
   ],
   carSearch: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'carSearch'
-    }
+    // {
+    //   type: Schema.Types.ObjectId,
+    //   ref: 'carSearch'
+    // }
   ],
   hotelSearch: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'hotelSearch'
-    }
+    // {
+    //   type: Schema.Types.ObjectId,
+    //   ref: 'hotelSearch'
+    // }
   ],
   friendspage: [
     { type: Schema.Types.ObjectId, 

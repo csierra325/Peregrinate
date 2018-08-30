@@ -8,6 +8,5 @@ module.exports = {
     carSearch: require("./carSearch"),
     hotelSearch: require("./hotelSearch"),
     flightSearch: require("./flightSearch"),  
-    Profile: require("./profile")
 };
   

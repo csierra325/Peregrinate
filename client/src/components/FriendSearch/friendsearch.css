@@ -1,0 +1,22 @@
+.friendsSearch {
+    display: flex;
+    margin-top: 80px;
+    margin: 70px;
+    margin-right: auto;
+    margin-left: auto;
+    position: absolute;
+    margin-bottom: 50px;
+   
+}
+
+.currentFriendSearchTitle{
+    font-weight: bolder;
+    position: relative;
+}
+
+.form{
+    flex-direction: column;
+    position: absolute;
+    margin-top: 30px;
+}
+

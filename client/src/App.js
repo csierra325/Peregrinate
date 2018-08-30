@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Nav from "./components/Nav";
+import API from "./utils/API";
 
 //Import pages for navigation
 import Profile from "./pages/Profile";
@@ -11,12 +12,19 @@ import Login from "./pages/Login";
 import Maps from "./pages/Maps";
 import Friends from './pages/Friends';
 import TripPlanner from './pages/TripPlanner';
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 //Import styling
 import "./App.css";
 
 
 class App extends Component {
+  componentDidMount() {
+    API.getUser()
+      .then(res => this.setState({ breeds: res.data.message }))
+      .catch(err => console.log(err));
+  }
 
   render() {
 
@@ -32,14 +40,16 @@ class App extends Component {
           <Route exact path="/map/:id" component={Maps} />
           <Route exact path="/friends/:id" component={Friends} />
           <Route exact path="/tripplanner/:id" component={TripPlanner} />
+          <Route exact path="/About" component={About} />
+          <Route exact path="/Contact" component={Contact} />
 
 
         </div>
 
       </Router>
-        );
-      }
-    }
-    export default App;
-    
-    
+    );
+  }
+}
+export default App;
+
+

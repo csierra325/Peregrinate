@@ -13,10 +13,15 @@ module.exports = {
   },
   findById: function (req, res) {
     db.User
-      .find({ username: req.params.id })
+      //NEED TO UPDATE ************************ !!*!*!*!*!*
+          .find({username: req.params.id})
+      //ALLOWS YOU TO PULL BY USER 
+      // .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
+
   create: function (req, res) {
     // var password = req.body.password;
     // console.log(`Not hashed password: ${password}`)
@@ -34,9 +39,6 @@ module.exports = {
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-
-
-    // console.log(req.body)
   },
   update: function (req, res) {
     db.User
@@ -58,5 +60,6 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  }
+  },
+
 };

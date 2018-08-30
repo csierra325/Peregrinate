@@ -5,9 +5,17 @@ import ListItem from "../ListItem";
 // import DeleteBtn from "../DeleteBtn/DeleteBtn.js"
 class Friendlist extends Component {
   state = {
-    friends: ["Brazil"],
+    friends: [],
     friendItem: "",
   
+  };
+
+  componentDidMount() {
+        //PULL IN USER ID HERE TO POPULATE
+    const id = "5b86cc97c6cc1b0a419a5de8";
+    API.getUser(id)
+      .then(res => this.setState({ friends: res.data.friendlist }))
+      .catch(err => console.log(err));
   };
 
   // loadLists = () => {
@@ -36,6 +44,7 @@ class Friendlist extends Component {
     event.preventDefault();
     const {friendItem, friends} = this.state;
     
+     //This will go away once Camille is done
     if (friendItem){
 
       this.setState({
@@ -43,6 +52,9 @@ class Friendlist extends Component {
         friendItem: ""
       });
     }
+
+     //Add API call to api.js 
+    //Add AJAX post call here for API.addFriendListItem ****
    
   };
 
