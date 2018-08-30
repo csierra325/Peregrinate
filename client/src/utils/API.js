@@ -23,18 +23,5 @@ export default {
     return axios.post("/api/users", userData);
   },
 
- //***** TRAVELED LIST COLLECTION *****
-  getTravelList: function(id) {
-    return axios.get("/api/travellist/" + id);
-  },
-
-
- //***** BUCKETLIST COLLECTION *****
-
-
-
- //***** FRIEND TRAVEL LIST COLLECTION *****
-
-
 
 };

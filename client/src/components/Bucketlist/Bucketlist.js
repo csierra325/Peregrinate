@@ -4,9 +4,17 @@ import ListItem from "../ListItem";
 
 class Bucketlist extends Component {
   state = {
-    buckets: ["Brazil"],
+    buckets: [],
     bucketItem: "",
   
+  };
+
+  componentDidMount() {
+        //PULL IN USER ID HERE TO POPULATE ****
+    const id = "5b86cc97c6cc1b0a419a5de8";
+    API.getUser(id)
+      .then(res => this.setState({ buckets: res.data.bucketlist }))
+      .catch(err => console.log(err));
   };
 
   handleInputChange = event => {
@@ -21,12 +29,16 @@ class Bucketlist extends Component {
     event.preventDefault();
     const {bucketItem, buckets} = this.state;
     
+    //This will go away once Camille is done
     if (bucketItem){
       this.setState({
         buckets: [bucketItem, ...buckets],
         bucketItem: ""
       });
     }
+
+     //Add API call to api.js 
+    //Add AJAX post call here for API.addBucketlistItem ****
    
   };
 
