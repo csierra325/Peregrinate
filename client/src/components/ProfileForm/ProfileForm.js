@@ -17,11 +17,38 @@ class ProfileForm extends Component {
     addressOne: "",
     addressTwo: "",
     zip: "",
-    userID: window.id
+    userID: window.id,
+    username: window.username
   };
 
-  getUserProfile = (id) => {
-    API.getProfile(id)
+  componentDidMount() {
+    console.log(window.username);
+  }
+
+  // getUser = (id) => {
+  //   API.getProfile(id)
+  //     .then(res => {
+  //       console.log(res.data);
+  //     })
+  //     .catch(err => console.log(err));
+  // };
+
+  getUser = (users_name) => {
+    // console.log(users_name);
+    API.getUser(users_name)
+      .then(res => {
+        console.log(res.data[0].name.first);
+      })
+      .catch(err => console.log(err));
+
+
+  };
+
+
+
+  updateUser = (id, updating) => {
+
+    API.updateProfile(id)
       .then(res => {
         console.log(res.data);
       })
@@ -102,7 +129,8 @@ class ProfileForm extends Component {
     Local: ${local}
     `);
 
-    this.getUserProfile(this.state.userID);
+    this.getUser(this.state.username);
+    this.updateUser(this.state.userID, );
 
     console.log(`Window.id: ${window.id} \n this.state.userId: ${this.state.userID}`);
 

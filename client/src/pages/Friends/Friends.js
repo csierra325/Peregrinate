@@ -6,7 +6,7 @@ class Friends extends Component {
 
   state = {
     currentPage: "Friends",
-    username: this.props.match.params.id
+    username: window.username
   };
 
   // componentDidMount() {

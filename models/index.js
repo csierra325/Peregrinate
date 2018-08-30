@@ -7,6 +7,7 @@ module.exports = {
     randomflight: require("./randomFlight"),
     carSearch: require("./carSearch"),
     hotelSearch: require("./hotelSearch"),
-    flightSearch: require("./flightSearch")   
+    flightSearch: require("./flightSearch"),  
+    Profile: require("./profile")
 };
   

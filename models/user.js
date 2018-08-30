@@ -6,6 +6,30 @@ const usersSchema = new Schema({
   password: { type: String, required: true },
   date: { type: Date, default: Date.now },
 
+  name: {
+    first: { type: String},
+    last: { type: String},
+  },
+  
+  email: { type: String},
+
+  address: {
+    addressOne: { type: String},
+    addressTwo: { type: String},
+    city: { type: String},
+    state: { type: String},
+    zip: { type: String}
+  },
+
+  travelInfo: {
+    airline: { type: String, required: false },
+    frequentFlyerNumber: { type: String, required: false },
+    rental: { type: String, required: false },
+    rentalNumber: { type: String, required: false },
+    train: { type: String, required: false },
+  },
+
+
   bucketlist: [
     {
       type: Schema.Types.ObjectId,

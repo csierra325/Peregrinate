@@ -85,7 +85,7 @@ class Login extends Component {
         if (usernameEntered === databaseUsername && passwordEntered === databasePassword) {
             alert("username and passwords match!");
             // console.log(this.props.match);
-            this.props.history.push(`/profile/${databaseUsername}`)
+            this.props.history.push(`/profile/${window.id}`)
             // this.props.navigation.getParam(paramName, defaultValue)
             // window.id = res.data._id; 
         } else {
@@ -99,7 +99,7 @@ class Login extends Component {
                 console.log(res.data);
                 console.log(`res.data.-id: ${res.data._id}`);
                 window.id = res.data._id; 
-                this.props.history.push(`/profile/${this.state.new_username}`);
+                this.props.history.push(`/profile/${window.id}`);
                 // window.id =  
                 this.setState({ new_username: "", new_password_one: "", new_password_two: "" });
             })
