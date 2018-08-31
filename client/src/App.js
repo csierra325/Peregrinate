@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Nav from "./components/Nav";
+import API from "./utils/API";
 
 //Import pages for navigation
 import Profile from "./pages/Profile";
@@ -30,7 +31,11 @@ import "./App.css";
 
 class App extends Component {
 
- 
+  componentDidMount() {
+    API.getUser()
+      .then(res => this.setState({ breeds: res.data.message }))
+      .catch(err => console.log(err));
+  }
 
   render() {
 

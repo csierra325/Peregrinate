@@ -5,9 +5,16 @@ import API from "../../utils/API";
 
 class Traveledlist extends Component {
   state = {
-    travels: ["Brazil"],
+    travels: [],
     travelItem: "",
-  
+  };
+
+  componentDidMount() {
+    //PULL IN USER ID HERE TO POPULATE
+    const id = "5b86cc97c6cc1b0a419a5de8";
+    API.getUser(id)
+      .then(res => this.setState({ travels: res.data.traveledlist }))
+      .catch(err => console.log(err));
   };
 
   getList = (travels, travelItem) => {
@@ -32,6 +39,8 @@ class Traveledlist extends Component {
     event.preventDefault();
     const {travelItem, travels} = this.state;
     
+
+    //This will go away once Camille is done
     if (travelItem){
       this.setState({
         travels: [travelItem, ...travels],
@@ -39,10 +48,14 @@ class Traveledlist extends Component {
       });
     }
    
+    //Add API call to api.js 
+    //Add AJAX post call here for API.addTravelItem ****
+
   };
 
 
  render (){
+   console.log( this.state.travels );
    return(
     <div className = "traveledList">
     <div className = "travelTitle">Traveled List</div>
