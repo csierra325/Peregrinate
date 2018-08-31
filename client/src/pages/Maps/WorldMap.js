@@ -55,7 +55,6 @@ class WorldMap extends Component {
 
   state = {
     currentPage: "WorldMap",
-    // username: this.props.match.params.id
   };
 
   projection() {

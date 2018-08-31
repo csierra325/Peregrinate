@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const NavTabs = props => {
   // const id = this.props.match.params.id;
-  const id = window.username || 1;
+  const id = window.id || 1;
   return (
     <ul className="nav nav-tabs">
       <li className="nav-item">

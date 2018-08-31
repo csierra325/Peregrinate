@@ -8,7 +8,8 @@ import NavTabs from "../../components/NavTabs";
 
 class TripPlanner extends Component {
   state = {
-    currentPage: "TripPlanner"
+    currentPage: "TripPlanner",
+    username: window.username
   };
 
   render() {
