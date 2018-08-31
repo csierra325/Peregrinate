@@ -12,7 +12,9 @@ class Friendlist extends Component {
 
   componentDidMount() {
         //PULL IN USER ID HERE TO POPULATE
-    const id = "5b86cc97c6cc1b0a419a5de8";
+
+   // const id = "5b86cc97c6cc1b0a419a5de8";  //Sabrina's user
+   const id = "5b88531ffde72333acdf6b5c";
     API.getUser(id)
       .then(res => this.setState({ friends: res.data.friendlist }))
       .catch(err => console.log(err));
@@ -74,9 +76,9 @@ class Friendlist extends Component {
       <button disabled = {this.state.friendItem === ""} type="submit" value = "Submit" onClick = {this.handleSubmit}
       >Submit</button>
       <ul>
-        {this.state.friends.map(friend => (
-          <ListItem text={friend} />
-        ))}
+        {this.state.friends.map((friend, i) => (
+          <ListItem key={i} text={friend} />
+        ))} 
         </ul>
     </div>
 
