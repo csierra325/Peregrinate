@@ -13,15 +13,11 @@ module.exports = {
   },
   findById: function (req, res) {
     db.User
-      //NEED TO UPDATE ************************ !!*!*!*!*!*
-          .find({username: req.params.id})
-      //ALLOWS YOU TO PULL BY USER 
-      // .findById(req.params.id)
+    
+      .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-
-
   create: function (req, res) {
     // var password = req.body.password;
     // console.log(`Not hashed password: ${password}`)

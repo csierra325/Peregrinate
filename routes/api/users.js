@@ -12,7 +12,7 @@ router.route("/")
 router.route("/:id")
   .get(usersController.findById)
   .put(usersController.update)
-  .get(usersController.findOne)
+  // .get(usersController.findOne)
   .delete(usersController.remove);
 
 module.exports = router;

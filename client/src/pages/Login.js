@@ -17,22 +17,24 @@ class Login extends Component {
     //     this.getUser();
     // }
 
-    getUser = (users_name, users_password) => {
-        // console.log(users_name);
-        var databaseUsername;
-        var usernameEntered;
-        var passwordEntered;
-        var databasePassword;
-        API.getUser(users_name)
+    getUser = (usernameEntered, passwordEntered) => {
+
+        API.getUsers()
             .then(res => {
-                console.log(`returned user from database: ${res.data[0].username}`);
-                console.log(`this.state.existing_username: ${users_name}`);
-                window.id = res.data[0]._id; 
-                databaseUsername = res.data[0].username;
-                databasePassword = res.data[0].password;
-                usernameEntered = users_name;
-                passwordEntered = users_password;
-                this.accountConfirmation(usernameEntered, databaseUsername, passwordEntered, databasePassword);
+                res.data.forEach((element, i) => {
+                    // console.log(`For each username: ${element.username}`);
+                    // console.log(`For each password: ${element.password}`)
+
+                    // console.log(`condition part 1: ${element.username === usernameEntered}`);
+                    // console.log(`condition part 2: ${element.password === passwordEntered}`);
+                    // console.log(`What is the element: ${element.username}`)
+                    if (element.username === usernameEntered && element.password === passwordEntered) {
+                        alert("push to profile page");
+                        window.id = element._id;
+                        window.username = element.username;
+                        this.props.history.push(`/profile/${window.id}`);
+                    }
+                })
             })
             .catch(err => console.log(err));
     };
@@ -84,10 +86,7 @@ class Login extends Component {
 
         if (usernameEntered === databaseUsername && passwordEntered === databasePassword) {
             alert("username and passwords match!");
-            // console.log(this.props.match);
             this.props.history.push(`/profile/${window.id}`)
-            // this.props.navigation.getParam(paramName, defaultValue)
-            // window.id = res.data._id; 
         } else {
             alert('Try again!')
         }
@@ -96,9 +95,8 @@ class Login extends Component {
     addUser = () => {
         API.saveUser({ username: this.state.new_username, password: this.state.new_password_one })
             .then(res => {
-                console.log(res.data);
                 console.log(`res.data.-id: ${res.data._id}`);
-                window.id = res.data._id; 
+                window.id = res.data._id;
                 this.props.history.push(`/profile/${window.id}`);
                 // window.id =  
                 this.setState({ new_username: "", new_password_one: "", new_password_two: "" });
