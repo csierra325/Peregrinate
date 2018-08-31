@@ -5,6 +5,17 @@ const usersSchema = new Schema({
   username: { type: String, required: true , unique: true},
   password: { type: String, required: true },
   date: { type: Date, default: Date.now },
+  uploadedFileCloudinaryUrl: { type: String, required: flase },
+  firstname: { type: String, required: false },
+  lastname: { type: String, required: false },
+  email: { type: String, required: false, unique: true },
+  airline: { type: String, required: false },
+  flyerNumber: { type: Number, required: false },
+  car: { type: String, required: false },
+  rentalNumber: { type: Number, required: false },
+  local: { type: String, required: false },
+
+  
   bucketlist: [
     // {
     //   type: Schema.Types.ObjectId,
