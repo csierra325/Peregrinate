@@ -10,16 +10,18 @@ import NavTabs from "../../components/NavTabs"
 class Profile extends Component {
   state = {
     currentPage: "Profile",
-    username: this.props.match.params.id
+    username: window.username
   };
+
+  
 
   render() {
     return (
       <div className="wrapper">
         <NavTabs />
-        <Jumbotron>
-          <Greeting />
-
+      <Jumbotron>
+        <Greeting username={this.state.username}/>
+        
           <div class="rowD">
             <div className="col-s-3">
               <ProfileCard />

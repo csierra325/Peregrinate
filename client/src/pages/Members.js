@@ -2,9 +2,6 @@ import React from "react";
 import Jumbotron from "../components/Jumbotron";
 import Hexagon from "../components/Hexagon/Hexagon";
 
-
-
-
 const Members = (props) => (
   <div className = "wrapper">
     <Jumbotron>

@@ -2,20 +2,34 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const usersSchema = new Schema({
-  username: { type: String, required: true , unique: true},
+  username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   date: { type: Date, default: Date.now },
-  uploadedFileCloudinaryUrl: { type: String, required: flase },
-  firstname: { type: String, required: false },
-  lastname: { type: String, required: false },
-  email: { type: String, required: false, unique: true },
-  airline: { type: String, required: false },
-  flyerNumber: { type: Number, required: false },
-  car: { type: String, required: false },
-  rentalNumber: { type: Number, required: false },
-  local: { type: String, required: false },
-
+  name: {
+    first: { type: String},
+    last: { type: String},
+  },
+  uploadedFileCloudinaryUrl: {type: String, default: null},
   
+  email: { type: String},
+
+  address: {
+    addressOne: { type: String},
+    addressTwo: { type: String},
+    city: { type: String},
+    state: { type: String},
+    zip: { type: String}
+  },
+
+  travelInfo: {
+    airline: { type: String, required: false },
+    frequentFlyerNumber: { type: String, required: false },
+    rental: { type: String, required: false },
+    rentalNumber: { type: String, required: false },
+    train: { type: String, required: false },
+  },
+
+
   bucketlist: [
     // {
     //   type: Schema.Types.ObjectId,
@@ -63,6 +77,11 @@ const usersSchema = new Schema({
       ref: "friendspage"}, 
     {timestamps: true}
   ],
+
+  profile: [{
+    type: Schema.Types.ObjectId,
+    ref: "profile"
+  }]
 });
 
 const User = mongoose.model("User", usersSchema);

@@ -18,19 +18,8 @@ import Contact from "./pages/Contact";
 //Import styling
 import "./App.css";
 
-// import Profile from "./pages/Profile/Profile";
-// console.log(Profile.state);
-
-// const Child = ({match}) =>(
-//   <div>
-//     <h3>{match.params.id}</h3>
-//   </div>
-// )
-
-// var username = localStorage.getItem("username");
 
 class App extends Component {
-
   componentDidMount() {
     API.getUser()
       .then(res => this.setState({ breeds: res.data.message }))
@@ -51,17 +40,16 @@ class App extends Component {
           <Route exact path="/map/:id" component={Maps} />
           <Route exact path="/friends/:id" component={Friends} />
           <Route exact path="/tripplanner/:id" component={TripPlanner} />
-          <Route exact path = "/About" component = {About}/>
-          <Route exact path = "/Contact" component = {Contact}/>
+          <Route exact path="/About" component={About} />
+          <Route exact path="/Contact" component={Contact} />
 
 
-          {/* <Route path='/:id' component={Child} /> */}
         </div>
 
       </Router>
-        );
-      }
-    }
-    export default App;
-    
-    
+    );
+  }
+}
+export default App;
+
+
