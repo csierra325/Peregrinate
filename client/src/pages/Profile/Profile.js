@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import Jumbotron from "../../components/Jumbotron";
-// import Form from "../../components/Form";
+
 import Greeting from "../../components/Greeting";
 import ProfileCard from "../../components/ProfileCard";
 import ProfileForm from "../../components/ProfileForm";
@@ -17,23 +17,20 @@ class Profile extends Component {
 
   render() {
     return (
-      <div className = "wrapper">
+      <div className="wrapper">
         <NavTabs />
       <Jumbotron>
         <Greeting username={this.state.username}/>
         
           <div class="rowD">
             <div className="col-s-3">
-           
               <ProfileCard />
-              </div>
-              <div className="col-s-9">
+            </div>
+            <div className="col-s-9">
               <ProfileForm />
-              </div>
+            </div>
           </div>
-          
-        
-      </Jumbotron>
+        </Jumbotron>
       </div>
     );
   }

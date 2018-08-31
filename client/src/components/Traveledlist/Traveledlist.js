@@ -11,8 +11,9 @@ class Traveledlist extends Component {
 
   componentDidMount() {
     //PULL IN USER ID HERE TO POPULATE
+    const id = "5b895e10df44a9340627db5d";
      // const id = "5b86cc97c6cc1b0a419a5de8";  //Sabrina's user
-     const id = "5b88531ffde72333acdf6b5c";
+//      const id = "5b88531ffde72333acdf6b5c";
     API.getUser(id)
       .then(res => this.setState({ travels: res.data.traveledlist }))
       .catch(err => console.log(err));
