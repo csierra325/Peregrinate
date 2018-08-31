@@ -18,7 +18,8 @@ class ProfileForm extends Component {
     addressTwo: "",
     zip: "",
     userID: window.id,
-    username: window.username
+    username: window.username,
+    id: window.id
   };
 
   componentDidMount() {
@@ -40,15 +41,11 @@ class ProfileForm extends Component {
         console.log(res.data[0].name.first);
       })
       .catch(err => console.log(err));
-
-
   };
-
-
 
   updateUser = (id, updating) => {
 
-    API.updateProfile(id)
+    API.updateUser(id, updating)
       .then(res => {
         console.log(res.data);
       })
@@ -88,6 +85,7 @@ class ProfileForm extends Component {
       first: this.state.firstname,
       last: this.state.lastname
     }
+
     var { email } = this.state;
 
     var stateValue = document.getElementById("inputState").value;
@@ -113,24 +111,42 @@ class ProfileForm extends Component {
 
 
     console.log(`
-    First name: ${name.first}
-    Last name: ${name.last}
-    Email: ${email}
-    Address_One: ${address.addressOne}
-    Address_Two: ${address.adressTwo}
-    City: ${address.city}
-    State: ${address.state}
-    Zip: ${address.zip}
-    Airline: ${airline}
-    Frequent Flyer Num: ${travelInfo.frequentFlyer}
-    car: ${carRental}
-    Rental Num: ${travelInfo.rentalNum}
-    Departure City: ${travelInfo.departureCity}
-    Local: ${local}
+      First name: ${name.first}
+      Last name: ${name.last}
+      Email: ${email}
+      Address_One: ${address.addressOne}
+      Address_Two: ${address.adressTwo}
+      City: ${address.city}
+      State: ${address.state}
+      Zip: ${address.zip}
+      Airline: ${airline}
+      Frequent Flyer Num: ${travelInfo.frequentFlyer}
+      car: ${carRental}
+      Rental Num: ${travelInfo.rentalNum}
+      Departure City: ${travelInfo.departureCity}
+      Local: ${local}
     `);
 
     this.getUser(this.state.username);
-    this.updateUser(this.state.userID, );
+
+    this.updateUser(this.state.id, {
+      $set: {
+        "name.first": name.first,
+        "name.last": name.last,
+        email: email,
+        "address.addressOne" : address.addressOne,
+        "address.addressTwo" : address.addressTwo,
+        "address.city" : address.city,
+        "address.state" : address.state,
+        "address.zip" : address.zip,
+        "travelInfo.airline" : airline,
+        "travelInfo.frequentFlyerNumber " : travelInfo.frequentFlyer,
+        "travelInfo.rental" : carRental,
+        "travelInfo.rentalNumber" : travelInfo.rentalNum,
+        "travelInfo.departureCity" : travelInfo.departureCity,
+        "travelInfo.local" :  local
+      }
+    });
 
     console.log(`Window.id: ${window.id} \n this.state.userId: ${this.state.userID}`);
 
