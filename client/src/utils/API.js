@@ -7,6 +7,8 @@ export default {
   getUsers: function () {
     return axios.get("/api/users");
   },
+ 
+  
   // Gets the user with the given id
   getUser: function (id) {
     return axios.get("/api/users/" + id);
@@ -25,3 +27,9 @@ export default {
   }
 
 };
+
+
+ export function getCities() {
+  return axios.get("/api/cities");
+}
+

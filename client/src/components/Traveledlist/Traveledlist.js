@@ -11,7 +11,8 @@ class Traveledlist extends Component {
 
   componentDidMount() {
     //PULL IN USER ID HERE TO POPULATE
-    const id = "5b86cc97c6cc1b0a419a5de8";
+     // const id = "5b86cc97c6cc1b0a419a5de8";  //Sabrina's user
+     const id = "5b88531ffde72333acdf6b5c";
     API.getUser(id)
       .then(res => this.setState({ travels: res.data.traveledlist }))
       .catch(err => console.log(err));
@@ -68,8 +69,8 @@ class Traveledlist extends Component {
       <button disabled = {this.state.travelItem === ""} type="submit" value = "Submit" onClick = {this.handleSubmit}
       >Submit</button>
       <ul>
-        {this.state.travels.map(travel => (
-            <ListItem text={travel} />  
+        {this.state.travels.map((travel, i) => (
+            <ListItem key={i} text={travel} />  
 
         ))}
         </ul>

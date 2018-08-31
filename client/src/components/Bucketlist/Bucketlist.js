@@ -11,7 +11,9 @@ class Bucketlist extends Component {
 
   componentDidMount() {
         //PULL IN USER ID HERE TO POPULATE ****
-    const id = "5b86cc97c6cc1b0a419a5de8";
+    
+     // const id = "5b86cc97c6cc1b0a419a5de8";  //Sabrina's user
+     const id = "5b88531ffde72333acdf6b5c";
     API.getUser(id)
       .then(res => this.setState({ buckets: res.data.bucketlist }))
       .catch(err => console.log(err));
@@ -56,9 +58,9 @@ class Bucketlist extends Component {
       <button disabled = {this.state.bucketItem === ""} type="submit" value = "Submit" onClick = {this.handleSubmit}
       >Submit</button>
       <ul>
-        {this.state.buckets.map(bucket => (
+        {this.state.buckets.map((bucket, i) => (
       
-          <ListItem  text={bucket}  /> 
+          <ListItem key={i} text={bucket}  /> 
           
         ))}
         </ul>
