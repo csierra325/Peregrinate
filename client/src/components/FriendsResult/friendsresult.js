@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+// import React, { Component } from "react";
+import React from "react";
 
 
 const FriendsResult = props => (
@@ -12,4 +13,4 @@ const FriendsResult = props => (
    
 );
 
-export default FriendsResult
+export default FriendsResult;

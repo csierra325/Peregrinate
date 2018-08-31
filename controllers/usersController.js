@@ -63,4 +63,21 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
+//   getfriends: function(req, res){
+//     const id = "5b86dd405192b86f5bee42c0"
+//     db.User
+    
+//     .findById({id: req.params.id})
+//     .then(dbModel => res.json(dbModel))
+//     .catch(err => res.status(422).json(err));
+// },
+
+// updateCurrentFriend: function(req, res) {
+//   db.User
+//     .findOneAndUpdate({ _id: req.params.id }, req.body)
+//     .then(dbModel => res.json(dbModel))
+//     .catch(err => res.status(422).json(err));
+// },
+
+
 };

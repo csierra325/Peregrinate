@@ -33,7 +33,7 @@ class ProfileCard extends Component {
           src="https://via.placeholder.com/200x200"
           alt="Profile Image"
           class="img-thumbnail"
-          name="image"
+          // name="image"
         />
 
         <form>

@@ -44,7 +44,6 @@ class Friends extends Component {
           <CurrentFriends />
           <FriendsSearch handleFormSubmit={this.handleFormSubmit} />
           {/* <FriendsResult results={this.state.friendSearchResults} /> */}
-          <FriendsResult />
 
         </Jumbotron>
        

@@ -4,7 +4,17 @@ const db = require("../models");
 module.exports = {
   findAll: function(req, res) {
     db.friendspage
-      .find(req.query)
+      .find({
+        $and: [
+          { status: 1 },
+          {
+            $or: [
+              {requester: req.params.id},
+              {recipient: req.params.id}
+            ]
+          }
+        ]
+      })
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
