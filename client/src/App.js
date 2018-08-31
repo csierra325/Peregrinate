@@ -18,7 +18,7 @@ import Contact from "./pages/Contact";
 import "./App.css";
 
 // import Profile from "./pages/Profile/Profile";
-console.log(Profile.state);
+// console.log(Profile.state);
 
 // const Child = ({match}) =>(
 //   <div>

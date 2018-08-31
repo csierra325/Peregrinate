@@ -1,5 +1,85 @@
 import React, { Component } from "react";
-import {Image} from 'cloudinary-react';
+
+const cloudinary = window.cloudinary;
+// const CLOUDINARY_UPLOAD_URL = "https://api.cloudinary.com/v1_1/peregrinate/upload";
+
+const profile = {
+  position: "relative",
+  width: "200px",
+  height: "200px",
+  border: "2px dashed rgb(102, 102, 102)",
+  borderRadius: "5px"
+};
+
+const link = {
+    position: "relative",
+}
+
+
+class ProfileCard extends Component {
+
+    state = {
+            uploadedFileCloudinaryUrl: ""
+          };
+
+          onImageSelect(files) {
+                this.setState({
+                  uploadedFile: files[0]
+                });
+            
+                this.handleImageUpload(files[0]);
+              }
+            
+            //   handleImageUpload(file) {
+                
+            //       .post(CLOUDINARY_UPLOAD_URL)
+                  
+            
+            //     upload.end((err, response) => {
+            //       if (err) {
+            //         console.error(err);
+            //       }
+            
+            //       if (response.body.secure_url !== "") {
+            //         this.setState({
+            //           uploadedFileCloudinaryUrl: response.body.secure_url
+            //         });
+            //       }
+            //     });
+            //   }
+    
+
+    componentDidMount () {
+        document.getElementById("upload_widget_opener").addEventListener("click", function() {
+            cloudinary.openUploadWidget({ cloud_name: 'peregrinate', upload_preset: 'peregrinate', cropping: 'server'}, 
+              function(error, result) { console.log(error, result) });
+          }, false);
+    }
+
+    render () {
+        return (
+            
+            <div>
+                <div style={profile}></div>
+                <a href="#" id="upload_widget_opener" style={link}>Upload Profile Image</a>
+
+                    {/* <img
+                      src={this.state.uploadedFileCloudinaryUrl}
+                      
+                    /> */}
+                 
+               
+              </div>
+            
+
+
+
+        );
+    }
+
+    }
+
+export default ProfileCard;
 
 
 
@@ -14,18 +94,6 @@ import {Image} from 'cloudinary-react';
 
 
 
-
-
-
-
-
-
-
-
-// Below is working code for rendering image in browser using <dropzone>
-/////////////////////////////////////////////////////////////////////////////
-
-// import React, { Component } from "react";
 // import request from "superagent";
 // import Dropzone from "react-dropzone";
 
@@ -52,7 +120,7 @@ import {Image} from 'cloudinary-react';
 // };
 
 // class ProfileCard extends Component {
-//   // Setting the initial values of this.state.username and this.state.password
+  
 //   state = {
 //     uploadedFileCloudinaryUrl: ""
 //   };
@@ -101,7 +169,7 @@ import {Image} from 'cloudinary-react';
 //               <div>
 //                 {this.state.uploadedFileCloudinaryUrl === "" ? null : (
 //                   <div>
-//                     {/* <p>{this.state.uploadedFile.name}</p> */}
+//                     <p>{this.state.uploadedFile.name}</p>
 //                     <img
 //                       src={this.state.uploadedFileCloudinaryUrl}
 //                       alt="Profile"
