@@ -21,12 +21,8 @@ export default {
   saveUser: function (userData) {
     return axios.post("/api/users", userData);
   },
-
-<<<<<<< HEAD
-  updateUser: function(id, userdata) {
-=======
+  
   updateUser: function(id, userdata){
->>>>>>> 89ddd46451a3fe410da137b46af964271124d25a
     return axios.put("/api/users/" + id, userdata)
   }
 
