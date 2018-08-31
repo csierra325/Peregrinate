@@ -7,26 +7,27 @@ const usersSchema = new Schema({
   date: { type: Date, default: Date.now },
 
   name: {
-    first: { type: String},
-    last: { type: String},
+    first: { type: String, default: null},
+    last: { type: String, default: null},
   },
   
-  email: { type: String},
+  email: { type: String, default: null},
 
   address: {
-    addressOne: { type: String},
-    addressTwo: { type: String},
-    city: { type: String},
-    state: { type: String},
-    zip: { type: String}
+    addressOne: { type: String , default: null},
+    addressTwo: { type: String, default: null},
+    city: { type: String, default: null},
+    state: { type: String, default: null},
+    zip: { type: String, default: null}
   },
 
   travelInfo: {
-    airline: { type: String, required: false },
-    frequentFlyerNumber: { type: String, required: false },
-    rental: { type: String, required: false },
-    rentalNumber: { type: String, required: false },
-    train: { type: String, required: false },
+    airline: { type: String, default: null },
+    frequentFlyerNumber: { type: String, default: null },
+    rental: { type: String, default: null },
+    rentalNumber: { type: String, default: null },
+    local: { type: String, default: null },
+    departureCity: { type: String, default: null }
   },
 
 
