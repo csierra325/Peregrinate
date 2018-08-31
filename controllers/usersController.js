@@ -13,9 +13,7 @@ module.exports = {
   },
   findById: function (req, res) {
     db.User
-    //NEED TO UPDATE ************************ !!*!*!*!*!*
-//     .find({username: req.params.id})
-    //ALLOWS YOU TO PULL BY USER 
+    
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -37,9 +35,6 @@ module.exports = {
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-
-
-    // console.log(req.body)
   },
   update: function (req, res) {
     db.User

@@ -3,7 +3,8 @@ import React, { Component } from "react";
 class ProfileCard extends Component {
   // Setting the initial values of this.state.username and this.state.password
   state = {
-    image: ""
+    image: "",
+    userID: window.id
   };
 
   handleInputChange = event => {
@@ -38,7 +39,6 @@ class ProfileCard extends Component {
 
         <form>
           <div class="form-group">
-            
             <input
               type="file"
               class="form-control-file"

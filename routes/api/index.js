@@ -6,4 +6,5 @@ const friendsRoutes = require("./friendspage");
 router.use("/users", userRoutes);
 router.use("/friendspage", friendsRoutes);
 
+
 module.exports = router;
