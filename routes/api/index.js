@@ -7,4 +7,5 @@ router.use("/users", userRoutes);
 router.use("/friendspage", friendsRoutes);
 router.use("/cities", cities)
 
+
 module.exports = router;
