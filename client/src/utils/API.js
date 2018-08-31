@@ -7,6 +7,8 @@ export default {
   getUsers: function () {
     return axios.get("/api/users");
   },
+ 
+  
   // Gets the user with the given id
   getUser: function (id) {
     return axios.get("/api/users/" + id);
@@ -20,8 +22,18 @@ export default {
     return axios.post("/api/users", userData);
   },
 
+<<<<<<< HEAD
   updateUser: function(id, userdata) {
+=======
+  updateUser: function(id, userdata){
+>>>>>>> 89ddd46451a3fe410da137b46af964271124d25a
     return axios.put("/api/users/" + id, userdata)
   }
 
 };
+
+
+ export function getCities() {
+  return axios.get("/api/cities");
+}
+
