@@ -15,9 +15,9 @@ const link = {
 };
 
 class ProfileCard extends Component {
-//   state = {
-//     uploadedFileCloudinaryUrl: ""
-//   };
+  state = {
+    uploadedFileCloudinaryUrl: ""
+  };
 
   componentDidMount() {
     document.getElementById("upload_widget_opener").addEventListener (
@@ -36,7 +36,15 @@ class ProfileCard extends Component {
       },
       false
     );
+
+    //API
 }
+
+
+
+handleInputChange = event => {}
+
+handleSubmit = event => {}
 
   
 
@@ -52,7 +60,7 @@ class ProfileCard extends Component {
     );
   }
   }
-  
+
 
 
 
