@@ -7,6 +7,7 @@ class Traveledlist extends Component {
   state = {
     travels: [],
     travelItem: "",
+    userID: window.id
   };
 
   componentDidMount() {

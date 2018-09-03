@@ -6,6 +6,7 @@ class Bucketlist extends Component {
   state = {
     buckets: [],
     bucketItem: "",
+    userID: window.id
   
   };
 

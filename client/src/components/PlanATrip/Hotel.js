@@ -7,7 +7,8 @@
 //     destination: "",
 //     departureDate: "",
 //     duration: "",
-//     maxPrice: ""
+//     maxPrice: "",
+// userID: window.id
 //   };
 
 //   // handle any changes to the input fields
