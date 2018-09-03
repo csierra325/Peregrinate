@@ -1,0 +1,35 @@
+.packingHeaders{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+    margin-top: 4%;
+}
+.PackingTitles{
+    font-weight: bold;
+    font-size: 2em;
+    background: #e3eaee;
+    color: black;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+/* .packlistForm, 
+.form-control{
+    height: 25em;
+    width: 25em;
+}  */
+
+.helpfulLinks{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+    margin-top: 4%;
+}
+.linkBackground{
+    background-color: #e3eaee;
+    margin: 4%;
+}
+
+
+.BringWrap{
+    background-color:  #e3eaee;
+    margin: 4%;
+}
