@@ -7,7 +7,8 @@ class RandomTrip extends Component {
     departureDate: "",
     returnDate: "",
     duration: "",
-    maxPrice: ""
+    maxPrice: "",
+    userID: window.id
   };
 
   // handle any changes to the input fields

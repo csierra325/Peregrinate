@@ -3,7 +3,8 @@ import "./friendsearch.css";
 
 class FriendsSearch extends Component {
     state = {
-        username: ""
+        username: "",
+        userID: window.id
     }
 
     // handle any changes to the input fields
