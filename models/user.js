@@ -37,6 +37,7 @@ const usersSchema = new Schema({
     //   ref: 'bucketlist'
     // }
   ],
+  //friendlist is the friend travel recommendations:
   friendlist: [
     // {
     //   type: Schema.Types.ObjectId,
@@ -73,10 +74,17 @@ const usersSchema = new Schema({
     //   ref: 'hotelSearch'
     // }
   ],
-  friendspage: [
-    { type: Schema.Types.ObjectId, 
-      ref: "friendspage"}, 
-    {timestamps: true}
+  currentFriends: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'currentFriends'
+    }
+  ],
+  friendRequests: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'friendRequests'
+    }
   ],
 
   profile: [{

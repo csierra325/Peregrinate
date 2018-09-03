@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const friends = require("../../controllers/currentFriendController.js");
+const friends = require("../../controllers/friendRequestsController.js");
 
 // Matches with "/api/books"
 router.route("/")

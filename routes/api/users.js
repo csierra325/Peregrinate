@@ -1,7 +1,7 @@
 const router = require("express").Router();
 // const db = require("../../models");
 const usersController = require("../../controllers/usersController");
-const friendsController = require("../../controllers/currentFriendController");
+const friendRequestsController = require("../../controllers/friendRequestsController");
 
 // Matches with "/api/users"
 router.route("/")
@@ -18,7 +18,10 @@ router.route("/:id")
 
 //Routes for friends
 router.route("/:id/friends")
-  .get(friendsController.findAll)
+  .get(friendRequestsController.findAll)
+
+router.route("/:id/friends/acceptedfriends")
+  .put(friendRequestsController.update)
 
 
 module.exports = router;

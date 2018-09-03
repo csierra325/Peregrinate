@@ -7,13 +7,13 @@ class FriendsSearch extends Component {
         username: ""
     };
 
-    componentDidMount() {
-        //PULL IN USER ID HERE TO POPULATE
-    const id = "5b86cc97c6cc1b0a419a5de8";
-    API.getUsers(username)
-      .then(res => this.setState({ username: res.data.username }))
-      .catch(err => console.log(err));
-  };
+//     componentDidMount() {
+//         //PULL IN USER ID HERE TO POPULATE
+//     const id = "5b86cc97c6cc1b0a419a5de8";
+//     API.getUsers(username)
+//       .then(res => this.setState({ username: res.data.username }))
+//       .catch(err => console.log(err));
+//   };
 
     // handle any changes to the input fields
     handleInputChange = event => {
@@ -49,11 +49,11 @@ class FriendsSearch extends Component {
                     />
                     <button onClick={this.props.handleFormSubmit}>Submit</button>
                 </form>
-            </div>,
-            <div>
-                <FriendsResult 
-                name={username}/>
             </div>
+            // <div>
+            //     <FriendsResult 
+            //     name={username}/>
+            // </div>
         )
     }
 }
