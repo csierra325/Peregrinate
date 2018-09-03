@@ -3,7 +3,9 @@ import "./currentfriends.css";
 
 class Currentfriends extends Component{
     state = {
-        currentfriends: ""
+        currentfriends: "",
+        userID: window.id,
+        id: window.id
       };
     
     // handle any changes to the input fields
