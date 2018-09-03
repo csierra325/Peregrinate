@@ -7,7 +7,7 @@ class Friendlist extends Component {
   state = {
     friends: [],
     friendItem: "",
-  
+    userID: window.id
   };
 
   componentDidMount() {
