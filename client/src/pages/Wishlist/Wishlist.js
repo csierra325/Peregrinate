@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import Friendlist from "../../components/Friendlist/Friendlist";
-import Traveledlist from "../../components/Traveledlist/Traveledlist";
-import Bucketlist from "../../components/Bucketlist/Bucketlist";
+// import Friendlist from "../../components/Friendlist/Friendlist";
+// import Traveledlist from "../../components/Traveledlist/Traveledlist";
+// import Bucketlist from "../../components/Bucketlist/Bucketlist";
 import Gallery from "../../components/Gallery/Gallery"
 import Jumbotron from "../../components/Jumbotron/Jumbotron";
 import NavTabs from "../../components/NavTabs"
@@ -24,14 +24,16 @@ class Wishlist extends Component {
       <div className="wrapper">
          <NavTabs />
         <Jumbotron>
-          <Dropdown/>
+          
           <div
             className="rowC"
             style={{ height: 800, clear: "both", textAlign: "center" }}
           >
-            <Friendlist />
+            {/* <Friendlist />
             <Traveledlist />
-            <Bucketlist />
+            <Bucketlist /> */}
+
+            <Dropdown/>
             
           </div>
         

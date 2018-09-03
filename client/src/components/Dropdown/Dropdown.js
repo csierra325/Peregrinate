@@ -4,25 +4,17 @@ import { getCities } from "../../utils/API";
 
 export default class Dropdown extends Component {
   state = {
-    location: []
+      cities: [],
+      searchedCities: []
   };
 
   componentDidMount() {
     
     getCities()
-    // let city = data.data.data.[0]
-    
       .then(res =>  {
-        
-        console.log("im here", res);
-        console.log("res.data[i]: ",  res.data[0].city);
-         const cities = res.data.map(data => data.city);
-         console.log("cities map:", cities);
-         this.setState({location: cities})
-         
-          
+        this.setState({cities: res.data, searchedCities: res.data})
       })
-      // .then(res => this.setState({location: res.data.city}))
+      
       .catch(err => console.log(err));
   }
 
@@ -34,41 +26,38 @@ export default class Dropdown extends Component {
     });
   };
 
-  // locationItem = event => {
-  //   event.preventDefault();
-  //   const { locationItem } = this.state;
-
-  //   if (locationItem) {
-  //     this.setState({
-  //       cities: [locationItem]
-  //     });
-  //   }
-  // };
 
   render() {
+   
     return (
       <div className="Dropdown">
         <h2>Choose a location:</h2>
-        {/* <input
-          list="locations"
-          onChange={this.handleInputChange}
-          id="location-choice"
-          name="location-choice"
-        />
+       
 
-        <datalist id="locations">
-          {/* <option value="Chocolate" /> */}
-          
-          {/* {this.state.location.map((locationItem, i) => (
-         <option key={i} value={locationItem}>{locationItem}</option>
-        ))}
-        </datalist> */}
-        <select>
-{this.state.location.map((locationItem, i) => (
-  <option key={i} value={locationItem}>{locationItem}</option>
- ))}
-
-        </select>
+       <div className="cities">
+       <label htmlFor="choosing-cities">cities: </label>
+       <input
+        type="text"
+        id="input-cities"
+        list="options"
+        onChange={e => {
+          if(e.target.value.trim('') === '') {
+            this.setState({searchedCities: this.state.cities})
+          }
+          //how to filter/search large datasets in javascript (search/sorting algorithims)
+          const cities = this.state.cities.splice(0, 1000).filter(city => city.city.includes(e.target.value))
+          this.setState({searchedCities: cities })
+        }}/>
+          <datalist id="options">
+            { this.state.searchedCities.map((city) => (
+            <option key={city._id}
+              value={city.city}>
+              {city.city}
+          </option>
+          ))}
+          </datalist>
+        </div>
+        
       </div>
     );
   }
