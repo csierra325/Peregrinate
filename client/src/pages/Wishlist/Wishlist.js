@@ -6,6 +6,7 @@ import Bucketlist from "../../components/Bucketlist/Bucketlist";
 import Gallery from "../../components/Gallery/Gallery"
 import Jumbotron from "../../components/Jumbotron/Jumbotron";
 import NavTabs from "../../components/NavTabs"
+import Dropdown from "../../components/Dropdown/Dropdown";
 
 
 class Wishlist extends Component {
@@ -23,7 +24,7 @@ class Wishlist extends Component {
       <div className="wrapper">
          <NavTabs />
         <Jumbotron>
-
+          <Dropdown/>
           <div
             className="rowC"
             style={{ height: 800, clear: "both", textAlign: "center" }}
