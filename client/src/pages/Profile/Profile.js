@@ -6,6 +6,7 @@ import Greeting from "../../components/Greeting";
 import ProfileCard from "../../components/ProfileCard";
 import ProfileForm from "../../components/ProfileForm";
 import NavTabs from "../../components/NavTabs"
+import Modal from "../../components/Modal"
 
 class Profile extends Component {
   state = {
@@ -18,7 +19,9 @@ class Profile extends Component {
   render() {
     return (
       <div className="wrapper">
+      
         <NavTabs />
+        <Modal />
       <Jumbotron>
         <Greeting username={this.state.username}/>
         
