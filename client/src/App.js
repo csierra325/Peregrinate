@@ -21,13 +21,15 @@ import "./App.css";
 
 class App extends Component {
   componentDidMount() {
-    API.getUser()
-      .then(res => this.setState({ breeds: res.data.message }))
+    const id = "5b88531ffde72333acdf6b5c";
+    API.getUser(id)
+      .then(console.log)
+      // .then(res => this.setState({ breeds: res.data.message }))
       .catch(err => console.log(err));
   }
 
   render() {
-
+    
     return (
 
       <Router>

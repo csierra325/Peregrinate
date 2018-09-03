@@ -1,54 +1,72 @@
 import React, { Component } from "react";
+import API from "../../utils/API";
+
+const cloudinary = window.cloudinary;
+
+const profile = {
+  position: "relative",
+  width: "200px",
+  height: "200px",
+  border: "2px dashed rgb(102, 102, 102)",
+  borderRadius: "5px"
+};
+
+const link = {
+  position: "relative"
+};
 
 class ProfileCard extends Component {
-  // Setting the initial values of this.state.username and this.state.password
   state = {
-    image: "",
+    uploadedFileCloudinaryUrl: "",
     userID: window.id
   };
 
-  handleInputChange = event => {
-    // Pull the name and value properties off of the event.target (the element which triggered the event)
-    const { name, value } = event.target;
+  updateUser = (id, updating) => {
+    console.log( "Yo?")
+    API.updateUser(id, updating)
+     .then(res => {
+       console.log(res);
+       this.setState({
+            uploadedFileCloudinaryUrl: res.data.uploadedFileCloudinaryUrl
+        });
+     })
+     .catch(err => console.log(err));
+  }
 
-    // Set the state for the appropriate input field
-    this.setState({
-      [name]: value
-    });
-  };
+  componentDidMount() {
+    document.getElementById("upload_widget_opener").addEventListener ( "click", () => {
+        cloudinary.openUploadWidget(
+          {
+            cloud_name: "peregrinate",
+            upload_preset: "peregrinate",
+            cropping: "server"
+          },
+          (error, result) => {
+            console.log(result);
+            console.log(error);
+            this.updateUser(window.id, {
+                uploadedFileCloudinaryUrl: result[0].url
+            });
+          }
+        );
+      },
+      false
+    );
 
-  // When the form is submitted, prevent the default event and alert the username and password
-  handleFormSubmit = event => {
-    event.preventDefault();
-
-    this.setState({
-      image: ""
-    });
-  };
+    //API
+  }
 
   render() {
     return (
-      <div align="left">
-        <img
-          //src={this.state.src}
-          src="https://via.placeholder.com/200x200"
-          alt="Profile Image"
-          class="img-thumbnail"
-          // name="image"
-        />
-
-        <form>
-          <div class="form-group">
-            <input
-              type="file"
-              class="form-control-file"
-              id="exampleFormControlFile1"
-            />
-          </div>
-        </form>
+      <div>
+        {this.state.uploadedFileCloudinaryUrl ? <img src={this.state.uploadedFileCloudinaryUrl} /> : <div style={profile} />}
+        <a href="#" id="upload_widget_opener" style={link}>
+          Upload Profile Image
+        </a>
       </div>
     );
-  }
+  };
+
 }
 
 export default ProfileCard;
