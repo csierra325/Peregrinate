@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
-import "./friends.css";
+import FriendsInstructions from "../../components/FriendsInstructions"
+
 import CurrentFriends from "../../components/CurrentFriends/currentfriends";
 import FriendsSearch from "../../components/FriendSearch/friendsearch";
 import FriendsResult from "../../components/FriendsResult/friendsresult";
@@ -39,6 +40,7 @@ class Friends extends Component {
       <div className="wrapper">
         <NavTabs />
         <Jumbotron>
+          <FriendsInstructions />
           <h2><strong>{this.state.username}</strong></h2>
           <h1>I'm the friends page!</h1>
           <CurrentFriends />

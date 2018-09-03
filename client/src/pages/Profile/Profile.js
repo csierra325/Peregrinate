@@ -6,7 +6,7 @@ import Greeting from "../../components/Greeting";
 import ProfileCard from "../../components/ProfileCard";
 import ProfileForm from "../../components/ProfileForm";
 import NavTabs from "../../components/NavTabs"
-import Modal from "../../components/Modal"
+import ProfileInstructions from "../../components/ProfileInstructions"
 
 class Profile extends Component {
   state = {
@@ -21,10 +21,10 @@ class Profile extends Component {
       <div className="wrapper">
       
         <NavTabs />
-        <Modal />
+        
       <Jumbotron>
         <Greeting username={this.state.username}/>
-        
+        <ProfileInstructions />
           <div class="rowD">
             <div className="col-s-3">
               <ProfileCard />

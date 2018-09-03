@@ -19,6 +19,7 @@ import Contact from "./pages/Contact";
 import "./App.css";
 
 
+
 class App extends Component {
   componentDidMount() {
     const id = "5b88531ffde72333acdf6b5c";

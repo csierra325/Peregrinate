@@ -7,6 +7,7 @@ import Jumbotron from "../../components/Jumbotron";
 import NavTabs from "../../components/NavTabs";
 import '../../components/Map/usaMap.css'; /* optional for styling like the :hover pseudo-class */
 import USAMap from "react-usa-map";
+import MapInstructions from "../../components/MapInstructions"
 
 class WorldMap extends Component {
   constructor() {
@@ -101,6 +102,7 @@ class WorldMap extends Component {
     <div className = "wrapper">
    <NavTabs />
     <Jumbotron>
+    <MapInstructions />
       <div className="usaMap">
         <USAMap customize={this.statesCustomConfig()} onClick={this.mapHandler} />
       </div>

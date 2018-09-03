@@ -5,6 +5,7 @@ import TripGenerator from "../../components/TripGenerator";
 import Globe from "../../components/Globe";
 import TravelTabs from "../../components/TravelTabs";
 import NavTabs from "../../components/NavTabs";
+import TripInstructions from "../../components/TripInstructions"
 
 class TripPlanner extends Component {
   state = {
@@ -17,6 +18,7 @@ class TripPlanner extends Component {
     <div className = "wrapper">
       <NavTabs />
       <Jumbotron>
+        <TripInstructions />
         <div className="tripGen" align="left">
         <Globe />
         <TripGenerator />
