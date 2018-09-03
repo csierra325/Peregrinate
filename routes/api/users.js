@@ -16,12 +16,12 @@ router.route("/:id")
   // .get(usersController.findOne)
   .delete(usersController.remove);
 
-//Routes for friends
-router.route("/:id/friends")
-  .get(friendRequestsController.findAll)
+// //Routes for friends
+// router.route("/:id/friends")
+//   .get(friendRequestsController.findAll)
 
-router.route("/:id/friends/acceptedfriends")
-  .put(friendRequestsController.update)
+// router.route("/:id/friends/acceptedfriends")
+//   .put(friendRequestsController.update)
 
 
 module.exports = router;

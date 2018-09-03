@@ -8,7 +8,6 @@ export default {
     return axios.get("/api/users");
   },
  
-  
   // Gets the user with the given id
   getUser: function (id) {
     return axios.get("/api/users/" + id);
@@ -24,6 +23,10 @@ export default {
   
   updateUser: function(id, userdata){
     return axios.put("/api/users/" + id, userdata)
+  },
+
+  getCurrentFriends: function (id) {
+    return axios.get("/api/users/friends/" + id);
   }
 
 };

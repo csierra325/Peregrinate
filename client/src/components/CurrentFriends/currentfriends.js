@@ -5,15 +5,16 @@ import CurrentFriendItem from "../CurrentFriendItem";
 
 class Currentfriends extends Component{
     state = {
-        currentfriends: []
+        currentPage: "Friends",
+        userId: window.username,
+        currentFriends: []
       };
     
- componentDidMount() {
-     const id= "5b8d75b4d171a90926092d3";
-    API.getUser(id)
-      .then(res => this.setState({ currentfriends: res.data.currentfriends }))
-      .catch(err => console.log(err));
-  };
+//  componentDidMount() {
+//     API.getUser(id)
+//       .then(res => this.setState({ currentFriends: res.data.currentFriends }))
+//       .catch(err => console.log(err));
+//   };
 
   render() {
       return(

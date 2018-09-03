@@ -3,10 +3,10 @@ const db = require("../../models");
 const friendRequestsController = require("../../controllers/friendRequestsController");
 
 //Routes for friends
-router.route("/:id/friends")
+router.route("/friends/:id")
   .get(friendRequestsController.findAll)
 
-router.route("/:id/friends/acceptedfriends")
+router.route("/friends/:id/acceptedfriends")
   .put(friendRequestsController.update)
 
 module.exports = router;

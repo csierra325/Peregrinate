@@ -75,10 +75,10 @@ const usersSchema = new Schema({
     // }
   ],
   currentFriends: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'currentFriends'
-    }
+    // {
+    //   type: Schema.Types.ObjectId,
+    //   ref: 'currentFriends'
+    // }
   ],
   friendRequests: [
     {

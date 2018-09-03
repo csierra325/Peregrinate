@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./friendsearch.css";
-import FriendsResult from "../FriendsResult/friendsresult";
+// import FriendsResult from "../FriendsResult/friendsresult";
 
 class FriendsSearch extends Component {
     state = {

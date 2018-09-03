@@ -3,7 +3,7 @@ import Jumbotron from "../../components/Jumbotron";
 import "./friends.css";
 import CurrentFriends from "../../components/CurrentFriends/currentfriends";
 import FriendsSearch from "../../components/FriendSearch/friendsearch";
-import FriendsResult from "../../components/FriendsResult/friendsresult";
+// import FriendsResult from "../../components/FriendsResult/friendsresult";
 
 
 import NavTabs from "../../components/NavTabs"
@@ -13,7 +13,6 @@ class Friends extends Component {
   state = {
     currentPage: "Friends",
     username: window.username,
-    currentfriends: []
   };
 
 
@@ -35,6 +34,9 @@ class Friends extends Component {
   // }
 
   render() {
+    
+    window.username = this.state.username;
+
     return (
       <div className="wrapper">
         <NavTabs />
