@@ -5,9 +5,9 @@ import CurrentFriendItem from "../CurrentFriendItem";
 
 class Currentfriends extends Component{
     state = {
-        currentPage: "Friends",
-        userId: window.username,
-        currentFriends: []
+        currentfriends: "",
+        userID: window.id,
+        id: window.id
       };
     
 //  componentDidMount() {
