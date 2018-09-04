@@ -3,17 +3,6 @@ import API from "../../utils/API";
 
 const cloudinary = window.cloudinary;
 
-const profile = {
-  position: "relative",
-  width: "200px",
-  height: "200px",
-  border: "2px dashed rgb(102, 102, 102)",
-  borderRadius: "5px"
-};
-
-const link = {
-  position: "relative"
-};
 
 class ProfileCard extends Component {
   state = {
@@ -57,12 +46,27 @@ class ProfileCard extends Component {
   }
 
   render() {
+    const profile = {
+      position: "relative",
+      width: "300px",
+      height: "300px",
+      border: "2px dashed rgb(102, 102, 102)",
+      borderRadius: "5px"
+    };
+    
+    const link = {
+      position: "relative"
+    };
+    
     return (
       <div>
-        {this.state.uploadedFileCloudinaryUrl ? <img src={this.state.uploadedFileCloudinaryUrl} /> : <div style={profile} />}
+        {this.state.uploadedFileCloudinaryUrl ? <img src={this.state.uploadedFileCloudinaryUrl} style={profile}/> : <div style={profile} />}
+        
+        <div>
         <a href="#" id="upload_widget_opener" style={link}>
           Upload Profile Image
         </a>
+        </div>
       </div>
     );
   };
