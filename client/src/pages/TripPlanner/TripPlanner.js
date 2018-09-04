@@ -17,15 +17,37 @@ class TripPlanner extends Component {
     <div className = "wrapper">
       <NavTabs />
       <Jumbotron>
+        
         <div className="tripGen" align="left">
-        <Globe />
-        <TripGenerator />
-        </div>
-        <div>
-          
-          {/* <PlanATrip /> */}
-          <TravelTabs />
-        </div>       
+          <Globe />
+          <br/>
+
+          <div className="row">
+            <div class="card col-s-6">
+              <div class="card-body">
+                <TripGenerator />
+              </div>
+            </div>
+
+            <div class="card col-s-6">
+              <div class="card-body">
+                <p>Results List:</p>
+              </div>  
+            </div> 
+          </div>
+
+          <div className="row">
+            <div class="card col-s-6">
+              <div class="card-body">
+                <p>Plan A Trip</p>
+                <TravelTabs />
+                {/* <PlanATrip /> */}
+              </div>
+            </div>
+          </div>
+ 
+
+        </div> 
       </Jumbotron>     
     </div>
         );

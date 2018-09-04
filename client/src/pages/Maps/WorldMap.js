@@ -101,45 +101,58 @@ class WorldMap extends Component {
     <div className = "wrapper">
    <NavTabs />
     <Jumbotron>
-      <div className="usaMap">
-        <USAMap customize={this.statesCustomConfig()} onClick={this.mapHandler} />
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text">US States you have traveled to:</p>
+          <div className="usaMap">
+            <USAMap customize={this.statesCustomConfig()} onClick={this.mapHandler} />
+          </div>
+        </div>
       </div>
+
+
       <br/><br/>
       <hr/>
       <br/><br/>
-      <svg width={ 800 } height={ 450 } viewBox="0 0 800 450">
-        <g className="countries">
-          {
-            this.state.worlddata.map((d,i) => (
-              <path
-                key={ `path-${ i }` }
-                d={ geoPath().projection(this.projection())(d) }
-                className="country"
-                fill={ `rgba(38,50,56,${ 1 / this.state.worlddata.length * i})` }
-                stroke="#FFFFFF"
-                strokeWidth={ 0.5 }
-                onClick={ () => this.handleCountryClick(i) }
-              />
-            ))
-          }
-        </g>
-        <g className="markers">
-          {
-            this.state.cities.map((city, i) => (
-              <circle
-                key={ `marker-${i}` }
-                cx={ this.projection()(city.coordinates)[0] }
-                cy={ this.projection()(city.coordinates)[1] }
-                r={ city.population / 3000000 }
-                fill="#E91E63"
-                stroke="#FFFFFF"
-                className="marker"
-                onClick={ () => this.handleMarkerClick(i) }
-              />
-            ))
-          }
-        </g>
-      </svg>
+
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text">Countries you have traveled to:</p>
+            <svg width={ 800 } height={ 450 } viewBox="0 0 800 450">
+              <g className="countries">
+                {
+                  this.state.worlddata.map((d,i) => (
+                    <path
+                      key={ `path-${ i }` }
+                      d={ geoPath().projection(this.projection())(d) }
+                      className="country"
+                      fill={ `rgba(38,50,56,${ 1 / this.state.worlddata.length * i})` }
+                      stroke="#FFFFFF"
+                      strokeWidth={ 0.5 }
+                      onClick={ () => this.handleCountryClick(i) }
+                    />
+                  ))
+                }
+              </g>
+              <g className="markers">
+                {
+                  this.state.cities.map((city, i) => (
+                    <circle
+                      key={ `marker-${i}` }
+                      cx={ this.projection()(city.coordinates)[0] }
+                      cy={ this.projection()(city.coordinates)[1] }
+                      r={ city.population / 3000000 }
+                      fill="#E91E63"
+                      stroke="#FFFFFF"
+                      className="marker"
+                      onClick={ () => this.handleMarkerClick(i) }
+                    />
+                  ))
+                }
+              </g>
+            </svg>
+        </div>
+      </div>
       </Jumbotron>
       </div>
     )};
