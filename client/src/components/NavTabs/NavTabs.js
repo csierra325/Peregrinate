@@ -61,22 +61,12 @@ const NavTabs = props => {
       </li>
       <li className="nav-item">
         <Link
-          to={`/about`}
+          to={`/packinglist/${id}`}
           className={
-            window.location.pathname === `/about` ? "nav-link active" : "nav-link"
+            window.location.pathname === `/packinglist/${id}` ? "nav-link active" : "nav-link"
           }
         >
-          About
-        </Link>
-      </li>
-      <li className="nav-item">
-        <Link
-          to={`/contact`}
-          className={
-            window.location.pathname === `/contact` ? "nav-link active" : "nav-link"
-          }
-        >
-          Contact
+         Packing List
         </Link>
       </li>
     </ul>

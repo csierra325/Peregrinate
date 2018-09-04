@@ -15,7 +15,7 @@ import Friends from './pages/Friends';
 import TripPlanner from './pages/TripPlanner';
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-
+import Packinglist from "./pages/Packinglist";
 //Import styling
 import "./App.css";
 
@@ -58,8 +58,12 @@ class App extends Component {
           <Nav />
           <Route exact path="/" component={Members} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/About" component={About} />
-          <Route exact path="/Contact" component={Contact} />
+          <Route exact path="/map/:id" component={Maps} />
+          <Route exact path="/friends/:id" component={Friends} />
+          <Route exact path="/tripplanner/:id" component={TripPlanner} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/contact" component={Contact} />
+          <Route exact path = "/packinglist/:id" component = {Packinglist}/>
 
           {/* <Route exact path="/profile/:id" component={Profile} />
           <Route exact path="/wishlist/:id" component={Wishlist} />

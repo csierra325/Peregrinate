@@ -4,7 +4,8 @@ import { getCities } from "../../utils/API";
 
 export default class Dropdown extends Component {
   state = {
-    location: []
+    location: [],
+    userID: window.id
   };
 
   componentDidMount() {
