@@ -1,6 +1,7 @@
 // Import React from "react";
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Redirect } from 'react-router-dom'
 import Nav from "./components/Nav";
 import API from "./utils/API";
 
@@ -17,6 +18,25 @@ import Contact from "./pages/Contact";
 import Packinglist from "./pages/Packinglist";
 //Import styling
 import "./App.css";
+
+
+const IsComponentAuthenticated = (props) => {
+  const path = props.path;
+  const Component = props.component;
+
+  const isAuthenticated = window.isAuthenticated || false;
+  // localStorage.getItem('isAuthenticated')
+  // const isAuthenticated = localStorage.getItem('isAuthenticated') || false;
+
+  if (isAuthenticated) {
+    return (
+      <Route path={path} component={Component} />
+    );
+  }
+
+  return <Redirect to='/login' />
+  // return this.props.history.push('/login')
+};
 
 
 
@@ -37,8 +57,6 @@ class App extends Component {
         <div>
           <Nav />
           <Route exact path="/" component={Members} />
-          <Route exact path="/profile/:id" component={Profile} />
-          <Route exact path="/wishlist/:id" component={Wishlist} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/map/:id" component={Maps} />
           <Route exact path="/friends/:id" component={Friends} />
@@ -47,6 +65,21 @@ class App extends Component {
           <Route exact path="/contact" component={Contact} />
           <Route exact path = "/packinglist/:id" component = {Packinglist}/>
 
+          {/* <Route exact path="/profile/:id" component={Profile} />
+          <Route exact path="/wishlist/:id" component={Wishlist} />
+          <Route exact path="/map/:id" component={Maps} />
+          <Route exact path="/friends/:id" component={Friends} />
+          <Route exact path="/tripplanner/:id" component={TripPlanner} /> */}
+
+
+          
+
+
+          <IsComponentAuthenticated path='/profile/:id' component={Profile} />
+          <IsComponentAuthenticated path='/wishlist/:id' component={Wishlist} />
+          <IsComponentAuthenticated path='/map/:id' component={Maps} />
+          <IsComponentAuthenticated path='/friends/:id' component={Friends} />
+          <IsComponentAuthenticated path='/tripplanner/:id' component={TripPlanner} />
 
         </div>
 
