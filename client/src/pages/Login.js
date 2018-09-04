@@ -1,9 +1,28 @@
 import React, { Component } from "react";
 import API from "../utils/API";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 const bcrypt = require('bcryptjs');
+
 
 class Login extends Component {
     // Setting the initial values of this.state.username and this.state.password
+    constructor(props) {
+        super(props);
+        this.state = {
+            modal: false,
+            visible: false
+        };
+
+        this.toggle = this.toggle.bind(this);
+    };
+
+    toggle() {
+        this.setState({
+            modal: !this.state.modal
+        });
+    };
+
+
     state = {
         currentPage: "Login",
         existing_username: "",
@@ -23,9 +42,6 @@ class Login extends Component {
                 // res.data.dbModel
                 const isAuthenticated = res.data.isAuthenticated;
                 window.isAuthenticated = isAuthenticated;
-                // localStorage.setItem('isAuthenticated', isAuthenticated)
-
-
                 res.data.dbModel.forEach((element, i) => {
                     if (element.username === usernameEntered) {
                         bcrypt.compare(passwordEntered, element.password, (err, res) => {
@@ -45,8 +61,6 @@ class Login extends Component {
                 const isAuthenticated = error.response.data.isAuthenticated;
                 window.isAuthenticated = isAuthenticated;
                 console.log(`isAuthenticated: ${error.response.data.isAuthenticated}`);
-                // localStorage.setItem('isAuthenticated', isAuthenticated)
-                // console.log(error);
             });
     };
 
@@ -64,7 +78,10 @@ class Login extends Component {
                 this.props.history.push(`/profile/${window.id}`);
                 this.setState({ new_username: "", new_password_one: "", new_password_two: "" });
                 if (passwordOneEntered === passwordTwoEntered) {
-                    alert(`Account Created`);
+                    // alert(`Account Created`);
+                    // this.toggle();
+                    this.setState({visible: true})
+                    
                     // document.getElementById("accountCreatedmodal").modal("toggle");
                 }
             })
@@ -72,14 +89,14 @@ class Login extends Component {
                 // console.log(err);
                 const isAuthenticated = error.response.data.isAuthenticated;
                 window.isAuthenticated = isAuthenticated;
-                // localStorage.setItem('isAuthenticated', isAuthenticated)
-                // console.log(`isAuthenticated: ${error.response.data.isAuthenticated}`);
-            })
+            });
     };
 
     // handle any changes to the input fields
     handleInputChange = event => {
         // Pull the name and value properties off of the event.target (the element which triggered the event)
+        
+        
         const { name, value } = event.target;
 
         if (name === 'existing_username' || name === 'new_username') {
@@ -113,8 +130,18 @@ class Login extends Component {
 
     render() {
         return (
-
             <div>
+                
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                    <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+                    <ModalBody>
+                        Account Created
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                    </ModalFooter>
+                </Modal>
+
                 <h4>Existing User</h4>
                 <form>
                     <input
@@ -133,7 +160,10 @@ class Login extends Component {
                         onChange={this.handleInputChange}
                     />
                     <br />
-                    <button onClick={this.handleFormSubmitExistingUser}>Login</button>
+                    <button 
+                    onClick={this.handleFormSubmitExistingUser}
+                    isOpen={this.state.modal}
+                    >Login</button>
                 </form>
                 <br />
                 <br />
