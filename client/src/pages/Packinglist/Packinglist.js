@@ -1,9 +1,20 @@
+<<<<<<< HEAD
 // import Jumbotron from "../../components/Jumbotron";
 import NavTabs from "../../components/NavTabs";
 import React from "react";
 import { FormGroup, Label, Input } from "reactstrap";
 import "./Packing.css";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
+=======
+import NavTabs from "../../components/NavTabs";
+import React from 'react';
+import { FormGroup, Label, Input  } from 'reactstrap';
+import './Packing.css'
+
+// const scroll={
+//  color: "pink"
+// }
+>>>>>>> 9ea044168dea22bc90f7ab2b945ebf6bcb7b26a3
 
 export default class Example extends React.Component {
   constructor(props) {

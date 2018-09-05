@@ -32,7 +32,7 @@ class RandomTrip extends Component {
   render() {
     return (
         <div>
-        <h2>Random Trip Generator</h2>
+        <h2>Random Trip Generator:</h2>
       <form>
         <p>Origin Airport: <input
           type="text"

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import Jumbotron from "../components/Jumbotron";
 const bcrypt = require('bcryptjs');
 
 
@@ -131,7 +132,7 @@ class Login extends Component {
     render() {
         return (
             <div>
-                
+                <Jumbotron >
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
                     <ModalBody>
@@ -142,61 +143,75 @@ class Login extends Component {
                     </ModalFooter>
                 </Modal>
 
-                <h4>Existing User</h4>
-                <form>
-                    <input
-                        type="text"
-                        placeholder="Username"
-                        name="existing_username"
-                        value={this.state.existing_username}
-                        onChange={this.handleInputChange}
-                    />
-                    <br />
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        name="existing_password"
-                        value={this.state.existing_password}
-                        onChange={this.handleInputChange}
-                    />
-                    <br />
-                    <button 
-                    onClick={this.handleFormSubmitExistingUser}
-                    isOpen={this.state.modal}
-                    >Login</button>
-                </form>
-                <br />
-                <br />
 
-                <h4>New User</h4>
-                <form>
-                    <input
-                        type="text"
-                        placeholder="Username"
-                        name="new_username"
-                        value={this.state.new_username}
-                        onChange={this.handleInputChange}
-                    />
-                    <br />
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        name="new_password_one"
-                        value={this.state.new_password_one}
-                        onChange={this.handleInputChange}
-                    />
-                    <br />
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        name="new_password_two"
-                        value={this.state.new_password_two}
-                        onChange={this.handleInputChange}
-                    />
-                    <br />
-                    <button onClick={this.handleFormSubmitNewUser}
-                    >Login</button>
-                </form>
+           <div className="row">
+              <div class="col-1"></div>
+                <div class="card col-4">
+                    <div class="card-body">
+                    <h4 class="card-text">Existing User</h4>
+                        <form>
+                            <input
+                                type="text"
+                                placeholder="Username"
+                                name="existing_username"
+                                value={this.state.existing_username}
+                                onChange={this.handleInputChange}
+                            />
+                            <br />
+                            <input
+                                type="password"
+                                placeholder="Password"
+                                name="existing_password"
+                                value={this.state.existing_password}
+                                onChange={this.handleInputChange}
+                            />
+                            <br />
+                            <button 
+                            onClick={this.handleFormSubmitExistingUser}
+                            isOpen={this.state.modal}
+                            >Login</button>
+                        </form>
+                    </div>
+                </div>
+
+                 <div class="col-2"></div>
+
+                <div class="card col-4">
+                    <div class="card-body">
+                        <h4 class="card-text">Create New User</h4>
+                            <form>
+                                <input
+                                    type="text"
+                                    placeholder="Username"
+                                    name="new_username"
+                                    value={this.state.new_username}
+                                    onChange={this.handleInputChange}
+                                />
+                                <br />
+                                <input
+                                    type="password"
+                                    placeholder="Password"
+                                    name="new_password_one"
+                                    value={this.state.new_password_one}
+                                    onChange={this.handleInputChange}
+                                />
+                                <br />
+                                <input
+                                    type="password"
+                                    placeholder="Reenter Password"
+                                    name="new_password_two"
+                                    value={this.state.new_password_two}
+                                    onChange={this.handleInputChange}
+                                />
+                                <br />
+                                <button onClick={this.handleFormSubmitNewUser}
+                                >Login</button>
+                            </form>
+                    </div>
+                </div>
+            </div>
+
+                </Jumbotron>
             </div>
 
         );

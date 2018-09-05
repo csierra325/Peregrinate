@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 import Jumbotron from "../../components/Jumbotron";
-
 import Greeting from "../../components/Greeting";
 import ProfileCard from "../../components/ProfileCard";
 import ProfileForm from "../../components/ProfileForm";
@@ -15,12 +14,15 @@ class Profile extends Component {
     modal: true
   };
 
+<<<<<<< HEAD
   toggle = () => {
     this.setState({
       modal: !this.state.modal
     });
   };
 
+=======
+>>>>>>> 9ea044168dea22bc90f7ab2b945ebf6bcb7b26a3
   render() {
     return (
       <div className="wrapper">

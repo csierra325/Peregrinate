@@ -19,31 +19,18 @@ import Packinglist from "./pages/Packinglist";
 //Import styling
 import "./App.css";
 
-
-const IsComponentAuthenticated = (props) => {
-  const path = props.path;
-  const Component = props.component;
-
+const IsComponentAuthenticated = ({ component: Component, ...rest }) => {
   const isAuthenticated = window.isAuthenticated || false;
-  // localStorage.getItem('isAuthenticated')
-  // const isAuthenticated = localStorage.getItem('isAuthenticated') || false;
-
-  if (isAuthenticated) {
-    return (
-      <Route path={path} component={Component} />
-    );
-  }
-
-  return <Redirect to='/login' />
-  // return this.props.history.push('/login')
+  return <Route {...rest} render={(props) => (
+    isAuthenticated === true
+      ? <Component {...props} />
+      : <Redirect to='/' />
+  )} />
 };
-
-
 
 class App extends Component {
   componentDidMount() {
-    const id = "5b88531ffde72333acdf6b5c";
-    API.getUser(id)
+    API.getUser(window.id)
       .then(console.log)
       // .then(res => this.setState({ breeds: res.data.message }))
       .catch(err => console.log(err));
@@ -52,15 +39,11 @@ class App extends Component {
   render() {
     
     return (
-
       <Router>
         <div>
           <Nav />
           <Route exact path="/" component={Members} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/map/:id" component={Maps} />
-          <Route exact path="/friends/:id" component={Friends} />
-          <Route exact path="/tripplanner/:id" component={TripPlanner} />
           <Route exact path="/about" component={About} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path = "/packinglist/:id" component = {Packinglist}/>
@@ -71,10 +54,6 @@ class App extends Component {
           <Route exact path="/friends/:id" component={Friends} />
           <Route exact path="/tripplanner/:id" component={TripPlanner} /> */}
 
-
-          
-
-
           <IsComponentAuthenticated path='/profile/:id' component={Profile} />
           <IsComponentAuthenticated path='/wishlist/:id' component={Wishlist} />
           <IsComponentAuthenticated path='/map/:id' component={Maps} />
@@ -82,7 +61,6 @@ class App extends Component {
           <IsComponentAuthenticated path='/tripplanner/:id' component={TripPlanner} />
 
         </div>
-
       </Router>
     );
   }
