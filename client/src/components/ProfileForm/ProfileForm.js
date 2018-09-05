@@ -208,7 +208,7 @@ class ProfileForm extends Component {
         </Modal> : null}
 
         {this.state.profileUpdated ? <Modal isOpen={this.state.profileUpdated} toggle={this.closeModal} className={this.props.className}>
-          <ModalHeader>Error</ModalHeader>
+          <ModalHeader>Peregrinate</ModalHeader>
           <ModalBody>
           Profile Updated
                     </ModalBody>
