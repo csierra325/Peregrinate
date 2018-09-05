@@ -9,6 +9,6 @@ const flightSearchSchema = new Schema({
   maxPrice: { type: Number, required: false }
 });
 
-const flightSearch = mongoose.model("Flight Search", flightSearchSchema);
+const flightSearch = mongoose.model("FlightSearch", flightSearchSchema);
 
 module.exports = flightSearch;

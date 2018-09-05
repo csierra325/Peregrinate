@@ -8,6 +8,6 @@ const hotelSearchSchema = new Schema({
   duration: { type: Date, required: false }
 });
 
-const hotelSearch = mongoose.model("Hotel Search", hotelSearchSchema);
+const hotelSearch = mongoose.model("HotelSearch", hotelSearchSchema);
 
 module.exports = hotelSearch;
