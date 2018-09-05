@@ -30,12 +30,17 @@ const IsComponentAuthenticated = (props) => {
 
   if (isAuthenticated) {
     return (
-      <Route path={path} component={Component} />
+      <Route exact path={path} component={Component} />
     );
+  }else if(!isAuthenticated){
+    if (path === "/"){
+      return (
+        <Route exact path={path} component={Component} />
+      );
+    }
   }
 
   return <Redirect to='/login' />
-  // return this.props.history.push('/login')
 };
 
 
@@ -45,7 +50,6 @@ class App extends Component {
     const id = "5b88531ffde72333acdf6b5c";
     API.getUser(id)
       .then(console.log)
-      // .then(res => this.setState({ breeds: res.data.message }))
       .catch(err => console.log(err));
   }
 
@@ -58,12 +62,12 @@ class App extends Component {
           <Nav />
           <Route exact path="/" component={Members} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/map/:id" component={Maps} />
-          <Route exact path="/friends/:id" component={Friends} />
-          <Route exact path="/tripplanner/:id" component={TripPlanner} />
+          {/* <Route exact path="/map/:id" component={Maps} /> */}
+          {/* <Route exact path="/friends/:id" component={Friends} /> */}
+          {/* <Route exact path="/tripplanner/:id" component={TripPlanner} /> */}
           <Route exact path="/about" component={About} />
           <Route exact path="/contact" component={Contact} />
-          <Route exact path = "/packinglist/:id" component = {Packinglist}/>
+          {/* <Route exact path = "/packinglist/:id" component = {Packinglist}/> */}
 
           {/* <Route exact path="/profile/:id" component={Profile} />
           <Route exact path="/wishlist/:id" component={Wishlist} />
@@ -72,9 +76,8 @@ class App extends Component {
           <Route exact path="/tripplanner/:id" component={TripPlanner} /> */}
 
 
-          
-
-
+          <IsComponentAuthenticated path="/tripplanner/:id" component={TripPlanner} />
+          <IsComponentAuthenticated path='/packinglist/:id' component={Packinglist} />
           <IsComponentAuthenticated path='/profile/:id' component={Profile} />
           <IsComponentAuthenticated path='/wishlist/:id' component={Wishlist} />
           <IsComponentAuthenticated path='/map/:id' component={Maps} />
