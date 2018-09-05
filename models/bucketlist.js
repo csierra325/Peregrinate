@@ -5,6 +5,6 @@ const bucketlistSchema = new Schema({
   bucketItem: { type: String, required: true },
 });
 
-const bucketlist = mongoose.model("Bucket List", bucketlistSchema);
+const bucketlist = mongoose.model("BucketList", bucketlistSchema);
 
 module.exports = bucketlist;

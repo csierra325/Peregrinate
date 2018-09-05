@@ -8,6 +8,6 @@ const carSearchSchema = new Schema({
   dropOff: { type: Date, required: true },
 });
 
-const carSearch = mongoose.model("Car Search", carSearchSchema);
+const carSearch = mongoose.model("CarSearch", carSearchSchema);
 
 module.exports = carSearch;
