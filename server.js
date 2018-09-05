@@ -22,7 +22,13 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Define API routes here
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/peregrinateUsers");
+var databaseUri = "mongodb://localhost/peregrinate";
+
+if (process.env.MONGODB_URI) {
+mongoose.connect(process.env.MONGODB_URI);
+} else {
+  mongoose.connect(databaseUri);  
+};
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
