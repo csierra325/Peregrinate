@@ -4,10 +4,10 @@ module.exports = {
     friendlist: require("./friendlist"),
     travellist: require("./traveledlist"),
     friendRequests: require("./friendRequests"),
-    randomflight: require("./randomFlight"),
-    carSearch: require("./carSearch"),
-    hotelSearch: require("./hotelSearch"),
-    flightSearch: require("./flightSearch"), 
+    // randomflight: require("./randomFlight"),
+    // carSearch: require("./carSearch"),
+    // hotelSearch: require("./hotelSearch"),
+    // flightSearch: require("./flightSearch"), 
     US_cities: require("./US_cities")  
 };
   

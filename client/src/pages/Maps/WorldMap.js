@@ -211,16 +211,23 @@ class WorldMap extends Component {
 
   /* optional customization of filling per state and calling custom callbacks per state */
   statesCustomConfig = () => {
-    return {
-      GA: {
-        fill: "#f55e60",
-        clickHandler: event =>
-          console.log("Custom handler for GA", event.target.dataset)
-      },
-      FL: {
-        fill: "#CC0000"
-      }
-    };
+    // concat
+    let config = this.state.traveledlist.reduce((configObj, currValue) => {
+      configObj[currValue] = { fill: "#f55e60" };
+      return configObj;
+    }, {});
+
+    // config = this.state.bucketList.reduce((configObj, currValue) => {
+    //   configObj[currValue] = { fill: "#f55e60" };
+    //   return configObj;
+    // }, config);
+
+    // config = this.state.friendsList.reduce((configObj, currValue) => {
+    //   configObj[currValue] = { fill: "#f55e60" };
+    //   return configObj;
+    // }, config);
+
+    return config;
   };
 
   // statesCustomConfig = (traveledlist) => {
