@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // Serve up static assets (usually on heroku)
 
+console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === "production") {
   console.log(`Production envo: ${process.env.NODE_ENV}`)
   app.use(express.static("client/build"));

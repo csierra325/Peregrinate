@@ -33,7 +33,6 @@ class App extends Component {
   componentDidMount() {
     API.getUser(window.id)
       .then(console.log)
-      // .then(res => this.setState({ breeds: res.data.message }))
       .catch(err => console.log(err));
   }
 
@@ -50,12 +49,8 @@ class App extends Component {
           <Route exact path = "/packinglist/:id" component = {Packinglist}/>
           <Route exact path = "/travelideas/:id" component = {Travelideas} />
 
-          {/* <Route exact path="/profile/:id" component={Profile} />
-          <Route exact path="/wishlist/:id" component={Wishlist} />
-          <Route exact path="/map/:id" component={Maps} />
-          <Route exact path="/friends/:id" component={Friends} />
-          <Route exact path="/tripplanner/:id" component={TripPlanner} /> */}
-
+          <IsComponentAuthenticated path="/tripplanner/:id" component={TripPlanner} />
+          <IsComponentAuthenticated path='/packinglist/:id' component={Packinglist} />
           <IsComponentAuthenticated path='/profile/:id' component={Profile} />
           <IsComponentAuthenticated path='/wishlist/:id' component={Wishlist} />
           <IsComponentAuthenticated path='/map/:id' component={Maps} />

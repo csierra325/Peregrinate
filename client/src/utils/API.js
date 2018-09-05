@@ -4,11 +4,11 @@ export default {
 
   //***** USERS COLLECTION *****
   // Gets all users
-  getUsers: function () {
-    return axios.get("/api/users");
+  getUsers: function (query) {
+    const queryString = query ? `?username=${query}` : "";
+    return axios.get("/api/users" + queryString);
   },
  
-  
   // Gets the user with the given id
   getUser: function (id) {
     return axios.get("/api/users/" + id);
@@ -24,6 +24,14 @@ export default {
 
   updateUser: function(id, userdata){
     return axios.put("/api/users/" + id, userdata)
+  },
+
+  getCurrentFriends: function (id) {
+    return axios.get("/api/friends/" + id);
+  },
+
+  getFriendSearch: function(id) {
+    return axios.get("/api/friendspage/friends/" + id);
   }
 
 };
