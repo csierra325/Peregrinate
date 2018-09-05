@@ -91,7 +91,7 @@ class ProfileForm extends Component {
     API.updateUser(id, updating)
       .then(res => {
         // document.getElementById('firstName').value = res.data.name.first;
-        this.state.firstname = res.data.name.first;
+        // this.state.firstname = res.data.name.first;
         console.log(`name from db: ${res.data.name.first}`)
         console.log(res.data);
         // componentDidMount();
@@ -155,7 +155,7 @@ class ProfileForm extends Component {
       departureCity: this.state.departureCity
     }
 
-    var emptyString = "";
+    // var emptyString = "";
 
 
     console.log(`
@@ -177,7 +177,7 @@ class ProfileForm extends Component {
 
     if (address.city === undefined || address.state === "Choose...") {
       alert("Please enter a city and select a state. \nResubmit the form once complete.");
-      this.state.firstname = name.first;
+      // this.state.firstname = name.first;
     } else {
       this.updateUser(this.state.id, {
         $set: {

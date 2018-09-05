@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import Jumbotron from "../components/Jumbotron";
 const bcrypt = require('bcryptjs');
 
 
@@ -15,7 +16,7 @@ class Login extends Component {
         };
 
         this.toggle = this.toggle.bind(this);
-        this.passwordMatchingToggle = this.passwordMatchingToggle.bind(this);
+        // this.passwordMatchingToggle = this.passwordMatchingToggle.bind(this);
         this.closeModal = this.closeModal.bind(this);
     };
 
@@ -29,11 +30,11 @@ class Login extends Component {
         });
     };
 
-    passwordMatchingToggle() {
-        this.setState({
-            passwordMatching: !this.state.modal
-        });
-    }
+    // passwordMatchingToggle() {
+    //     this.setState({
+    //         passwordMatching: !this.state.modal
+    //     });
+    // }
 
 
     // closeModal(){
@@ -84,10 +85,10 @@ class Login extends Component {
 
     addUser = (passwordOneEntered, passwordTwoEntered) => {
 
-        if (passwordOneEntered !== passwordTwoEntered) {
-            // alert('Passwords do not match. Please try again.');
-            this.setState({ passwordMatching: true });
-        }
+        // if (passwordOneEntered !== passwordTwoEntered) {
+        //     // alert('Passwords do not match. Please try again.');
+        //     this.setState({ passwordMatching: true });
+        // }
 
         if (passwordOneEntered === passwordTwoEntered) {
             API.saveUser({ username: this.state.new_username, password: this.state.new_password_one })
@@ -152,7 +153,7 @@ class Login extends Component {
 
     handleFormSubmitNewUser = event => {
         event.preventDefault();
-        console.log(`New User\n----------------\nUsername: ${this.state.new_username}\nPassword One: ${this.state.new_password_one} \nPassword Two:${this.state.new_password_two}\n--------------`);
+        // console.log(`New User\n----------------\nUsername: ${this.state.new_username}\nPassword One: ${this.state.new_password_one} \nPassword Two:${this.state.new_password_two}\n--------------`);
         // if (this.state.new_password_one === this.state.new_password_one)
         this.addUser(this.state.new_password_one, this.state.new_password_two);
     }
@@ -175,15 +176,7 @@ class Login extends Component {
                     </ModalFooter>
                 </Modal> : null}
 
-                {this.state.passwordMatching ? <Modal isOpen={this.state.passwordMatching} toggle={this.passwordMatchingToggle} className={this.props.className}>
-                    <ModalHeader>Error</ModalHeader>
-                    <ModalBody>
-                        Passwords do not match. Please try again.
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button color="secondary" onClick={this.closeModal}>Cancel</Button>
-                    </ModalFooter>
-                </Modal> : null}
+                
 
 
 

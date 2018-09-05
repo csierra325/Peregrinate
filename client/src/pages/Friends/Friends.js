@@ -5,7 +5,6 @@ import CurrentFriends from "../../components/CurrentFriends/currentfriends";
 import FriendsSearch from "../../components/FriendSearch/friendsearch";
 import FriendsResult from "../../components/FriendsResult/friendsresult";
 
-
 import NavTabs from "../../components/NavTabs"
 
 class Friends extends Component {
@@ -15,10 +14,6 @@ class Friends extends Component {
     username: window.username,
     currentfriends: []
   };
-
-
-
-  
 
   // componentDidMount() {
   //   this.onPageLoad();
@@ -39,13 +34,38 @@ class Friends extends Component {
       <div className="wrapper">
         <NavTabs />
         <Jumbotron>
-          <h2><strong>{this.state.username}</strong></h2>
-          <h1>I'm the friends page!</h1>
-          <CurrentFriends />
-          <FriendsSearch handleFormSubmit={this.handleFormSubmit} />
-          {/* <FriendsResult results={this.state.friendSearchResults} /> */}
-          <FriendsResult />
+          {/* <h2><strong>{this.state.username}</strong></h2>
+          <h2>I'm the friends page!</h2> */}
 
+          <div className="row">
+            <div class="card col-4">
+              <div class="card-body">
+                
+                  <CurrentFriends />
+              </div>
+            </div>
+
+            <div class="col-1"></div>
+
+            <div class="card col-7">
+              <div class="card-body">
+                  <FriendsResult />
+              </div>
+            </div>
+          </div>
+
+          <br/><br/>
+
+          <div className="row">
+            <div class="card col-4">
+              <h2 className ="card-text">Make New Friends:</h2>
+                <div class="card-body">
+                  <FriendsSearch handleFormSubmit={this.handleFormSubmit} />
+                  {/* <FriendsResult results={this.state.friendSearchResults} /> */}
+                </div>
+            </div>
+          </div>
+        
         </Jumbotron>
        
       </div>

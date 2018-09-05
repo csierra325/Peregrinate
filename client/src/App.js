@@ -19,36 +19,18 @@ import Packinglist from "./pages/Packinglist";
 //Import styling
 import "./App.css";
 
-
-const IsComponentAuthenticated = (props) => {
-  const path = props.path;
-  const Component = props.component;
-
+const IsComponentAuthenticated = ({ component: Component, ...rest }) => {
   const isAuthenticated = window.isAuthenticated || false;
-  // localStorage.getItem('isAuthenticated')
-  // const isAuthenticated = localStorage.getItem('isAuthenticated') || false;
-
-  if (isAuthenticated) {
-    return (
-      <Route exact path={path} component={Component} />
-    );
-  }else if(!isAuthenticated){
-    if (path === "/"){
-      return (
-        <Route exact path={path} component={Component} />
-      );
-    }
-  }
-
-  return <Redirect to='/login' />
+  return <Route {...rest} render={(props) => (
+    isAuthenticated === true
+      ? <Component {...props} />
+      : <Redirect to='/' />
+  )} />
 };
-
-
 
 class App extends Component {
   componentDidMount() {
-    const id = "5b88531ffde72333acdf6b5c";
-    API.getUser(id)
+    API.getUser(window.id)
       .then(console.log)
       .catch(err => console.log(err));
   }
@@ -56,7 +38,6 @@ class App extends Component {
   render() {
     
     return (
-
       <Router>
         <div>
           <Nav />
@@ -85,7 +66,6 @@ class App extends Component {
           <IsComponentAuthenticated path='/tripplanner/:id' component={TripPlanner} />
 
         </div>
-
       </Router>
     );
   }

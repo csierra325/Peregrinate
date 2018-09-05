@@ -6,7 +6,6 @@ const Members = (props) => (
   <div className = "wrapper">
   <div className ="backgroundHexagon">
 
-  
       <h1>Welcome to Peregrinate</h1>
       <div className = "memberH2">...Where The Adventure Awaits</div>
       <Hexagon/>
