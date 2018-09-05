@@ -44,7 +44,7 @@ export default class Dropdown extends Component {
       <div className="Dropdown">
         <h2>Wish List: </h2>
        <div className="cities">
-       <label htmlFor="choosing-cities">Pick A City</label>
+       <label htmlFor="choosing-cities">Pick A State</label>
        <form onSubmit={this.props.handleSubmit}>
         <input
           name="selectedCity"
@@ -57,8 +57,8 @@ export default class Dropdown extends Component {
             {this.state.searchedCities.map((city, i) => (
               <option
                 key={city._id}
-                value={city.city}>
-                {city.city}
+                value={city.state_name}>
+                {city.state_name}
               </option>
             ))}
             
