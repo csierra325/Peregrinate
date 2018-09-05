@@ -4,8 +4,9 @@ export default {
 
   //***** USERS COLLECTION *****
   // Gets all users
-  getUsers: function () {
-    return axios.get("/api/users");
+  getUsers: function (query) {
+    const queryString = query ? `?username=${query}` : "";
+    return axios.get("/api/users" + queryString);
   },
  
   // Gets the user with the given id
