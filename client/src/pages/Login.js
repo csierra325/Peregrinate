@@ -161,119 +161,133 @@ class Login extends Component {
     render() {
         return (
             <div>
-
-                {this.state.accountCreatedModal ? <Modal isOpen={this.state.accountCreatedModal} toggle={this.toggle} className={this.props.className}>
-                    <ModalHeader toggle={this.toggle}>Welcome to Peregrinate!</ModalHeader>
-                    <ModalBody>
-                        “A journey is measured in friends rather than miles.”
-                        – Tim Cahill
+                <Jumbotron >
+                    {this.state.accountCreatedModal ? <Modal isOpen={this.state.accountCreatedModal} toggle={this.toggle} className={this.props.className}>
+                        <ModalHeader toggle={this.toggle}>Welcome to Peregrinate!</ModalHeader>
+                        <ModalBody>
+                            “A journey is measured in friends rather than miles.”
+                            – Tim Cahill
                     </ModalBody>
-                    <ModalFooter>
-                        {/* <Button color="secondary" onClick={this.toggle}>Cancel</Button> */}
-                    </ModalFooter>
-                </Modal> : null}
+                        <ModalFooter>
+                            {/* <Button color="secondary" onClick={this.toggle}>Cancel</Button> */}
+                        </ModalFooter>
+                    </Modal> : null}
 
-                {this.state.passwordMatching ? <Modal isOpen={this.state.passwordMatching} toggle={this.closeModal} className={this.props.className}>
-                    <ModalHeader>Error</ModalHeader>
-                    <ModalBody>
-                        Passwords do not match. Please try again.
+                    {this.state.passwordMatching ? <Modal isOpen={this.state.passwordMatching} toggle={this.closeModal} className={this.props.className}>
+                        <ModalHeader>Error</ModalHeader>
+                        <ModalBody>
+                            Passwords do not match. Please try again.
                     </ModalBody>
-                    <ModalFooter>
-                        <Button color="secondary" onClick={this.closeModal} isOpen={this.state.passwordMatching}>Cancel</Button>
-                    </ModalFooter>
-                </Modal> : null}
+                        <ModalFooter>
+                            <Button color="secondary" onClick={this.closeModal} isOpen={this.state.passwordMatching}>Cancel</Button>
+                        </ModalFooter>
+                    </Modal> : null}
 
-                {this.state.chooseAnotherUsername ? <Modal isOpen={this.state.chooseAnotherUsername} toggle={this.closeModal} className={this.props.className}>
-                    <ModalHeader>Error</ModalHeader>
-                    <ModalBody>
-                        Please choose another username
+                    {this.state.chooseAnotherUsername ? <Modal isOpen={this.state.chooseAnotherUsername} toggle={this.closeModal} className={this.props.className}>
+                        <ModalHeader>Error</ModalHeader>
+                        <ModalBody>
+                            Please choose another username
                     </ModalBody>
-                    <ModalFooter>
-                        <Button color="secondary" onClick={this.closeModal} isOpen={this.state.chooseAnotherUsername}>Cancel</Button>
-                    </ModalFooter>
-                </Modal> : null}
+                        <ModalFooter>
+                            <Button color="secondary" onClick={this.closeModal} isOpen={this.state.chooseAnotherUsername}>Cancel</Button>
+                        </ModalFooter>
+                    </Modal> : null}
 
-                {this.state.loginAuth ? <Modal isOpen={this.state.loginAuth} toggle={this.closeModal} className={this.props.className}>
-                    <ModalHeader>Error</ModalHeader>
-                    <ModalBody>
-                        Username or Password is incorrect
+                    {this.state.loginAuth ? <Modal isOpen={this.state.loginAuth} toggle={this.closeModal} className={this.props.className}>
+                        <ModalHeader>Error</ModalHeader>
+                        <ModalBody>
+                            Username or Password is incorrect
                     </ModalBody>
-                    <ModalFooter>
-                        <Button color="secondary" onClick={this.closeModal} isOpen={this.state.loginAuth}>Cancel</Button>
-                    </ModalFooter>
-                </Modal> : null}
+                        <ModalFooter>
+                            <Button color="secondary" onClick={this.closeModal} isOpen={this.state.loginAuth}>Cancel</Button>
+                        </ModalFooter>
+                    </Modal> : null}
 
 
 
-                {this.state.existingUserField ? <Modal isOpen={this.state.existingUserField} toggle={this.closeModal} className={this.props.className}>
-                    <ModalHeader>Error</ModalHeader>
-                    <ModalBody>
-                        Enter existing username and password
+                    {this.state.existingUserField ? <Modal isOpen={this.state.existingUserField} toggle={this.closeModal} className={this.props.className}>
+                        <ModalHeader>Error</ModalHeader>
+                        <ModalBody>
+                            Enter existing username and password
                     </ModalBody>
-                    <ModalFooter>
-                        <Button color="secondary" onClick={this.closeModal} isOpen={this.state.existingUserField}>Cancel</Button>
-                    </ModalFooter>
-                </Modal> : null}
+                        <ModalFooter>
+                            <Button color="secondary" onClick={this.closeModal} isOpen={this.state.existingUserField}>Cancel</Button>
+                        </ModalFooter>
+                    </Modal> : null}
 
-                <h4>Existing User</h4>
-                <form>
-                    <input
-                        type="text"
-                        placeholder="Username"
-                        name="existing_username"
-                        value={this.state.existing_username}
-                        onChange={this.handleInputChange}
-                    />
-                    <br />
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        name="existing_password"
-                        value={this.state.existing_password}
-                        onChange={this.handleInputChange}
-                    />
-                    <br />
-                    <button
-                        onClick={this.handleFormSubmitExistingUser}
-                        isOpen={this.state.accountCreatedModal}
-                    >Login</button>
-                </form>
-                <br />
-                <br />
+                    <div className="row">
+                        <div class="col-1"></div>
+                        <div class="card col-4">
 
-                <h4>New User</h4>
-                <form>
-                    <input
-                        type="text"
-                        placeholder="Username"
-                        name="new_username"
-                        value={this.state.new_username}
-                        onChange={this.handleInputChange}
-                    />
-                    <br />
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        name="new_password_one"
-                        value={this.state.new_password_one}
-                        onChange={this.handleInputChange}
-                    />
-                    <br />
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        name="new_password_two"
-                        value={this.state.new_password_two}
-                        onChange={this.handleInputChange}
-                    />
-                    <br />
-                    <button onClick={this.handleFormSubmitNewUser}
-                        isOpen={this.state.passwordMatching}>Login</button>
-                </form>
+                            <div class="card-body">
+                                <h4>Existing User</h4>
+                                <form>
+                                    <input
+                                        type="text"
+                                        placeholder="Username"
+                                        name="existing_username"
+                                        value={this.state.existing_username}
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <br />
+                                    <input
+                                        type="password"
+                                        placeholder="Password"
+                                        name="existing_password"
+                                        value={this.state.existing_password}
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <br />
+                                    <button
+                                        onClick={this.handleFormSubmitExistingUser}
+                                        isOpen={this.state.accountCreatedModal}
+                                    >Login</button>
+                                </form>
+                            </div>
+                        </div>
 
 
-            </div>
+                        <div class="col-2"></div>
 
+
+
+                        <div class="card col-4">
+                            <div class="card-body">
+
+                                <h4 class="card-text">Create New User</h4>
+                                <form>
+                                    <input
+                                        type="text"
+                                        placeholder="Username"
+                                        name="new_username"
+                                        value={this.state.new_username}
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <br />
+                                    <input
+                                        type="password"
+                                        placeholder="Password"
+                                        name="new_password_one"
+                                        value={this.state.new_password_one}
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <br />
+                                    <input
+                                        type="password"
+                                        placeholder="Password"
+                                        name="new_password_two"
+                                        value={this.state.new_password_two}
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <br />
+                                    <button onClick={this.handleFormSubmitNewUser}
+                                        isOpen={this.state.passwordMatching}>Login</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </Jumbotron>
+            </div >
         );
     }
 }
