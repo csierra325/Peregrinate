@@ -8,8 +8,8 @@ module.exports = {
     db.User
       .find(req.query)
       .sort({ date: -1 })
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .then(dbModel => res.json({ dbModel: dbModel, isAuthenticated: true }))
+      .catch(err => res.status(422).json({err: err, isAuthenticated: false}));
   },
   findById: function (req, res) {
     db.User
@@ -18,22 +18,17 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function (req, res) {
-    // var password = req.body.password;
-    // console.log(`Not hashed password: ${password}`)
-    // bcrypt.hash(password, saltRounds, function (err, hash) {
-    //   // Store hash in your password DB.
-    //   req.body.password = hash;
-    //   console.log(`Hashed password: ${req.body.password}`);
-    //   db.User
-    //     .create(req.body)
-    //     .then(dbModel => res.json(dbModel))
-    //     .catch(err => res.status(422).json(err));
-    // });
-
-    db.User
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    var password = req.body.password;
+    bcrypt.hash(password, saltRounds, function (err, hash) {
+      // Store hash in your password DB.
+      req.body.password = hash;
+      console.log(`Hashed password: ${req.body.password}`);
+      db.User
+        .create(req.body)
+        .then(dbModel => res.json({ dbModel: dbModel, isAuthenticated: true }))
+        // .catch(err => res.status(422).json({ err: err, isAuthenticated: false }));
+        .catch(err => res.status(422).json({ message: "choose another username", isAuthenticated: false }));
+    });
   },
   update: function (req, res) {
     db.User
@@ -55,7 +50,6 @@ module.exports = {
   //     .findOne({ username: req.params.id })
   //     .then(dbModel => res.json(dbModel))
   //     .catch(err => res.status(422).json(err));
-  //   // console.log(`Req.body: ${req.body} \nReq.params ${req.params}`)
   // },
   remove: function (req, res) {
     db.User

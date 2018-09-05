@@ -22,31 +22,13 @@ class ProfileForm extends Component {
     id: window.id
   };
 
-  componentDidMount() {
-    console.log(window.username);
-  }
-
-  // getUser = (id) => {
-  //   API.getProfile(id)
-  //     .then(res => {
-  //       console.log(res.data);
-  //     })
-  //     .catch(err => console.log(err));
-  // };
-
-  getUser = (users_name) => {
-    // console.log(users_name);
-    API.getUser(users_name)
-      .then(res => {
-        console.log(res.data[0].name.first);
-      })
-      .catch(err => console.log(err));
-  };
-
   updateUser = (id, updating) => {
 
     API.updateUser(id, updating)
       .then(res => {
+        // document.getElementById('firstName').value = res.data.name.first;
+        this.state.firstname = res.data.name.first;
+        console.log(`name from db: ${res.data.name.first}`)
         console.log(res.data);
       })
       .catch(err => console.log(err));
@@ -63,8 +45,8 @@ class ProfileForm extends Component {
   };
 
   // When the form is submitted, prevent the default event and alert the username and password
-  handleFormSubmit = event => {
-    event.preventDefault();
+  handleFormSubmit = e => {
+    e.preventDefault();
 
     this.setState({
       firstname: "",
@@ -77,10 +59,9 @@ class ProfileForm extends Component {
       local: "",
       addressOne: "",
       zip: "",
-      departureCity: "",
+      departureCity: ""
     });
 
-    // name, email,
     var name = {
       first: this.state.firstname,
       last: this.state.lastname
@@ -96,7 +77,7 @@ class ProfileForm extends Component {
 
     var address = {
       addressOne: this.state.addressOne,
-      adressTwo: this.state.addressTwo,
+      addressTwo: this.state.addressTwo,
       city: this.state.city,
       state: stateValue,
       zip: this.state.zip,
@@ -107,7 +88,8 @@ class ProfileForm extends Component {
       rentalNum: this.state.rentalNumber,
       departureCity: this.state.departureCity
     }
-    // var {airline} = this.state;
+
+    // var emptyString = "";
 
 
     console.log(`
@@ -127,34 +109,39 @@ class ProfileForm extends Component {
       Local: ${local}
     `);
 
-    this.getUser(this.state.username);
+    if (address.city === undefined || address.state === "Choose...") {
+      alert("Please enter a city and select a state. \nResubmit the form once complete.");
+      this.state.firstname = name.first;
+    } else {
+      this.updateUser(this.state.id, {
+        $set: {
+          "name.first": name.first,
+          "name.last": name.last,
+          email: email,
+          "address.addressOne": address.addressOne,
+          "address.addressTwo": address.addressTwo,
+          "address.city": address.city,
+          "address.state": address.state,
+          "address.zip": address.zip,
+          "travelInfo.airline": airline,
+          "travelInfo.frequentFlyerNumber": travelInfo.frequentFlyer,
+          "travelInfo.rental": carRental,
+          "travelInfo.rentalNumber": travelInfo.rentalNum,
+          "travelInfo.departureCity": travelInfo.departureCity,
+          "travelInfo.local": local
+        }
+      });
 
-    this.updateUser(this.state.id, {
-      $set: {
-        "name.first": name.first,
-        "name.last": name.last,
-        email: email,
-        "address.addressOne" : address.addressOne,
-        "address.addressTwo" : address.addressTwo,
-        "address.city" : address.city,
-        "address.state" : address.state,
-        "address.zip" : address.zip,
-        "travelInfo.airline" : airline,
-        "travelInfo.frequentFlyerNumber " : travelInfo.frequentFlyer,
-        "travelInfo.rental" : carRental,
-        "travelInfo.rentalNumber" : travelInfo.rentalNum,
-        "travelInfo.departureCity" : travelInfo.departureCity,
-        "travelInfo.local" :  local
-      }
-    });
+      // this.state.firstname = name.first;
+      document.getElementById('firstName').value = name.first;
+    }
 
-    console.log(`Window.id: ${window.id} \n this.state.userId: ${this.state.userID}`);
 
+
+    // console.log(`Window.id: ${window.id} \n this.state.userId: ${this.state.userID}`);
   };
 
   render() {
-    // const id = window.id || 000;
-    // console.log(id);
     return (
       <form>
         <div class="form-row">
@@ -166,6 +153,7 @@ class ProfileForm extends Component {
               name="firstname"
               value={this.state.firstname}
               onChange={this.handleInputChange}
+              id="firstName"
             />
           </div>
           <div class="form-group col-md-4">
@@ -191,7 +179,7 @@ class ProfileForm extends Component {
         </div>
 
         <div class="form-group">
-          <label class="text-left" for="inputAddress">Address</label>
+          <label class="text-left" htmlFor="inputAddress">Address</label>
           <input
             type="text"
             class="form-control"
@@ -204,7 +192,7 @@ class ProfileForm extends Component {
         </div>
 
         <div class="form-group">
-          <label for="inputAddress2">Address 2</label>
+          <label htmlFor="inputAddress2">Address 2</label>
           <input
             type="text"
             class="form-control"
@@ -218,13 +206,13 @@ class ProfileForm extends Component {
 
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="inputCity">City</label>
+            <label htmlFor="inputCity">City</label>
             <input type="text" class="form-control" id="inputCity" name="city" value={this.state.city}
               onChange={this.handleInputChange} />
           </div>
 
           <div class="form-group col-md-4">
-            <label for="inputState">State</label>
+            <label htmlFor="inputState">State</label>
             <select id="inputState" class="form-control">
               <option selected>Choose...</option>
               <option value="AL">Alabama</option>
@@ -281,14 +269,14 @@ class ProfileForm extends Component {
           </div>
 
           <div class="form-group col-md-2">
-            <label for="inputZip">Zip</label>
+            <label htmlFor="inputZip">Zip</label>
             <input type="text" class="form-control" id="inputZip" name="zip" value={this.state.zip}
               onChange={this.handleInputChange} />
           </div>
         </div>
 
         <div class="form-group">
-          <label for="inputAddress2">Travel Info</label>
+          <label htmlFor="inputAddress2">Travel Info</label>
           <select
             class="form-control"
             type="text"

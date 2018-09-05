@@ -1,9 +1,11 @@
 import React from "react";
-import Jumbotron from "../components/Jumbotron"
-import Slideshow from "../components/Slideshow/Slideshow"
+import Jumbotron from "../components/Jumbotron";
+import Slideshow from "../components/Slideshow/Slideshow";
+import NavTabs from "../components/NavTabs/NavTabs";
 
 const About = (props) => (
     <div className = "wrapper">
+    <NavTabs />
       <Jumbotron>
         <Slideshow/>
         <h1>Who Are We?</h1>

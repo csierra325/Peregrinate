@@ -7,13 +7,11 @@ const usersController = require("../../controllers/usersController");
 router.route("/")
   .get(usersController.findAll)
   .post(usersController.create);
-// .get(usersController.find);
 
 // Matches with "/api/users/:id"
 router.route("/:id([a-f\\d]{24})")
   .get(usersController.findById)
   .put(usersController.update)
-  // .get(usersController.findOne)
   .delete(usersController.remove);
 
 router.route("/:username")

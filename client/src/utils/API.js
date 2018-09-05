@@ -38,5 +38,4 @@ export default {
 
  export function getCities() {
   return axios.get("/api/cities");
-}
-
+};

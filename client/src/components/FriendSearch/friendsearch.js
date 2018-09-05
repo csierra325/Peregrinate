@@ -40,11 +40,9 @@ class FriendsSearch extends Component {
 
     render() {
         return (
-            <div className="friendsSearch">
-                <div className="currentFriendSearchTitle">Make New Friends:</div>
-
-                <form className="form">
-                    <p>Username: </p>
+            <div className="friendsSearch" align="left">
+                <form class="form">
+                    <h6>Search by Username: </h6>
                     <input
                         type="text"
                         placeholder="Username"

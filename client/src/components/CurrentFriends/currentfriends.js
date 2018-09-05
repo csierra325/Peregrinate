@@ -18,16 +18,14 @@ class Currentfriends extends Component{
 
   render() {
       return(
-          <div className="currentFriends">
-              <div className = "currentFriendsTitle">Current Friends:</div>   
-              <ul>
-                {this.state.currentFriends.map((currentFriends, i) => (
-                <CurrentFriendItem key={i} text={currentFriends} />
-                ))}
-            </ul>            
-          </div>
+          <div className="currentFriends" align="left">
+            <h2 className = "card-text">Current Friends:</h2> 
+                <ul class="list-group list-group-flush">    
+                    <li class="list-group-item"> CURRENT FRIEND </li>
+                </ul>
+          </div> 
       )
-  };
+  }
 };
 
 export default Currentfriends;

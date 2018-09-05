@@ -59,6 +59,16 @@ const NavTabs = props => {
           Friends
         </Link>
       </li>
+      <li className="nav-item">
+        <Link
+          to={`/packinglist/${id}`}
+          className={
+            window.location.pathname === `/packinglist/${id}` ? "nav-link active" : "nav-link"
+          }
+        >
+         Packing List
+        </Link>
+      </li>
     </ul>
   );
 };
