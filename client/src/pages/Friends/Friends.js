@@ -3,7 +3,7 @@ import Jumbotron from "../../components/Jumbotron";
 
 import CurrentFriends from "../../components/CurrentFriends/currentfriends";
 import FriendsSearch from "../../components/FriendSearch/friendsearch";
-// import FriendsResult from "../../components/FriendsResult/friendsresult";
+import FriendsResult from "../../components/FriendsResult/friendsresult";
 
 import NavTabs from "../../components/NavTabs";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
@@ -68,7 +68,7 @@ class Friends extends Component {
 
             <div class="card col-7">
               <div class="card-body">
-                  {/* <FriendsResult /> */}
+                  <FriendsResult />
               </div>
             </div>
           </div>
