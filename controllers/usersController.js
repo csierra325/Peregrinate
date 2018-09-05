@@ -41,14 +41,22 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  find: function (req, res) {
+  findByUsername: function (req, res) {
     console.log("Getting One User")
     db.User
-      .findOne({ username: req.params.id })
+      .findOne({ username: req.params.username })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
     // console.log(`Req.body: ${req.body} \nReq.params ${req.params}`)
   },
+  // find: function (req, res) {
+  //   console.log("Getting One User")
+  //   db.User
+  //     .findOne({ username: req.params.id })
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  //   // console.log(`Req.body: ${req.body} \nReq.params ${req.params}`)
+  // },
   remove: function (req, res) {
     db.User
       .findById({ _id: req.params.id })

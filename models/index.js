@@ -3,7 +3,7 @@ module.exports = {
     bucketlist: require("./bucketlist"),
     friendlist: require("./friendlist"),
     travellist: require("./traveledlist"),
-    friendspage: require("./friendRequests"),
+    friendRequests: require("./friendRequests"),
     randomflight: require("./randomFlight"),
     carSearch: require("./carSearch"),
     hotelSearch: require("./hotelSearch"),

@@ -5,24 +5,24 @@ import CurrentFriendItem from "../CurrentFriendItem";
 
 class Currentfriends extends Component{
     state = {
-        currentfriends: "",
+        currentFriends: [],
         userID: window.id,
         id: window.id
-      };
-    
-//  componentDidMount() {
-//     API.getUser(id)
-//       .then(res => this.setState({ currentFriends: res.data.currentFriends }))
-//       .catch(err => console.log(err));
-//   };
+    };
+
+    componentDidMount() {
+        API.getCurrentFriends(window.id)
+        .then(res => this.setState({ currentFriends: res.data.currentFriends }))
+        .catch(err => console.log(err));
+    };
 
   render() {
       return(
           <div className="currentFriends">
               <div className = "currentFriendsTitle">Current Friends:</div>   
               <ul>
-                {this.state.currentfriends.map(friend => (
-                <CurrentFriendItem text={friend} />
+                {this.state.currentFriends.map((currentFriends, i) => (
+                <CurrentFriendItem key={i} text={currentFriends} />
                 ))}
             </ul>            
           </div>

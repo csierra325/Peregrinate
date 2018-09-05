@@ -5,6 +5,7 @@ const friendRequestsController = require("../../controllers/friendRequestsContro
 //Routes for friends
 router.route("/friends/:id")
   .get(friendRequestsController.findAll)
+  // .post(friendRequestsController.request);
 
 router.route("/friends/:id/acceptedfriends")
   .put(friendRequestsController.update)

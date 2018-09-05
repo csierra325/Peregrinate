@@ -5,12 +5,14 @@ const friendRequestsSchema = new Schema({
   requester: {
       type: String, 
       required: true, 
-      unique: true
+      unique: true,
+      ref: 'Users'
   },
   recipient: {
     type: String, 
     required: true, 
-    unique: true
+    unique: true,
+    ref: 'Users'
   },
   status: {
     type: Number,

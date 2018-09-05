@@ -26,7 +26,11 @@ export default {
   },
 
   getCurrentFriends: function (id) {
-    return axios.get("/api/users/friends/" + id);
+    return axios.get("/api/friends/" + id);
+  },
+
+  getFriendSearch: function(id) {
+    return axios.get("/api/friendspage/friends" + id);
   }
 
 };
