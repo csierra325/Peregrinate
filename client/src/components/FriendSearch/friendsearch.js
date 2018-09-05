@@ -27,11 +27,9 @@ class FriendsSearch extends Component {
 
     render() {
         return (
-            <div className="friendsSearch">
-                <div className = "currentFriendSearchTitle">Make New Friends:</div>
-                
+            <div className="friendsSearch" align="left">
                 <form class="form">
-                    <p>Username: </p>
+                    <h6>Search by Username: </h6>
                     <input
                         type="text"
                         placeholder="Username"
