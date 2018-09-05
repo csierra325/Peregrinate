@@ -59,7 +59,7 @@ class ProfileCard extends Component {
   render() {
     return (
       <div>
-        {this.state.uploadedFileCloudinaryUrl ? <img src={this.state.uploadedFileCloudinaryUrl} /> : <div style={profile} />}
+        {this.state.uploadedFileCloudinaryUrl ? <img src={this.state.uploadedFileCloudinaryUrl} alt=""/> : <div style={profile} />}
         <a href="#" id="upload_widget_opener" style={link}>
           Upload Profile Image
         </a>

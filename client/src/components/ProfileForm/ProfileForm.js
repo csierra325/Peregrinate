@@ -59,7 +59,7 @@ class ProfileForm extends Component {
       local: "",
       addressOne: "",
       zip: "",
-      departureCity: "",
+      departureCity: ""
     });
 
     var name = {
@@ -89,7 +89,7 @@ class ProfileForm extends Component {
       departureCity: this.state.departureCity
     }
 
-    var emptyString = "";
+    // var emptyString = "";
 
 
     console.log(`
@@ -179,7 +179,7 @@ class ProfileForm extends Component {
         </div>
 
         <div class="form-group">
-          <label class="text-left" for="inputAddress">Address</label>
+          <label class="text-left" htmlFor="inputAddress">Address</label>
           <input
             type="text"
             class="form-control"
@@ -192,7 +192,7 @@ class ProfileForm extends Component {
         </div>
 
         <div class="form-group">
-          <label for="inputAddress2">Address 2</label>
+          <label htmlFor="inputAddress2">Address 2</label>
           <input
             type="text"
             class="form-control"
@@ -206,13 +206,13 @@ class ProfileForm extends Component {
 
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="inputCity">City</label>
+            <label htmlFor="inputCity">City</label>
             <input type="text" class="form-control" id="inputCity" name="city" value={this.state.city}
               onChange={this.handleInputChange} />
           </div>
 
           <div class="form-group col-md-4">
-            <label for="inputState">State</label>
+            <label htmlFor="inputState">State</label>
             <select id="inputState" class="form-control">
               <option selected>Choose...</option>
               <option value="AL">Alabama</option>
@@ -269,14 +269,14 @@ class ProfileForm extends Component {
           </div>
 
           <div class="form-group col-md-2">
-            <label for="inputZip">Zip</label>
+            <label htmlFor="inputZip">Zip</label>
             <input type="text" class="form-control" id="inputZip" name="zip" value={this.state.zip}
               onChange={this.handleInputChange} />
           </div>
         </div>
 
         <div class="form-group">
-          <label for="inputAddress2">Travel Info</label>
+          <label htmlFor="inputAddress2">Travel Info</label>
           <select
             class="form-control"
             type="text"

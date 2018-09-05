@@ -5,6 +5,7 @@ import TripGenerator from "../../components/TripGenerator";
 import Globe from "../../components/Globe";
 import TravelTabs from "../../components/TravelTabs";
 import NavTabs from "../../components/NavTabs";
+import TripResults from "../../components/TripResults/TripResults";
 
 class TripPlanner extends Component {
   state = {
@@ -23,29 +24,32 @@ class TripPlanner extends Component {
           <br/>
 
           <div className="row">
-            <div class="card col-s-6">
+            <div class="card col-5">
               <div class="card-body">
                 <TripGenerator />
               </div>
             </div>
 
-            <div class="card col-s-6">
+            <div class="col-1"></div>
+
+            <div class="card col-6">
               <div class="card-body">
-                <p>Results List:</p>
+                <TripResults />
               </div>  
             </div> 
           </div>
 
+          <br/><br/>
+
           <div className="row">
-            <div class="card col-s-6">
+            <div class="card col-5">
               <div class="card-body">
-                <p>Plan A Trip</p>
+                <h2>Plan A Trip:</h2>
                 <TravelTabs />
                 {/* <PlanATrip /> */}
               </div>
             </div>
           </div>
- 
 
         </div> 
       </Jumbotron>     
