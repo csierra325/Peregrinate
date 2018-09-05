@@ -58,9 +58,6 @@ class App extends Component {
           <Nav />
           <Route exact path="/" component={Members} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/map/:id" component={Maps} />
-          <Route exact path="/friends/:id" component={Friends} />
-          <Route exact path="/tripplanner/:id" component={TripPlanner} />
           <Route exact path="/about" component={About} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path = "/packinglist/:id" component = {Packinglist}/>
@@ -70,10 +67,6 @@ class App extends Component {
           <Route exact path="/map/:id" component={Maps} />
           <Route exact path="/friends/:id" component={Friends} />
           <Route exact path="/tripplanner/:id" component={TripPlanner} /> */}
-
-
-          
-
 
           <IsComponentAuthenticated path='/profile/:id' component={Profile} />
           <IsComponentAuthenticated path='/wishlist/:id' component={Wishlist} />

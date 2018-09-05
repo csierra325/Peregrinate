@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 import Jumbotron from "../../components/Jumbotron";
-
 import Greeting from "../../components/Greeting";
 import ProfileCard from "../../components/ProfileCard";
 import ProfileForm from "../../components/ProfileForm";
@@ -12,8 +11,6 @@ class Profile extends Component {
     currentPage: "Profile",
     username: window.username
   };
-
-  
 
   render() {
     return (
