@@ -1,17 +1,25 @@
 import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
-import "./friends.css";
+
 import CurrentFriends from "../../components/CurrentFriends/currentfriends";
 import FriendsSearch from "../../components/FriendSearch/friendsearch";
 // import FriendsResult from "../../components/FriendsResult/friendsresult";
 
-import NavTabs from "../../components/NavTabs"
+import NavTabs from "../../components/NavTabs";
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
 
 class Friends extends Component {
-
   state = {
     currentPage: "Friends",
     username: window.username,
+    currentfriends: [],
+    modal: true
+  };
+
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
   };
 
   // componentDidMount() {
@@ -35,6 +43,18 @@ class Friends extends Component {
     return (
       <div className="wrapper">
         <NavTabs />
+        <div>
+          <Modal
+            isOpen={this.state.modal}
+            toggle={this.toggle}
+            className={this.props.className}
+          >
+            <ModalHeader toggle={this.toggle}>Welcom to Your Friends Page</ModalHeader>
+            <ModalBody>
+              Here you can request a friend. Making new friends is part of the fun when traveling!
+            </ModalBody>
+          </Modal>
+        </div>
         <Jumbotron>
           <div className="row">
             <div class="card col-4">
@@ -66,7 +86,6 @@ class Friends extends Component {
           </div>
         
         </Jumbotron>
-       
       </div>
     );
   }

@@ -36,7 +36,7 @@ const NavTabs = props => {
             window.location.pathname === `/wishlist/${id}` ? "nav-link active" : "nav-link"
           }
         >
-          Wishlist
+          Wish List
         </Link>
       </li>
       <li className="nav-item">
