@@ -11,17 +11,35 @@ class Login extends Component {
         super(props);
         this.state = {
             modal: false,
-            visible: false
+            // visible: false,
+            passwordMatching: false
         };
 
         this.toggle = this.toggle.bind(this);
+        // this.passwordMatchingToggle = this.passwordMatchingToggle.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     };
 
     toggle() {
+        this.props.history.push(`/profile/${window.id}`);
+    };
+
+    closeModal() {
         this.setState({
-            modal: !this.state.modal
+            modal: false
         });
     };
+
+    // passwordMatchingToggle() {
+    //     this.setState({
+    //         passwordMatching: !this.state.modal
+    //     });
+    // }
+
+
+    // closeModal(){
+    //     this.setState({ passwordMatching: false });
+    // }
 
 
     state = {
@@ -66,38 +84,46 @@ class Login extends Component {
     };
 
     addUser = (passwordOneEntered, passwordTwoEntered) => {
-        API.saveUser({ username: this.state.new_username, password: this.state.new_password_one })
-            .then(res => {
-                const isAuthenticated = res.data.isAuthenticated;
-                window.isAuthenticated = isAuthenticated;
-                // window.isAuthenticated = localStorage.setItem('isAuthenticated', isAuthenticated);
-                // localStorage.setItem('isAuthenticated', isAuthenticated);
 
-                // console.log(`res.data._id: ${JSON.stringify(res.data)}`);
-                // console.log(res.data.dbModel);
-                window.id = res.data.dbModel._id;
-                this.props.history.push(`/profile/${window.id}`);
-                this.setState({ new_username: "", new_password_one: "", new_password_two: "" });
-                if (passwordOneEntered === passwordTwoEntered) {
-                    // alert(`Account Created`);
-                    // this.toggle();
-                    this.setState({visible: true})
-                    
-                    // document.getElementById("accountCreatedmodal").modal("toggle");
-                }
-            })
-            .catch(error => {
-                // console.log(err);
-                const isAuthenticated = error.response.data.isAuthenticated;
-                window.isAuthenticated = isAuthenticated;
-            });
+        if (passwordOneEntered !== passwordTwoEntered) {
+            // alert('Passwords do not match. Please try again.');
+            this.setState({ passwordMatching: true });
+        }
+
+        if (passwordOneEntered === passwordTwoEntered) {
+            API.saveUser({ username: this.state.new_username, password: this.state.new_password_one })
+                .then(res => {
+                    const isAuthenticated = res.data.isAuthenticated;
+                    window.isAuthenticated = isAuthenticated;
+                    window.id = res.data.dbModel._id;
+                    this.setState({ modal: true });
+
+                    this.setState({ new_username: "", new_password_one: "", new_password_two: "" });
+
+                    // if (passwordOneEntered === passwordTwoEntered) {
+                    //     // alert(`Account Created`);
+                    //     // this.toggle();
+                    //     // window.confirm('Account Created');
+                    //     // document.getElementById("accountCreatedmodal").modal("toggle");
+                    // }
+                })
+                .catch(error => {
+                    // console.log(err);
+                    const isAuthenticated = error.response.data.isAuthenticated;
+                    window.isAuthenticated = isAuthenticated;
+
+                    if (error) {
+                        alert('please choose another username!')
+                    }
+                });
+        }
     };
 
     // handle any changes to the input fields
     handleInputChange = event => {
         // Pull the name and value properties off of the event.target (the element which triggered the event)
-        
-        
+
+
         const { name, value } = event.target;
 
         if (name === 'existing_username' || name === 'new_username') {
@@ -110,6 +136,8 @@ class Login extends Component {
             [name]: value
         });
     };
+
+
 
     // When the form is submitted, prevent the default event and alert the username and password
     handleFormSubmitExistingUser = event => {
@@ -126,92 +154,89 @@ class Login extends Component {
     handleFormSubmitNewUser = event => {
         event.preventDefault();
         console.log(`New User\n----------------\nUsername: ${this.state.new_username}\nPassword One: ${this.state.new_password_one} \nPassword Two:${this.state.new_password_two}\n--------------`);
-        this.addUser(this.state.new_password_one, this.state.new_password_one);
+        // if (this.state.new_password_one === this.state.new_password_one)
+        this.addUser(this.state.new_password_one, this.state.new_password_two);
     }
 
     render() {
         return (
             <div>
-                <Jumbotron >
-                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                    <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+
+                {this.state.modal ? <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                    <ModalHeader toggle={this.toggle}>Welcome to Peregrinate!</ModalHeader>
                     <ModalBody>
-                        Account Created
+
+                        “A journey is measured in friends rather than miles.”
+
+
+                        – Tim Cahill
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                        {/* <Button color="secondary" onClick={this.toggle}>Cancel</Button> */}
                     </ModalFooter>
-                </Modal>
+                </Modal> : null}
+
+               
 
 
-           <div className="row">
-              <div class="col-1"></div>
-                <div class="card col-4">
-                    <div class="card-body">
-                    <h4 class="card-text">Existing User</h4>
-                        <form>
-                            <input
-                                type="text"
-                                placeholder="Username"
-                                name="existing_username"
-                                value={this.state.existing_username}
-                                onChange={this.handleInputChange}
-                            />
-                            <br />
-                            <input
-                                type="password"
-                                placeholder="Password"
-                                name="existing_password"
-                                value={this.state.existing_password}
-                                onChange={this.handleInputChange}
-                            />
-                            <br />
-                            <button 
-                            onClick={this.handleFormSubmitExistingUser}
-                            isOpen={this.state.modal}
-                            >Login</button>
-                        </form>
-                    </div>
-                </div>
 
-                 <div class="col-2"></div>
+                <h4>Existing User</h4>
+                <form>
+                    <input
+                        type="text"
+                        placeholder="Username"
+                        name="existing_username"
+                        value={this.state.existing_username}
+                        onChange={this.handleInputChange}
+                    />
+                    <br />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        name="existing_password"
+                        value={this.state.existing_password}
+                        onChange={this.handleInputChange}
+                    />
+                    <br />
+                    <button
+                        onClick={this.handleFormSubmitExistingUser}
+                        isOpen={this.state.modal}
+                    >Login</button>
+                </form>
+                <br />
+                <br />
 
-                <div class="card col-4">
-                    <div class="card-body">
-                        <h4 class="card-text">Create New User</h4>
-                            <form>
-                                <input
-                                    type="text"
-                                    placeholder="Username"
-                                    name="new_username"
-                                    value={this.state.new_username}
-                                    onChange={this.handleInputChange}
-                                />
-                                <br />
-                                <input
-                                    type="password"
-                                    placeholder="Password"
-                                    name="new_password_one"
-                                    value={this.state.new_password_one}
-                                    onChange={this.handleInputChange}
-                                />
-                                <br />
-                                <input
-                                    type="password"
-                                    placeholder="Reenter Password"
-                                    name="new_password_two"
-                                    value={this.state.new_password_two}
-                                    onChange={this.handleInputChange}
-                                />
-                                <br />
-                                <button onClick={this.handleFormSubmitNewUser}
-                                >Login</button>
-                            </form>
-                    </div>
-                </div>
-            </div>
+                <h4>New User</h4>
+                <form>
+                    <input
+                        type="text"
+                        placeholder="Username"
+                        name="new_username"
+                        value={this.state.new_username}
+                        onChange={this.handleInputChange}
+                    />
+                    <br />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        name="new_password_one"
+                        value={this.state.new_password_one}
+                        onChange={this.handleInputChange}
+                    />
+                    <br />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        name="new_password_two"
+                        value={this.state.new_password_two}
+                        onChange={this.handleInputChange}
+                    />
+                    <br />
+                    <button onClick={this.handleFormSubmitNewUser}
+                    >Login</button>
+                </form>
 
-                </Jumbotron>
+                
             </div>
 
         );
