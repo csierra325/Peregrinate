@@ -1,7 +1,7 @@
 import React from "react";
 
 const CurrentFriendItem = props => (
-    <li>{props.text}</li>
+    <li class="list-group-item">{props.text}</li>
 );
 
 export default CurrentFriendItem;
