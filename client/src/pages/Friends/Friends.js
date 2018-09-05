@@ -48,7 +48,7 @@ class Friends extends Component {
 
             <div class="card col-7">
               <div class="card-body">
-                  <FriendsResult />
+                  {/* <FriendsResult /> */}
               </div>
             </div>
           </div>
