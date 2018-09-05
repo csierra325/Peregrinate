@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const db = require("../models");
-const citiesCSV = require("./cities.json");
+const citiesCSV = require("./usstates.json");
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/peregrinate");
 
