@@ -22,7 +22,6 @@ module.exports = {
     bcrypt.hash(password, saltRounds, function (err, hash) {
       // Store hash in your password DB.
       req.body.password = hash;
-      console.log(`Hashed password: ${req.body.password}`);
       db.User
         .create(req.body)
         .then(dbModel => res.json({ dbModel: dbModel, isAuthenticated: true }))

@@ -4,21 +4,23 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class ProfileForm extends Component {
   // Setting the initial values of this.state.username and this.state.password
-  // const id = window.username || 1;
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     modal: false,
-  //   };
+  constructor(props) {
+    super(props);
+    this.state = {
+      stateSelected: false, 
+      profileUpdated: false
+    };
 
-  //   this.toggle = this.toggle.bind(this);
-  // };
+    this.closeModal = this.closeModal.bind(this);
 
-  // toggle() {
-  //   this.setState({
-  //     modal: !this.state.modal
-  //   });
-  // }
+  };
+
+  closeModal() {
+    this.setState({
+      stateSelected: false,
+      profileUpdated: false
+    });
+  };
 
   state = {
     firstname: "",
@@ -39,9 +41,6 @@ class ProfileForm extends Component {
     id: window.id
   };
 
-  
-
-
   componentDidMount() {
     API.getUser(window.id)
       .then(res => {
@@ -50,7 +49,6 @@ class ProfileForm extends Component {
           firstname: dbUser.name.first,
           lastname: dbUser.name.last,
           email: dbUser.email,
-
           airline: dbUser.travelInfo.airline,
           flyerNumber: dbUser.travelInfo.frequentFlyerNumber,
           rentalNumber: dbUser.travelInfo.rentalNumber,
@@ -61,6 +59,10 @@ class ProfileForm extends Component {
           city: dbUser.address.city,
           zip: dbUser.address.zip
         });
+        document.getElementById('inputState').value  = dbUser.address.state;
+        document.getElementById('carRental').value = dbUser.travelInfo.rental;
+        document.getElementById('localCommute').value = dbUser.travelInfo.local;
+
       }).catch(err => console.log(err));
   }
 
@@ -74,7 +76,7 @@ class ProfileForm extends Component {
           email: dbUser.email,
           airline: dbUser.travelInfo.airline,
           flyerNumber: dbUser.travelInfo.frequentFlyerNumber,
-          rentalNumber: dbUser.travelInfo.rental,
+          rentalNumber: dbUser.travelInfo.rentalNumber,
           local: dbUser.travelInfo.local,
           departureCity: dbUser.travelInfo.departureCity,
           addressOne: dbUser.address.addressOne,
@@ -82,20 +84,23 @@ class ProfileForm extends Component {
           zip: dbUser.address.zip,
           city: dbUser.address.city
         });
-        // this.setState({ modal: true });
+        document.getElementById('inputState').value  = dbUser.address.state;
+        document.getElementById('carRental').value = dbUser.travelInfo.rental;
+        document.getElementById('localCommute').value = dbUser.travelInfo.local;
       }).catch(err => console.log(err));
+  }
+
+  profileUpdateConfirmation() {
+    this.setState({ profileUpdated: true });
   }
 
   updateUser = (id, updating) => {
 
     API.updateUser(id, updating)
       .then(res => {
-        // document.getElementById('firstName').value = res.data.name.first;
-        // this.state.firstname = res.data.name.first;
-        console.log(`name from db: ${res.data.name.first}`)
         console.log(res.data);
-        // componentDidMount();
         this.autoPopulateProfile();
+        this.profileUpdateConfirmation();
       })
       .catch(err => console.log(err));
   };
@@ -110,23 +115,13 @@ class ProfileForm extends Component {
     });
   };
 
+
   // When the form is submitted, prevent the default event and alert the username and password
   handleFormSubmit = e => {
     e.preventDefault();
 
-    // this.setState({
-    //   firstname: "",
-    //   lastname: "",
-    //   email: "",
-    //   airline: "",
-    //   flyerNumber: "",
-    //   car: "",
-    //   rentalNumber: "",
-    //   local: "",
-    //   addressOne: "",
-    //   zip: "",
-    //   departureCity: "",
-    // });
+    var userSelectedState = document.getElementById('inputState').value;
+    console.log(`State: ${userSelectedState}`);
 
     var name = {
       first: this.state.firstname,
@@ -139,7 +134,6 @@ class ProfileForm extends Component {
     var airline = document.getElementById("flight").value;
     var carRental = document.getElementById("carRental").value;
     var local = document.getElementById("localCommute").value;
-
 
     var address = {
       addressOne: this.state.addressOne,
@@ -155,15 +149,12 @@ class ProfileForm extends Component {
       departureCity: this.state.departureCity
     }
 
-    // var emptyString = "";
-
-
     console.log(`
       First name: ${name.first}
       Last name: ${name.last}
       Email: ${email}
       Address_One: ${address.addressOne}
-      Address_Two: ${address.adressTwo}
+      Address_Two: ${address.addressTwo}
       City: ${address.city}
       State: ${address.state}
       Zip: ${address.zip}
@@ -176,10 +167,9 @@ class ProfileForm extends Component {
     `);
 
     if (address.city === undefined || address.state === "Choose...") {
-      alert("Please enter a city and select a state. \nResubmit the form once complete.");
-      // this.state.firstname = name.first;
+      this.setState({ stateSelected: true });
     } else {
-      this.updateUser(this.state.id, {
+      this.updateUser(window.id, {
         $set: {
           "name.first": name.first,
           "name.last": name.last,
@@ -199,14 +189,34 @@ class ProfileForm extends Component {
       });
 
       // this.state.firstname = name.first;
-      document.getElementById('firstName').value = name.first;
+      // document.getElementById('firstName').value = name.first;
     }
   };
 
   render() {
     return (
       <div>
-        
+        {this.state.stateSelected ? <Modal isOpen={this.state.stateSelected} toggle={this.closeModal} className={this.props.className}>
+          <ModalHeader>Error</ModalHeader>
+          <ModalBody>
+          Please select a state.
+          Resubmit the form once complete.
+                    </ModalBody>
+          <ModalFooter>
+            <Button color="secondary" onClick={this.closeModal} isOpen={this.state.stateSelected}>Cancel</Button>
+          </ModalFooter>
+        </Modal> : null}
+
+        {this.state.profileUpdated ? <Modal isOpen={this.state.profileUpdated} toggle={this.closeModal} className={this.props.className}>
+          <ModalHeader>Error</ModalHeader>
+          <ModalBody>
+          Profile Updated
+                    </ModalBody>
+          <ModalFooter>
+            <Button color="secondary" onClick={this.closeModal} isOpen={this.state.profileUpdated}>Cancel</Button>
+          </ModalFooter>
+        </Modal> : null}
+
 
         <form>
           <div class="form-row">
@@ -280,56 +290,56 @@ class ProfileForm extends Component {
               <label for="inputState">State</label>
               <select id="inputState" class="form-control">
                 <option selected>Choose...</option>
-                <option value="AL">Alabama</option>
-                <option value="AK">Alaska</option>
-                <option value="AZ">Arizona</option>
-                <option value="AR">Arkansas</option>
-                <option value="CA">California</option>
-                <option value="CO">Colorado</option>
-                <option value="CT">Connecticut</option>
-                <option value="DE">Delaware</option>
-                <option value="FL">Florida</option>
-                <option value="GA">Georgia</option>
-                <option value="HI">Hawaii</option>
-                <option value="ID">Idaho</option>
-                <option value="IL">Illinois</option>
-                <option value="IN">Indiana</option>
-                <option value="IA">Iowa</option>
-                <option value="KS">Kansas</option>
-                <option value="KY">Kentucky</option>
-                <option value="LA">Louisiana</option>
-                <option value="ME">Maine</option>
-                <option value="MD">Maryland</option>
-                <option value="MA">Massachusetts</option>
-                <option value="MI">Michigan</option>
-                <option value="MN">Minnesota</option>
-                <option value="MS">Mississippi</option>
-                <option value="MO">Missouri</option>
-                <option value="MT">Montana</option>
-                <option value="NE">Nebraska</option>
-                <option value="NV">Nevada</option>
-                <option value="NH">New Hampshire</option>
-                <option value="NJ">New Jersey</option>
-                <option value="NM">New Mexico</option>
-                <option value="NY">New York</option>
-                <option value="NC">North Carolina</option>
-                <option value="ND">North Dakota</option>
-                <option value="OH">Ohio</option>
-                <option value="OK">Oklahoma</option>
-                <option value="OR">Oregon</option>
-                <option value="PA">Pennsylvania</option>
-                <option value="RI">Rhode Island</option>
-                <option value="SC">South Carolina</option>
-                <option value="SD">South Dakota</option>
-                <option value="TN">Tennessee</option>
-                <option value="TX">Texas</option>
-                <option value="UT">Utah</option>
-                <option value="VT">Vermont</option>
-                <option value="VA">Virginia</option>
-                <option value="WA">Washington</option>
-                <option value="WV">West Virginia</option>
-                <option value="WI">Wisconsin</option>
-                <option value="WY">Wyoming</option>
+                <option value="Alabama">Alabama</option>
+                <option value="Alaska">Alaska</option>
+                <option value="Arizona">Arizona</option>
+                <option value="Arkansas">Arkansas</option>
+                <option value="California">California</option>
+                <option value="Colorado">Colorado</option>
+                <option value="Connecticut">Connecticut</option>
+                <option value="Delaware">Delaware</option>
+                <option value="Florida">Florida</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Hawaii">Hawaii</option>
+                <option value="Idaho">Idaho</option>
+                <option value="Illinois">Illinois</option>
+                <option value="Indiana">Indiana</option>
+                <option value="Iowa">Iowa</option>
+                <option value="Kansas">Kansas</option>
+                <option value="Kentucky">Kentucky</option>
+                <option value="Louisiana">Louisiana</option>
+                <option value="Maine">Maine</option>
+                <option value="Maryland">Maryland</option>
+                <option value="Massachusetts">Massachusetts</option>
+                <option value="Michigan">Michigan</option>
+                <option value="Minnesota">Minnesota</option>
+                <option value="Mississipp">Mississippi</option>
+                <option value="Missouri">Missouri</option>
+                <option value="Montana">Montana</option>
+                <option value="Nebraska">Nebraska</option>
+                <option value="Nevada">Nevada</option>
+                <option value="New Hampshire">New Hampshire</option>
+                <option value="New Jersey">New Jersey</option>
+                <option value="New Mexico">New Mexico</option>
+                <option value="New York">New York</option>
+                <option value="North Carolina">North Carolina</option>
+                <option value="North Dakota">North Dakota</option>
+                <option value="Ohio">Ohio</option>
+                <option value="Oklahoma">Oklahoma</option>
+                <option value="Oregon">Oregon</option>
+                <option value="Pennsylvania">Pennsylvania</option>
+                <option value="Rhode Island">Rhode Island</option>
+                <option value="South Carolina">South Carolina</option>
+                <option value="South Dakota">South Dakota</option>
+                <option value="Tennessee">Tennessee</option>
+                <option value="Texas">Texas</option>
+                <option value="Utah">Utah</option>
+                <option value="Vermont">Vermont</option>
+                <option value="Virginia">Virginia</option>
+                <option value="Washington">Washington</option>
+                <option value="West Virginia">West Virginia</option>
+                <option value="Wisconsin">Wisconsin</option>
+                <option value="Wyoming">Wyoming</option>
               </select>
             </div>
 

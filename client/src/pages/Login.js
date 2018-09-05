@@ -10,14 +10,17 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            modal: false,
-            // visible: false,
-            passwordMatching: false
+            accountCreatedModal: false,
+            passwordMatching: false,
+            chooseAnotherUsername: false,
+            loginAuth: false,
+            existingUserField: false,
         };
 
         this.toggle = this.toggle.bind(this);
         // this.passwordMatchingToggle = this.passwordMatchingToggle.bind(this);
         this.closeModal = this.closeModal.bind(this);
+
     };
 
     toggle() {
@@ -26,9 +29,14 @@ class Login extends Component {
 
     closeModal() {
         this.setState({
-            modal: false
+            passwordMatching: false,
+            chooseAnotherUsername: false,
+            loginAuth: false,
+            existingUserField: false,
         });
     };
+
+
 
     // passwordMatchingToggle() {
     //     this.setState({
@@ -70,7 +78,7 @@ class Login extends Component {
                                 window.username = element.username;
                                 this.props.history.push(`/profile/${window.id}`);
                             } else {
-                                alert('Username or Password is incorrect');
+                                this.setState({ loginAuth: true });
                             }
                         });
                     }
@@ -86,7 +94,6 @@ class Login extends Component {
     addUser = (passwordOneEntered, passwordTwoEntered) => {
 
         if (passwordOneEntered !== passwordTwoEntered) {
-            // alert('Passwords do not match. Please try again.');
             this.setState({ passwordMatching: true });
         }
 
@@ -96,16 +103,9 @@ class Login extends Component {
                     const isAuthenticated = res.data.isAuthenticated;
                     window.isAuthenticated = isAuthenticated;
                     window.id = res.data.dbModel._id;
-                    this.setState({ modal: true });
+                    this.setState({ accountCreatedModal: true });
 
                     this.setState({ new_username: "", new_password_one: "", new_password_two: "" });
-
-                    // if (passwordOneEntered === passwordTwoEntered) {
-                    //     // alert(`Account Created`);
-                    //     // this.toggle();
-                    //     // window.confirm('Account Created');
-                    //     // document.getElementById("accountCreatedmodal").modal("toggle");
-                    // }
                 })
                 .catch(error => {
                     // console.log(err);
@@ -113,7 +113,7 @@ class Login extends Component {
                     window.isAuthenticated = isAuthenticated;
 
                     if (error) {
-                        alert('please choose another username!')
+                        this.setState({ chooseAnotherUsername: true });
                     }
                 });
         }
@@ -147,14 +147,14 @@ class Login extends Component {
             this.setState({ existing_username: "", existing_password: "" });
             this.getUser(this.state.existing_username, this.state.existing_password);
         } else {
-            alert(`Enter existing username and password`);
+            // alert(`Enter existing username and password`);
+            this.setState({ existingUserField: true });
         }
     };
 
     handleFormSubmitNewUser = event => {
         event.preventDefault();
         console.log(`New User\n----------------\nUsername: ${this.state.new_username}\nPassword One: ${this.state.new_password_one} \nPassword Two:${this.state.new_password_two}\n--------------`);
-        // if (this.state.new_password_one === this.state.new_password_one)
         this.addUser(this.state.new_password_one, this.state.new_password_two);
     }
 
@@ -162,13 +162,10 @@ class Login extends Component {
         return (
             <div>
 
-                {this.state.modal ? <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                {this.state.accountCreatedModal ? <Modal isOpen={this.state.accountCreatedModal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Welcome to Peregrinate!</ModalHeader>
                     <ModalBody>
-
                         “A journey is measured in friends rather than miles.”
-
-
                         – Tim Cahill
                     </ModalBody>
                     <ModalFooter>
@@ -176,9 +173,47 @@ class Login extends Component {
                     </ModalFooter>
                 </Modal> : null}
 
-               
+                {this.state.passwordMatching ? <Modal isOpen={this.state.passwordMatching} toggle={this.closeModal} className={this.props.className}>
+                    <ModalHeader>Error</ModalHeader>
+                    <ModalBody>
+                        Passwords do not match. Please try again.
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="secondary" onClick={this.closeModal} isOpen={this.state.passwordMatching}>Cancel</Button>
+                    </ModalFooter>
+                </Modal> : null}
+
+                {this.state.chooseAnotherUsername ? <Modal isOpen={this.state.chooseAnotherUsername} toggle={this.closeModal} className={this.props.className}>
+                    <ModalHeader>Error</ModalHeader>
+                    <ModalBody>
+                        Please choose another username
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="secondary" onClick={this.closeModal} isOpen={this.state.chooseAnotherUsername}>Cancel</Button>
+                    </ModalFooter>
+                </Modal> : null}
+
+                {this.state.loginAuth ? <Modal isOpen={this.state.loginAuth} toggle={this.closeModal} className={this.props.className}>
+                    <ModalHeader>Error</ModalHeader>
+                    <ModalBody>
+                        Username or Password is incorrect
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="secondary" onClick={this.closeModal} isOpen={this.state.loginAuth}>Cancel</Button>
+                    </ModalFooter>
+                </Modal> : null}
 
 
+
+                {this.state.existingUserField ? <Modal isOpen={this.state.existingUserField} toggle={this.closeModal} className={this.props.className}>
+                    <ModalHeader>Error</ModalHeader>
+                    <ModalBody>
+                        Enter existing username and password
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="secondary" onClick={this.closeModal} isOpen={this.state.existingUserField}>Cancel</Button>
+                    </ModalFooter>
+                </Modal> : null}
 
                 <h4>Existing User</h4>
                 <form>
@@ -200,7 +235,7 @@ class Login extends Component {
                     <br />
                     <button
                         onClick={this.handleFormSubmitExistingUser}
-                        isOpen={this.state.modal}
+                        isOpen={this.state.accountCreatedModal}
                     >Login</button>
                 </form>
                 <br />
@@ -233,10 +268,10 @@ class Login extends Component {
                     />
                     <br />
                     <button onClick={this.handleFormSubmitNewUser}
-                    >Login</button>
+                        isOpen={this.state.passwordMatching}>Login</button>
                 </form>
 
-                
+
             </div>
 
         );
