@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getCities } from "../../utils/API";
 
 
+
 export default class Dropdown extends Component {
   state = {
       cities: [],
@@ -10,55 +11,61 @@ export default class Dropdown extends Component {
   };
 
   componentDidMount() {
-    
     getCities()
-      .then(res =>  {
+      .then(res =>  { 
         this.setState({cities: res.data, searchedCities: res.data})
+   
       })
-      
       .catch(err => console.log(err));
   }
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-
-    this.setState({
-      [name]: value
-    });
-  };
-
+  binarySearch(arr, target) {
+    let left = 0;
+    let right = arr.length - 1;
+    while (left <= right) {
+        const mid = left + Math.floor((right - left) / 2);
+        if (arr[mid] == target) {
+            return arr[mid];
+        }
+        if (arr[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    return -1;
+}
 
   render() {
    
     return (
       <div className="Dropdown">
-        <h2>Choose a location:</h2>
-       
-
+        <h2>Wish List: </h2>
        <div className="cities">
-       <label htmlFor="choosing-cities">cities: </label>
-       <input
-        type="text"
-        id="input-cities"
-        list="options"
-        onChange={e => {
-          if(e.target.value.trim('') === '') {
-            this.setState({searchedCities: this.state.cities})
-          }
-          //how to filter/search large datasets in javascript (search/sorting algorithims)
-          const cities = this.state.cities.splice(0, 1000).filter(city => city.city.includes(e.target.value))
-          this.setState({searchedCities: cities })
-        }}/>
+       <label htmlFor="choosing-cities">Pick A City</label>
+       <form onSubmit={this.props.handleSubmit}>
+        <input
+          name="selectedCity"
+          id="input-cities"
+          list="options"
+          value={this.props.currentValue}
+          onChange={this.props.handleInputChange}
+        />
           <datalist id="options">
-            { this.state.searchedCities.map((city) => (
-            <option key={city._id}
-              value={city.city}>
-              {city.city}
-          </option>
-          ))}
+            {this.state.searchedCities.map((city, i) => (
+              <option
+                key={city._id}
+                value={city.city}>
+                {city.city}
+              </option>
+            ))}
+            
           </datalist>
-        </div>
+          <input type="submit" value="select" />
         
+        </form>
+         
+        </div>  
       </div>
     );
   }

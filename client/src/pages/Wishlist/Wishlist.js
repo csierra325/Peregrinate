@@ -1,10 +1,5 @@
 import React, { Component } from "react";
-
-// import Friendlist from "../../components/Friendlist/Friendlist";
-// import Traveledlist from "../../components/Traveledlist/Traveledlist";
-// import Bucketlist from "../../components/Bucketlist/Bucketlist";
 import Gallery from "../../components/Gallery/Gallery"
-import Jumbotron from "../../components/Jumbotron/Jumbotron";
 import NavTabs from "../../components/NavTabs"
 import Dropdown from "../../components/Dropdown/Dropdown";
 
@@ -12,9 +7,28 @@ import Dropdown from "../../components/Dropdown/Dropdown";
 class Wishlist extends Component {
   state = {
     currentPage: "WishList",
-    username: window.username
-    // this.props.match.params.id
- }; 
+    username: window.username,
+    selectedCity: "",
+    selectedCities: []
+  };
+
+  handleInputChange = event => {
+    const {name, value} = event.target;
+    this.setState({
+      [name]: value
+    });
+  }
+
+  handleSubmit = event => {
+    event.preventDefault();
+  
+    console.log(this.state.selectedCity);
+    this.setState({
+      selectedCities: [...this.state.selectedCities, this.state.selectedCity]
+    });
+ 
+    console.log(this.state.selectedCities)
+  };
  
   render() {
 
@@ -23,21 +37,23 @@ class Wishlist extends Component {
     return (
       <div className="wrapper">
          <NavTabs />
-        <Jumbotron>
-          
-          <div
-            className="rowC"
-            style={{ height: 800, clear: "both", textAlign: "center" }}
-          >
-            {/* <Friendlist />
-            <Traveledlist />
-            <Bucketlist /> */}
+       
 
-            <Dropdown/>
-            
-          </div>
+          <div className = "wishListWrapper">
+            <Dropdown
+              handleSubmit={this.handleSubmit}
+              handleInputChange={this.handleInputChange}
+              currentValue={this.state.selectedCity}
+            />
+         
+                <ul>
+                 {this.state.selectedCities.map((city, i) => (
+                  <li>{city}</li> 
+                 ))} 
+                 </ul>
+               </div>
+               
         
-        </Jumbotron>
       
         <div className= "bucketlistIdeas">Bucket List Ideas</div>
         <Gallery/>
