@@ -4,9 +4,6 @@ import React from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button, Form, FormGroup, Label, Input, FormText  } from 'reactstrap';
 import './Packing.css'
 
-const scroll={
- color: "pink"
-}
 
 export default class Example extends React.Component {
   constructor(props) {

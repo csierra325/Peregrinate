@@ -15,6 +15,7 @@ import TripPlanner from './pages/TripPlanner';
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Packinglist from "./pages/Packinglist";
+import Travelideas from "./pages/Travelideas";
 //Import styling
 import "./App.css";
 
@@ -46,6 +47,7 @@ class App extends Component {
           <Route exact path="/about" component={About} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path = "/packinglist/:id" component = {Packinglist}/>
+          <Route exact path = "/travelideas/:id" component = {Travelideas} />
 
 
         </div>

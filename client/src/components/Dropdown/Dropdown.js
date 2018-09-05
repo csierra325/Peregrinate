@@ -36,6 +36,8 @@ export default class Dropdown extends Component {
     return -1;
 }
 
+// binarySearch(searchedCities, city)
+
   render() {
    
     return (

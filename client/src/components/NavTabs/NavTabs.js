@@ -69,6 +69,16 @@ const NavTabs = props => {
          Packing List
         </Link>
       </li>
+      <li className="nav-item">
+        <Link
+          to={`/travelideas/${id}`}
+          className={
+            window.location.pathname === `/travelideas/${id}` ? "nav-link active" : "nav-link"
+          }
+        >
+         Travel Ideas
+        </Link>
+      </li>
     </ul>
   );
 };

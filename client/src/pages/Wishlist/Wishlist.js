@@ -55,8 +55,7 @@ class Wishlist extends Component {
                
         
       
-        <div className= "bucketlistIdeas">Bucket List Ideas</div>
-        <Gallery/>
+        
         
       </div>
     );
