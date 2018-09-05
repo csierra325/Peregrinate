@@ -1,11 +1,21 @@
 import React, { Component } from "react";
 import "./friendsearch.css";
+import FriendSearchItem from "../FriendSearchItem/FriendSearchItem";
+import API from "../../utils/API";
+// import FriendsResult from "../FriendsResult/friendsresult";
 
 class FriendsSearch extends Component {
     state = {
+        friends: [],
         username: "",
         userID: window.id
     }
+
+    componentDidMount() {
+        API.getFriendSearch(window.id)
+        .then(res => this.setState({ friends: res.data.friendRequests }))
+        .catch(err => console.log(err));
+    };
 
     // handle any changes to the input fields
     handleInputChange = event => {
@@ -20,8 +30,11 @@ class FriendsSearch extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+        // TODO: add API request to get user that matches name
         this.setState({
-            username: ""
+            // [name]: value
+            // username: this.state.username,
+            // userID: window.id
         });
     }
 
@@ -33,13 +46,24 @@ class FriendsSearch extends Component {
                     <input
                         type="text"
                         placeholder="Username"
-                        name="origin"
+                        name="username"
                         value={this.state.username}
                         onChange={this.handleInputChange}
                     />
-                    <button onClick={this.props.handleFormSubmit}>Submit</button>
+                    <button onClick={this.handleFormSubmit}>Submit</button>
+                    <ul>
+                        {this.state.friends.map((friend, i) => (
+                            <FriendSearchItem key={i} text={friend} />
+
+                        ))}
+                    </ul>
                 </form>
+
             </div>
+            // <div>
+            //     <FriendsResult 
+            //     name={username}/>
+            // </div>
         )
     }
 }

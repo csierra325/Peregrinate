@@ -37,6 +37,9 @@ class Friends extends Component {
   // }
 
   render() {
+    
+    window.username = this.state.username;
+
     return (
       <div className="wrapper">
         <NavTabs />
@@ -53,9 +56,6 @@ class Friends extends Component {
           </Modal>
         </div>
         <Jumbotron>
-          {/* <h2><strong>{this.state.username}</strong></h2>
-          <h2>I'm the friends page!</h2> */}
-
           <div className="row">
             <div class="card col-4">
               <div class="card-body">

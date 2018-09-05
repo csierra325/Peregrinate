@@ -1,37 +1,29 @@
 import React, { Component } from "react";
 import "./currentfriends.css";
+import API from "../../utils/API";
+import CurrentFriendItem from "../CurrentFriendItem";
 
 class Currentfriends extends Component{
     state = {
-        currentfriends: [],
+        currentFriends: [],
         userID: window.id,
         id: window.id
-      };
-    
-    // handle any changes to the input fields
-    handleInputChange = event => {
-    // Pull the name and value properties off of the event.target (the element which triggered the event)
-    const { name, value } = event.target;
+    };
 
-    // Set the state for the appropriate input field
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleFormSubmit = event => {
-      event.preventDefault();
-      this.setState({
-          currentfriends: ""
-      });
-  };
+    componentDidMount() {
+        API.getCurrentFriends(window.id)
+        .then(res => this.setState({ currentFriends: res.data.currentFriends }))
+        .catch(err => console.log(err));
+    };
 
   render() {
       return(
           <div className="currentFriends" align="left">
             <h2 className = "card-text">Current Friends:</h2> 
                 <ul class="list-group list-group-flush">    
-                    <li class="list-group-item"> CURRENT FRIEND </li>
+                     {this.state.currentFriends.map((friend, i) => (
+                         <CurrentFriendItem key={i} text={friend} />
+                     ))}
                 </ul>
           </div> 
       )

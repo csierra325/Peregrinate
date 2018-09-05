@@ -35,6 +35,14 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findByUsername: function (req, res) {
+    console.log("Getting One User")
+    db.User
+      .findOne({ username: req.params.username })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+    // console.log(`Req.body: ${req.body} \nReq.params ${req.params}`)
+  },
   // find: function (req, res) {
   //   console.log("Getting One User")
   //   db.User
@@ -50,5 +58,22 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   
+
+//   getfriends: function(req, res){
+//     const id = "5b86dd405192b86f5bee42c0"
+//     db.User
+    
+//     .findById({id: req.params.id})
+//     .then(dbModel => res.json(dbModel))
+//     .catch(err => res.status(422).json(err));
+// },
+
+// updateCurrentFriend: function(req, res) {
+//   db.User
+//     .findOneAndUpdate({ _id: req.params.id }, req.body)
+//     .then(dbModel => res.json(dbModel))
+//     .catch(err => res.status(422).json(err));
+// },
+
 
 };
