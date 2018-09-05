@@ -5,12 +5,8 @@ import CurrentFriends from "../../components/CurrentFriends/currentfriends";
 import FriendsSearch from "../../components/FriendSearch/friendsearch";
 import FriendsResult from "../../components/FriendsResult/friendsresult";
 
-<<<<<<< HEAD
 import NavTabs from "../../components/NavTabs";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
-=======
-import NavTabs from "../../components/NavTabs"
->>>>>>> 9ea044168dea22bc90f7ab2b945ebf6bcb7b26a3
 
 class Friends extends Component {
   state = {
@@ -20,15 +16,12 @@ class Friends extends Component {
     modal: true
   };
 
-<<<<<<< HEAD
   toggle = () => {
     this.setState({
       modal: !this.state.modal
     });
   };
 
-=======
->>>>>>> 9ea044168dea22bc90f7ab2b945ebf6bcb7b26a3
   // componentDidMount() {
   //   this.onPageLoad();
   // }
@@ -60,16 +53,6 @@ class Friends extends Component {
           </Modal>
         </div>
         <Jumbotron>
-<<<<<<< HEAD
-          <h2>
-            <strong>{this.state.username}</strong>
-          </h2>
-          <h1>I'm the friends page!</h1>
-          <CurrentFriends />
-          <FriendsSearch handleFormSubmit={this.handleFormSubmit} />
-          {/* <FriendsResult results={this.state.friendSearchResults} /> */}
-          <FriendsResult />
-=======
           {/* <h2><strong>{this.state.username}</strong></h2>
           <h2>I'm the friends page!</h2> */}
 
@@ -102,7 +85,6 @@ class Friends extends Component {
             </div>
           </div>
         
->>>>>>> 9ea044168dea22bc90f7ab2b945ebf6bcb7b26a3
         </Jumbotron>
       </div>
     );

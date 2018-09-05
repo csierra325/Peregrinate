@@ -14,15 +14,12 @@ class Profile extends Component {
     modal: true
   };
 
-<<<<<<< HEAD
   toggle = () => {
     this.setState({
       modal: !this.state.modal
     });
   };
 
-=======
->>>>>>> 9ea044168dea22bc90f7ab2b945ebf6bcb7b26a3
   render() {
     return (
       <div className="wrapper">
