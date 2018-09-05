@@ -30,7 +30,7 @@ export default {
   },
 
   getFriendSearch: function(id) {
-    return axios.get("/api/friendspage/friends" + id);
+    return axios.get("/api/friendspage/friends/" + id);
   }
 
 };
