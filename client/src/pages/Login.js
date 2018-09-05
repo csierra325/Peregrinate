@@ -16,7 +16,7 @@ class Login extends Component {
         };
 
         this.toggle = this.toggle.bind(this);
-        this.passwordMatchingToggle = this.passwordMatchingToggle.bind(this);
+        // this.passwordMatchingToggle = this.passwordMatchingToggle.bind(this);
         this.closeModal = this.closeModal.bind(this);
     };
 
@@ -30,11 +30,11 @@ class Login extends Component {
         });
     };
 
-    passwordMatchingToggle() {
-        this.setState({
-            passwordMatching: !this.state.modal
-        });
-    }
+    // passwordMatchingToggle() {
+    //     this.setState({
+    //         passwordMatching: !this.state.modal
+    //     });
+    // }
 
 
     // closeModal(){
@@ -176,15 +176,7 @@ class Login extends Component {
                     </ModalFooter>
                 </Modal> : null}
 
-                {this.state.passwordMatching ? <Modal isOpen={this.state.passwordMatching} toggle={this.closeModal} className={this.props.className}>
-                    <ModalHeader>Error</ModalHeader>
-                    <ModalBody>
-                        Passwords do not match. Please try again.
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button color="secondary" onClick={this.closeModal}>Cancel</Button>
-                    </ModalFooter>
-                </Modal> : null}
+               
 
 
 
