@@ -3,28 +3,47 @@ import React, { Component } from "react";
 import Friendlist from "../../components/Friendlist/Friendlist";
 import Traveledlist from "../../components/Traveledlist/Traveledlist";
 import Bucketlist from "../../components/Bucketlist/Bucketlist";
-import Gallery from "../../components/Gallery/Gallery"
+import Gallery from "../../components/Gallery/Gallery";
 import Jumbotron from "../../components/Jumbotron/Jumbotron";
-import NavTabs from "../../components/NavTabs"
+import NavTabs from "../../components/NavTabs";
 import Dropdown from "../../components/Dropdown/Dropdown";
-
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
 
 class Wishlist extends Component {
   state = {
     currentPage: "WishList",
-    username: window.username
+    username: window.username,
     // this.props.match.params.id
- }; 
- 
-  render() {
+    modal: true
+  };
 
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
+  };
+
+  render() {
     window.username = this.state.username;
-    
+
     return (
       <div className="wrapper">
-         <NavTabs />
+        <NavTabs />
         <Jumbotron>
-          <Dropdown/>
+          <div>
+            <Modal
+              isOpen={this.state.modal}
+              toggle={this.toggle}
+              className={this.props.className}
+            >
+              <ModalHeader toggle={this.toggle}>Welcome to Your Wish List Page</ModalHeader>
+              <ModalBody>
+                Want to go somewhere but don't know when you can go. Add it to your wish list and come back later!
+              </ModalBody>
+            </Modal>
+          </div>
+
+          <Dropdown />
           <div
             className="rowC"
             style={{ height: 800, clear: "both", textAlign: "center" }}
@@ -32,14 +51,11 @@ class Wishlist extends Component {
             <Friendlist />
             <Traveledlist />
             <Bucketlist />
-            
           </div>
-        
         </Jumbotron>
-      
-        <div className= "bucketlistIdeas">Bucket List Ideas</div>
-        <Gallery/>
-        
+
+        <div className="bucketlistIdeas">Bucket List Ideas</div>
+        <Gallery />
       </div>
     );
   }

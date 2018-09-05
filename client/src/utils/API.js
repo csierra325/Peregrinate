@@ -21,7 +21,7 @@ export default {
   saveUser: function (userData) {
     return axios.post("/api/users", userData);
   },
-  
+
   updateUser: function(id, userdata){
     return axios.put("/api/users/" + id, userdata)
   }
