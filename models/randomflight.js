@@ -9,6 +9,6 @@ const randomFlightSchema = new Schema({
   maxPrice: { type: Number, required: false }
 });
 
-const randomFlight = mongoose.model("Random Flight", randomFlightSchema);
+const randomFlight = mongoose.model("RandomFlight", randomFlightSchema);
 
 module.exports = randomFlight;
