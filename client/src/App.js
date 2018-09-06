@@ -18,7 +18,7 @@ import Contact from "./pages/Contact";
 import Packinglist from "./pages/Packinglist";
 import Travelideas from "./pages/Travelideas";
 //Import styling
-import "./App.css";
+import "./App.css";    
 
 const IsComponentAuthenticated = ({ component: Component, ...rest }) => {
   const isAuthenticated = window.isAuthenticated || false;
