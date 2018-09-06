@@ -7,14 +7,17 @@ import API from "../../utils/API";
 class FriendsSearch extends Component {
     state = {
         friends: [],
-        username: "",
-        userID: window.id
+        searchTerm: "",
+        userID: window.id,
+        id: window.id,
+        searchResults: []
     }
 
     componentDidMount() {
-        API.getFriendSearch(window.id)
-        .then(res => this.setState({ friends: res.data.friendRequests }))
-        .catch(err => console.log(err));
+        // this call is for friend request
+        // API.getFriendSearch(window.id)
+        // .then(res => this.setState({ friends: res.data.friendRequests }))
+        // .catch(err => console.log(err));
     };
 
     // handle any changes to the input fields
@@ -31,11 +34,9 @@ class FriendsSearch extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         // TODO: add API request to get user that matches name
-        this.setState({
-            // [name]: value
-            // username: this.state.username,
-            // userID: window.id
-        });
+        API.getUsers(this.state.searchTerm)
+            .then(res => this.setState({ searchResults: res.data.dbModel }))
+            .catch(err => console.log(err));
     }
 
     render() {
@@ -46,15 +47,14 @@ class FriendsSearch extends Component {
                     <input
                         type="text"
                         placeholder="Username"
-                        name="username"
-                        value={this.state.username}
+                        name="searchTerm"
+                        value={this.state.searchTerm}
                         onChange={this.handleInputChange}
                     />
                     <button onClick={this.handleFormSubmit}>Submit</button>
                     <ul>
-                        {this.state.friends.map((friend, i) => (
-                            <FriendSearchItem key={i} text={friend} />
-
+                        {this.state.searchResults.map((friend, i) => (
+                            <FriendSearchItem key={i} text={friend.username} />
                         ))}
                     </ul>
                 </form>
