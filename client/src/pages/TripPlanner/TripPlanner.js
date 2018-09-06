@@ -31,8 +31,7 @@ class TripPlanner extends Component {
               <Modal
                 isOpen={this.state.modal}
                 toggle={this.toggle}
-                className={this.props.className}
-              >
+                className={this.props.className}>
                 <ModalHeader toggle={this.toggle}>
                   Welcome to Your Trip Planner Page
                 </ModalHeader>
@@ -45,22 +44,12 @@ class TripPlanner extends Component {
 
             <div className="tripGen" align="left">
               <Globe />
-              <TripGenerator />
             </div>
-            <div>
-              {/* <PlanATrip /> */}
-              <TravelTabs />
-            </div>
-          </Jumbotron>
-        </div>
-        <div className="wrapper">
-          <NavTabs />
-          <Jumbotron>
-            <div className="tripGen" align="left">
-              <Globe />
-              <br />
 
-              <div className="row">
+            <br />
+            <br />
+
+            <div className="row">
                 <div class="card col-5">
                   <div class="card-body">
                     <TripGenerator />
@@ -74,10 +63,10 @@ class TripPlanner extends Component {
                     <TripResults />
                   </div>
                 </div>
-              </div>
+            </div>
 
-              <br />
-              <br />
+            <br />
+            <br />
 
               <div className="row">
                 <div class="card col-5">
@@ -88,7 +77,6 @@ class TripPlanner extends Component {
                   </div>
                 </div>
               </div>
-            </div>
           </Jumbotron>
         </div>
       </div>

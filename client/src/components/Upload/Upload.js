@@ -13,10 +13,6 @@ class Upload extends Component {
         uploadedFileCloudinaryUrl: ""
       };
   
-
-    
-  
-
   onImageDrop(files) {
     this.setState({
       uploadedFile: files[0]

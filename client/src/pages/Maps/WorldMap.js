@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { geoMercator, geoPath } from "d3-geo";
 import { feature } from "topojson-client";
 import worldData from "../../components/Map/world-110m.json";
-import Jumbotron from "../../components/Jumbotron";
+import MapJumbotron from "../../components/MapJumbotron";
 import NavTabs from "../../components/NavTabs";
 import "../../components/Map/usaMap.css"; /* optional for styling like the :hover pseudo-class */
 import USAMap from "react-usa-map";
@@ -161,17 +161,14 @@ class WorldMap extends Component {
           population: 10750000
         }
       ],
-      traveledlist: []
+      traveledlist: [],
+      currentPage: "WorldMap"
     };
 
     this.handleCountryClick = this.handleCountryClick.bind(this);
     this.handleMarkerClick = this.handleMarkerClick.bind(this);
     this.toggle = this.toggle.bind(this);
   }
-
-  state = {
-    currentPage: "WorldMap"
-  };
 
   projection() {
     return geoMercator()
@@ -249,7 +246,7 @@ class WorldMap extends Component {
     return (
       <div className="wrapper">
         <NavTabs />
-        <Jumbotron className="mh-100">
+        <MapJumbotron className="mh-100">
           <div>
             <Modal
               isOpen={this.state.modal}
@@ -313,7 +310,7 @@ class WorldMap extends Component {
               </svg>
             </div>
           </div>
-        </Jumbotron>
+        </MapJumbotron>
       </div>
     );
   }
