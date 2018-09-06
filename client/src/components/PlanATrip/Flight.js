@@ -31,7 +31,8 @@ class Flight extends Component {
 
   render() {
     return (
-        <div className = "flight">
+        <div className = "flight" align="left">
+        <h4>Flight:</h4>
       <form>
         <p>Origin Airport: <input
           type="text"

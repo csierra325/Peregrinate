@@ -1,4 +1,4 @@
-// import React, { Component } from "react";
+import React, { Component } from "react";
 
 // class Hotel extends Component {
 //   // Setting the initial values of this.state.username and this.state.password

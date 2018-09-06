@@ -68,7 +68,7 @@ class Friends extends Component {
 
             <div class="card col-7">
               <div class="card-body">
-                  <FriendsResult />
+                  <FriendsResult results={this.state.friendSearchResults}/>
               </div>
             </div>
           </div>
@@ -80,7 +80,6 @@ class Friends extends Component {
               <h2 className ="card-text">Make New Friends:</h2>
                 <div class="card-body">
                   <FriendsSearch />
-                  <FriendsResult results={this.state.friendSearchResults} />
                 </div>
             </div>
           </div>

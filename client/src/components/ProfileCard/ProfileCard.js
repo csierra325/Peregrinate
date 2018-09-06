@@ -3,7 +3,6 @@ import API from "../../utils/API";
 
 const cloudinary = window.cloudinary;
 
-
 class ProfileCard extends Component {
   state = {
     uploadedFileCloudinaryUrl: "",

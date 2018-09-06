@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const TripResults = props => (
     <div align="left">
         <h2 className="card-text">Trip Results:</h2>
