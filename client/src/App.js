@@ -49,8 +49,6 @@ class App extends Component {
 
          
           <IsComponentAuthenticated path = "/travelideas/:id" component = {Travelideas} />
-
-          <IsComponentAuthenticated path="/tripplanner/:id" component={TripPlanner} />
           <IsComponentAuthenticated path='/packinglist/:id' component={Packinglist} />
           <IsComponentAuthenticated path='/profile/:id' component={Profile} />
           <IsComponentAuthenticated path='/wishlist/:id' component={Wishlist} />
