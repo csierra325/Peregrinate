@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 
-import Jumbotron from "../../components/Jumbotron";
+import TravelJumbotron from "../../components/TravelJumbotron";
 import TripGenerator from "../../components/TripGenerator";
 import Globe from "../../components/Globe";
-import TravelTabs from "../../components/TravelTabs";
+// import TravelTabs from "../../components/TravelTabs";
 import NavTabs from "../../components/NavTabs";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import TripResults from "../../components/TripResults/TripResults";
+import Flight from "../../components/PlanATrip/Flight";
+import Car from "../../components/PlanATrip/Car";
+// import Hotel from "../../components/PlanATrip/Hotel";
 
 class TripPlanner extends Component {
   state = {
@@ -24,9 +27,9 @@ class TripPlanner extends Component {
   render() {
     return (
       <div>
-        <div className="wrapper">
+        <div className="wrapper" align="left">
           <NavTabs />
-          <Jumbotron>
+          <TravelJumbotron>
             <div>
               <Modal
                 isOpen={this.state.modal}
@@ -72,12 +75,19 @@ class TripPlanner extends Component {
                 <div class="card col-5">
                   <div class="card-body">
                     <h2>Plan A Trip:</h2>
-                    <TravelTabs />
-                    {/* <PlanATrip /> */}
+                    {/* <TravelTabs /> */}
+                    <br/>
+                    <Flight />
+                    <br/>
+                    <Car />
+                    <br/>
+                    <h4>Hotel:</h4>
+                    <h5>Coming Soon!</h5>
+                    {/* <Hotel /> */}
                   </div>
                 </div>
               </div>
-          </Jumbotron>
+          </TravelJumbotron>
         </div>
       </div>
     );

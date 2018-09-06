@@ -1,5 +1,8 @@
 import axios from "axios";
 
+const BASEURL = "http://api.tixik.com/api/nearby?lang=en&lat=36.106121163930377&lng=28.07762145996093&limit=10&key=";
+const APIKEY = "v6GXrGrT04AWCblHYYiKXAznKmyABeKV";
+
 export default {
 
   //***** USERS COLLECTION *****
@@ -32,10 +35,12 @@ export default {
 
   getFriendSearch: function(id) {
     return axios.get("/api/friendspage/friends/" + id);
+  },
+
+  randomFLight: function (query){
+    return axios.get("api/tripgenerator/random" + BASEURL + query + APIKEY);
   }
-
 };
-
 
  export function getCities() {
   return axios.get("/api/cities");

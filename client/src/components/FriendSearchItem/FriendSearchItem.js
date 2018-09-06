@@ -12,35 +12,37 @@ export default FriendSearchItem;
 // class FriendSearchItem extends Component {
 //     state = {
 //         userID: window.id,
-//         id: window.id
+//         id: window.id,
+//         searchResults: [],
+//         currentFriends:[]
 //     };
-
-//     matchedSearch = props => { 
-//         debugger;
-//          (
-//             <div>
-//                 <li>{props.text} 
-//                     <button
-//                     onClick={this.handleFormSubmit}
-//                     >ADD</button>
-//                 </li>
-//             </div>
-//         );    
-//     };
-
-//     handleFormSubmit = event => {
-//         debugger;
+    
+//     addButton = event => {
 //         event.preventDefault();
-//         //API request to get user that matches name
+
 //         API.updateUser(window.id)
-//             .then(res => this.setState({ currentFriends: res.data.currentFriends }))
-//             .catch(err => console.log(err));
-//     };
+//         .then(res => this.setState({ currentFriends: res.data.currentFriends }))
+//         .catch(err => console.log(err));
+//     }
+
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             searchResults: "friend.username"
+//           };
+//         this.addButton = this.addButton.bind(this);
+//       }
 
 //     render() {
 //         return (
 //             <div className="friendsSearch" align="left">
-//                {this.matchedSearch}
+//                 <div>
+//                     <li>{this.searchResults} 
+//                         <button
+//                         onClick={this.addButton}
+//                         >ADD</button>
+//                     </li>
+//                 </div>
 //             </div>
 //             // <div>
 //             //     <FriendsResult 

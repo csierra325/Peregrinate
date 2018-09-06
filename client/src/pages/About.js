@@ -1,7 +1,6 @@
 import React from "react";
 import Jumbotron from "../components/Jumbotron";
 import Slideshow from "../components/Slideshow/Slideshow";
-import NavTabs from "../components/NavTabs/NavTabs";
 
 const About = (props) => (
     <div className = "wrapper">
@@ -24,7 +23,7 @@ const About = (props) => (
   
       </Jumbotron>
   
-     <footer style={{ textAlign: "center", padding: "20px", background: "#5c5c5c", fontWeight: "bold"}}
+     <footer style={{ textAlign: "center", padding: "20px", background: "#5c5c5c" }}
      > <a href = {'/About'} color = "white" className= "aboutUs">About Us</a><a href = {"/Contact"} className= "contactUs">Contact Us</a></footer>
     </div>
   );
