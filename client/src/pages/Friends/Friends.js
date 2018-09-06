@@ -11,8 +11,8 @@ import { Modal, ModalHeader, ModalBody } from "reactstrap";
 class Friends extends Component {
   state = {
     currentPage: "Friends",
-    username: window.username,
-    currentfriends: [],
+    userID: window.id,
+    id: window.id,
     modal: true
   };
 
@@ -79,8 +79,8 @@ class Friends extends Component {
             <div class="card col-4">
               <h2 className ="card-text">Make New Friends:</h2>
                 <div class="card-body">
-                  <FriendsSearch handleFormSubmit={this.handleFormSubmit} />
-                  {/* <FriendsResult results={this.state.friendSearchResults} /> */}
+                  <FriendsSearch />
+                  <FriendsResult results={this.state.friendSearchResults} />
                 </div>
             </div>
           </div>

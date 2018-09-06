@@ -5,6 +5,7 @@ const saltRounds = 10;
 // Defining methods for the usersController
 module.exports = {
   findAll: function (req, res) {
+    console.log(req.query);
     db.User
       .find(req.query)
       .sort({ date: -1 })
