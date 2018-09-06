@@ -23,11 +23,11 @@ class FriendsResult extends Component {
             <div className="friendsResult" align="left">
                 <h2 className="card-text">Friend Results:</h2>
                 <ul class="list-group list-group-flush">
-                
-                    {this.state.friends.map((friend, i) => (
+                    FRIEND LIST
+                    {/* {this.state.friends.map((friend, i) => (
                         <FriendSearchItem key={i} text={friend} />
 
-                    ))}
+                    ))} */}
                 </ul>
             </div>
 

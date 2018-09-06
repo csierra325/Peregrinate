@@ -5,7 +5,7 @@ const saltRounds = 10;
 // Defining methods for the usersController
 module.exports = {
   findAll: function (req, res) {
-    console.log(req.query);
+    // console.log(req.query);
     db.User
       .find(req.query)
       .sort({ date: -1 })
@@ -37,7 +37,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findByUsername: function (req, res) {
-    console.log("Getting One User")
+    // console.log("Getting One User")
     db.User
       .findOne({ username: req.params.username })
       .then(dbModel => res.json(dbModel))

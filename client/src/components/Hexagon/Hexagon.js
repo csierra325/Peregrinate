@@ -110,7 +110,7 @@ const Hexagon = () => (
             
           </div>  
         </div>
-      </div>>
+      </div>
     </div> 
   </div>
   

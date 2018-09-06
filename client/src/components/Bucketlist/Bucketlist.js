@@ -6,16 +6,12 @@ class Bucketlist extends Component {
   state = {
     buckets: [],
     bucketItem: "",
-    userID: window.id
-  
+    userID: window.id,
+    id: window.id
   };
 
   componentDidMount() {
-        //PULL IN USER ID HERE TO POPULATE ****
-    
-     // const id = "5b86cc97c6cc1b0a419a5de8";  //Sabrina's user
-     const id = "5b8d75b4d171a90926092d34";
-    API.getUser(id)
+    API.getUser(window.id)
       .then(res => this.setState({ buckets: res.data.bucketlist }))
       .catch(err => console.log(err));
   };
