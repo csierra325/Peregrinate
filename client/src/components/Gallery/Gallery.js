@@ -3,6 +3,7 @@ import "./Gallery.css"
 
 const Gallery = () => (
  <div className="Gallery">
+ <div className = "flexGallery">
  <div className="img-container" >
  <div className="column">
  <div className="content">
@@ -74,6 +75,7 @@ const Gallery = () => (
     <p>Dubai is home to the world's tallest building, the Burj Khalifa, one of the world's largest shopping centers, the Dubai Mall, and one of the only indoor ski resorts in the world, Ski Dubai.</p>
     </div>
     </div>
+</div>
 </div>
 </div>
 );

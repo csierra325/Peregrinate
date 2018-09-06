@@ -16,8 +16,9 @@ import TripPlanner from './pages/TripPlanner';
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Packinglist from "./pages/Packinglist";
+import Travelideas from "./pages/Travelideas";
 //Import styling
-import "./App.css";
+import "./App.css";    
 
 const IsComponentAuthenticated = ({ component: Component, ...rest }) => {
   const isAuthenticated = window.isAuthenticated || false;
@@ -46,6 +47,10 @@ class App extends Component {
           <Route exact path="/about" component={About} />
           <Route exact path="/contact" component={Contact} />
 
+         
+          <IsComponentAuthenticated path = "/travelideas/:id" component = {Travelideas} />
+
+          <IsComponentAuthenticated path="/tripplanner/:id" component={TripPlanner} />
           <IsComponentAuthenticated path='/packinglist/:id' component={Packinglist} />
           <IsComponentAuthenticated path='/profile/:id' component={Profile} />
           <IsComponentAuthenticated path='/wishlist/:id' component={Wishlist} />
