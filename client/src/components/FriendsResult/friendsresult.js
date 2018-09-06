@@ -11,4 +11,4 @@ const FriendsResult = props => (
    
 );
 
-export default FriendsResult
+export default FriendsResult;
