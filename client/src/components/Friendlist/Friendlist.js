@@ -46,7 +46,6 @@ class Friendlist extends Component {
     event.preventDefault();
     const {friendItem, friends} = this.state;
     
-     //This will go away once Camille is done
     if (friendItem){
 
       this.setState({

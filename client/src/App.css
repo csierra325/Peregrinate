@@ -79,12 +79,26 @@ margin-top: 1%;
 
 
 /* Wishlist */
-.rowC{
-  display:flex;
-  flex-direction:row;
-  justify-content: space-around;
+/* .rowC{
+  text-align: center;
+ 
+  
+  
+} */
+.wishListWrapper{
+  background-color:#e8f0ef;
+  /* margin: 4%;
+  width: 500px; */
+  height: 500px;
+  text-align: center;
+  display: block;
+  margin: auto;
+  margin-bottom: 6%;
+  margin-top: 4%;
+  width: 40%;
   
 }
+
 
 
 /* Profile */
@@ -119,27 +133,8 @@ margin-top: 1%;
   background-color: oldlace;
 }
 
-.buckettitle{
-  color:blue;
-  color: #bfadc3;
-  -webkit-text-fill-color: #bfadc3;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
-  font-size: 2em;
-}
 
 
-.friendTitle{
-  color: #bfadc3;
-  -webkit-text-fill-color: #bfadc3; 
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
-  font-size: 2em;
-}
-
-.friendList{
-align-content: center;
-}
 
 
 ul{
