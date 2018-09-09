@@ -1,37 +1,36 @@
-.Gallery {
+.flexGallery {
+    display: flex;
+    flex-flow: row wrap;
     border-radius: 2px;
-    height: 250px;
-    margin: 1rem;
+    height: 345px;
+    padding: 1rem;
     position: relative;
     width: 325px;
     box-shadow: 0 3px 6px #999, 0 3px 6px #999;
     text-align: left;
   }
-  
-  .Gallery > .img-container {
-    overflow: hidden;
-    text-align: center;
-  }
 
-   img {
+img {
     width: 300px; 
     height:200px;
+    clear: both;
   }
   
-  
-
 .content {
     background-color: white;
     padding: 10px;
-    height: 340px;
+    height: 350px;
     width: 320px;
+    margin: 4%;
+    text-align: left;
 }
 
-.column {
+ /* .column {
     float: left;
-    width: 25%;
-    margin: 4%;
-}
+    width: 50%;
+    margin: 60px; 
+  
+}  */
 
 p{
     font-size: 12px;

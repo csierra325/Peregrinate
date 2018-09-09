@@ -16,8 +16,9 @@ import TripPlanner from './pages/TripPlanner';
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Packinglist from "./pages/Packinglist";
+import Travelideas from "./pages/Travelideas";
 //Import styling
-import "./App.css";
+import "./App.css";    
 
 const IsComponentAuthenticated = ({ component: Component, ...rest }) => {
   const isAuthenticated = window.isAuthenticated || false;
@@ -43,28 +44,17 @@ class App extends Component {
           <Nav />
           <Route exact path="/" component={Members} />
           <Route exact path="/login" component={Login} />
-          {/* <Route exact path="/map/:id" component={Maps} /> */}
-          {/* <Route exact path="/friends/:id" component={Friends} /> */}
-          {/* <Route exact path="/tripplanner/:id" component={TripPlanner} /> */}
           <Route exact path="/about" component={About} />
           <Route exact path="/contact" component={Contact} />
-          {/* <Route exact path = "/packinglist/:id" component = {Packinglist}/> */}
 
-          {/* <Route exact path="/profile/:id" component={Profile} />
-          <Route exact path="/wishlist/:id" component={Wishlist} />
-          <Route exact path="/map/:id" component={Maps} />
-          <Route exact path="/friends/:id" component={Friends} />
-          <Route exact path="/tripplanner/:id" component={TripPlanner} /> */}
-
-
-          <IsComponentAuthenticated path="/tripplanner/:id" component={TripPlanner} />
+         
+          <IsComponentAuthenticated path = "/travelideas/:id" component = {Travelideas} />
           <IsComponentAuthenticated path='/packinglist/:id' component={Packinglist} />
           <IsComponentAuthenticated path='/profile/:id' component={Profile} />
           <IsComponentAuthenticated path='/wishlist/:id' component={Wishlist} />
           <IsComponentAuthenticated path='/map/:id' component={Maps} />
           <IsComponentAuthenticated path='/friends/:id' component={Friends} />
           <IsComponentAuthenticated path='/tripplanner/:id' component={TripPlanner} />
-
         </div>
       </Router>
     );

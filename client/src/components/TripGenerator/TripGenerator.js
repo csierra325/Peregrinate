@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import API from "../../utils/API";
 
 class RandomTrip extends Component {
   // Setting the initial values of this.state.username and this.state.password
@@ -8,7 +9,8 @@ class RandomTrip extends Component {
     returnDate: "",
     duration: "",
     maxPrice: "",
-    userID: window.id
+    userID: window.id,
+    searchResults: []
   };
 
   // handle any changes to the input fields
@@ -27,6 +29,10 @@ class RandomTrip extends Component {
     event.preventDefault();
     alert(`Origin: ${this.state.origin}\nDeparture Date: ${this.state.departureDate}\nReturn Date: ${this.state.returnDate}\nTrip Duration: ${this.state.duration}\nMax Price: ${this.state.maxPrice}`);
     this.setState({ origin: "", departureDate: "", returnDate: "", duration: "", maxPrice: "" });
+    
+    API.randomFLight(this.state.searchResults)
+    .then(res => this.setState({ searchResults: res.data }))
+    .catch(err => console.log(err));
   };
 
   render() {
@@ -71,6 +77,15 @@ class RandomTrip extends Component {
         /></p>
         <button onClick={this.handleFormSubmit}>Submit</button>
       </form>
+     
+
+        {/* <div>
+          <ul>
+            {this.state.searchResults.map((randomFlight, i) => (
+                <TripResults key={i} text={randomFlight.searchResults} />
+            ))}
+          </ul>
+        </div> */}
       </div>
     );
   }

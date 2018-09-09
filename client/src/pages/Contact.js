@@ -1,11 +1,8 @@
 import React from "react";
 import Jumbotron from "../components/Jumbotron";
-import NavTabs from "../components/NavTabs/NavTabs";
-
 
 const Contact = (props) => (
     <div className="wrapper">
-        <NavTabs />
         <Jumbotron>
             <h1>We Wanna Hear From You!</h1>
             <img src="http://3.bp.blogspot.com/-wUdCv5dvGvs/VVPBKkwsj6I/AAAAAAAAAmE/_-Q9aKDx4fM/s1600/fish-and-scuba-diver-funny-priceless-expression.jpg" alt="Fish" height="42" width="42" />
@@ -18,8 +15,8 @@ const Contact = (props) => (
 
         </Jumbotron>
 
-        <footer style={{ textAlign: "center", padding: "20px", background: "grey" }}
-        > </footer>
+        <footer style={{ textAlign: "center", padding: "20px", background: "#5c5c5c" }}
+        > <a href = {'/About'} color = "white" className= "aboutUs">About Us</a><a href = {"/Contact"} className= "contactUs">Contact Us</a></footer>
     </div>
 );
 

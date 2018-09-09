@@ -33,7 +33,7 @@ class FriendsSearch extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        // TODO: add API request to get user that matches name
+        //API request to get user that matches name
         API.getUsers(this.state.searchTerm)
             .then(res => this.setState({ searchResults: res.data.dbModel }))
             .catch(err => console.log(err));
