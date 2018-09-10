@@ -32,6 +32,7 @@ class Wishlist extends Component {
       selectedCities: [...this.state.selectedCities, this.state.selectedCity]
     });
  
+    
     API.updateUser(window.id, {$push:{bucketlist: "New York"}})
       .then(res => {
         console.log(res.data);
