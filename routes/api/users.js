@@ -2,6 +2,7 @@ const router = require("express").Router();
 // const db = require("../../models");
 const usersController = require("../../controllers/usersController");
 // const friendRequestsController = require("../../controllers/friendRequestsController");
+const bucketlistController = require("../../controllers/bucketListController");
 
 // Matches with "/api/users"
 router.route("/")
@@ -18,6 +19,10 @@ router.route("/:username")
   .get(usersController.findByUsername)
   // get(usersController.find);
 
+  router.route("/wishlist/bucketlist/:id")
+  .get(bucketlistController.findAll)
+  .post(bucketlistController.create)
+  
 // //Routes for friends
 // router.route("/:id/friends")
 //   .get(friendRequestsController.findAll)
