@@ -15,6 +15,18 @@ class Wishlist extends Component {
     modal: true
   };
 
+  componentDidMount(){
+    API.getUser(window.id) 
+      .then(res => {
+        const dbBucketlist = res.data;
+        console.log(dbBucketlist)
+       dbBucketlist.bucketlist.forEach(element => {
+        this.state.selectedCities.push(element)         
+       });
+      }).catch(err => console.log(err));
+  } 
+
+
   handleInputChange = event => {
     const {name, value} = event.target;
     this.setState({
@@ -33,7 +45,7 @@ class Wishlist extends Component {
     });
  
     
-    API.updateUser(window.id, {$push:{bucketlist: "New York"}})
+    API.updateUser(window.id, {$push:{bucketlist: this.state.selectedCities }})
       .then(res => {
         console.log(res.data);
       })

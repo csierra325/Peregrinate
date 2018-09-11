@@ -40,6 +40,8 @@ export default {
   randomFLight: function (query){
     return axios.get("api/tripgenerator/random" + BASEURL + query + APIKEY);
   }
+
+  
 };
 
  export function getCities() {
