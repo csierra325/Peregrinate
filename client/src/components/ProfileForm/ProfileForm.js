@@ -7,7 +7,7 @@ class ProfileForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      stateSelected: false, 
+      stateSelected: false,
       profileUpdated: false
     };
 
@@ -59,8 +59,11 @@ class ProfileForm extends Component {
           city: dbUser.address.city,
           zip: dbUser.address.zip
         });
-        document.getElementById('inputState').value  = dbUser.address.state;
-        document.getElementById('carRental').value = dbUser.travelInfo.rental;
+        if (dbUser.travelInfo.rental){
+          document.getElementById('carRental').value = dbUser.travelInfo.rental;
+        }
+        document.getElementById('inputState').value = dbUser.address.state;
+        
         document.getElementById('localCommute').value = dbUser.travelInfo.local;
 
       }).catch(err => console.log(err));
@@ -84,7 +87,7 @@ class ProfileForm extends Component {
           zip: dbUser.address.zip,
           city: dbUser.address.city
         });
-        document.getElementById('inputState').value  = dbUser.address.state;
+        document.getElementById('inputState').value = dbUser.address.state;
         document.getElementById('carRental').value = dbUser.travelInfo.rental;
         document.getElementById('localCommute').value = dbUser.travelInfo.local;
       }).catch(err => console.log(err));
@@ -199,8 +202,8 @@ class ProfileForm extends Component {
         {this.state.stateSelected ? <Modal isOpen={this.state.stateSelected} toggle={this.closeModal} className={this.props.className}>
           <ModalHeader>Error</ModalHeader>
           <ModalBody>
-          Please select a state.
-          Resubmit the form once complete.
+            Please select a state.
+            Resubmit the form once complete.
                     </ModalBody>
           <ModalFooter>
             <Button color="secondary" onClick={this.closeModal} isOpen={this.state.stateSelected}>Cancel</Button>
@@ -210,7 +213,7 @@ class ProfileForm extends Component {
         {this.state.profileUpdated ? <Modal isOpen={this.state.profileUpdated} toggle={this.closeModal} className={this.props.className}>
           <ModalHeader>Peregrinate</ModalHeader>
           <ModalBody>
-          Profile Updated
+            Profile Updated
                     </ModalBody>
           <ModalFooter>
             <Button color="secondary" onClick={this.closeModal} isOpen={this.state.profileUpdated}>Cancel</Button>

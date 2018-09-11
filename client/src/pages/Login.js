@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Jumbotron from "../components/Jumbotron";
+import { GoogleLogin } from "react-google-login";
+
 const bcrypt = require('bcryptjs');
 
 
@@ -35,20 +37,6 @@ class Login extends Component {
             existingUserField: false,
         });
     };
-
-
-
-    // passwordMatchingToggle() {
-    //     this.setState({
-    //         passwordMatching: !this.state.modal
-    //     });
-    // }
-
-
-    // closeModal(){
-    //     this.setState({ passwordMatching: false });
-    // }
-
 
     state = {
         currentPage: "Login",
@@ -246,10 +234,7 @@ class Login extends Component {
                             </div>
                         </div>
 
-
                         <div class="col-2"></div>
-
-
 
                         <div class="card col-4">
                             <div class="card-body">
@@ -283,6 +268,21 @@ class Login extends Component {
                                     <button onClick={this.handleFormSubmitNewUser}
                                         isOpen={this.state.passwordMatching}>Login</button>
                                 </form>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    {/* Google sign in */}
+                    <div className="row mt-5">
+                        <div class="col-1"></div>
+                        <div class="card col-4">
+                            <div class="card-body">
+                                <h4>Google Sign</h4>
+                                <GoogleLogin/>
+
                             </div>
                         </div>
                     </div>
