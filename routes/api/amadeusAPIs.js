@@ -30,5 +30,4 @@ router
   .delete(usersController.remove);
 
 
-
 module.exports = router;

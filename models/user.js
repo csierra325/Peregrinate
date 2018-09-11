@@ -32,10 +32,7 @@ const usersSchema = new Schema({
 
 
   bucketlist: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'New York'
-    }
+    
   ],
   //friendlist is the friend travel recommendations:
   friendlist: [

@@ -3,7 +3,8 @@ import Gallery from "../../components/Gallery/Gallery"
 import NavTabs from "../../components/NavTabs"
 import Dropdown from "../../components/Dropdown/Dropdown";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
-import API from "../../utils/API"
+import API from "../../utils/API";
+
 
 class Wishlist extends Component {
   state = {
@@ -21,6 +22,8 @@ class Wishlist extends Component {
     });
   }
 
+
+
   handleSubmit = event => {
     event.preventDefault();
   
@@ -28,11 +31,23 @@ class Wishlist extends Component {
     this.setState({
       selectedCities: [...this.state.selectedCities, this.state.selectedCity]
     });
+<<<<<<< HEAD
 
     API.updateUser(window.id, {$push:{bucketlist: "New York"}})
     .then(res => {console.log(res.data)
     })
     .catch(err => console.log(err))
+=======
+ 
+    
+    API.updateUser(window.id, {$push:{bucketlist: "New York"}})
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => console.log(err));
+
+
+>>>>>>> 5a6d9ed6f42ce78abb3155ca8671c8483f955f98
     console.log(this.state.selectedCities)
   };
 
