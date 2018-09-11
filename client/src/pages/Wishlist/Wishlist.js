@@ -31,13 +31,6 @@ class Wishlist extends Component {
     this.setState({
       selectedCities: [...this.state.selectedCities, this.state.selectedCity]
     });
-<<<<<<< HEAD
-
-    API.updateUser(window.id, {$push:{bucketlist: "New York"}})
-    .then(res => {console.log(res.data)
-    })
-    .catch(err => console.log(err))
-=======
  
     
     API.updateUser(window.id, {$push:{bucketlist: "New York"}})
@@ -47,7 +40,6 @@ class Wishlist extends Component {
       .catch(err => console.log(err));
 
 
->>>>>>> 5a6d9ed6f42ce78abb3155ca8671c8483f955f98
     console.log(this.state.selectedCities)
   };
 
