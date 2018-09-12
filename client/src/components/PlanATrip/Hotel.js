@@ -3,12 +3,8 @@ import React, { Component } from "react";
 // class Hotel extends Component {
 //   // Setting the initial values of this.state.username and this.state.password
 //   state = {
-//     origin: "",
-//     destination: "",
-//     departureDate: "",
-//     duration: "",
-//     maxPrice: "",
-// userID: window.id
+//     userID: window.id,
+//     id: window.id
 //   };
 
 //   // handle any changes to the input fields
@@ -68,7 +64,7 @@ import React, { Component } from "react";
 //           value={this.state.maxPrice}
 //           onChange={this.handleInputChange}
 //         /></p>
-//         <button onClick={this.handleFormSubmit}>Submit</button>
+//         <button className="col-12" onClick={this.handleFormSubmit}>Submit</button>
 //       </form>
 //       </div>
 //     );

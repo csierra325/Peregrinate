@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Jumbotron from "../components/Jumbotron";
-import { GoogleLogin } from "react-google-login";
 
 const bcrypt = require('bcryptjs');
 
@@ -60,7 +59,6 @@ class Login extends Component {
                 res.data.dbModel.forEach((element, i) => {
                     if (element.username === usernameEntered) {
                         bcrypt.compare(passwordEntered, element.password, (err, res) => {
-                            // console.log(`Is the password correct? ${res}`)
                             if (res) {
                                 window.id = element._id;
                                 window.username = element.username;
@@ -75,7 +73,6 @@ class Login extends Component {
             .catch(error => {
                 const isAuthenticated = error.response.data.isAuthenticated;
                 window.isAuthenticated = isAuthenticated;
-                console.log(`isAuthenticated: ${error.response.data.isAuthenticated}`);
             });
     };
 
@@ -96,7 +93,6 @@ class Login extends Component {
                     this.setState({ new_username: "", new_password_one: "", new_password_two: "" });
                 })
                 .catch(error => {
-                    // console.log(err);
                     const isAuthenticated = error.response.data.isAuthenticated;
                     window.isAuthenticated = isAuthenticated;
 
@@ -131,7 +127,6 @@ class Login extends Component {
     handleFormSubmitExistingUser = event => {
         event.preventDefault();
         if (this.state.existing_username && this.state.existing_password) {
-            // console.log(`Existing User\n--------------\nUsername: ${this.state.existing_username}\nPassword: ${this.state.existing_password}\n--------------`);
             this.setState({ existing_username: "", existing_password: "" });
             this.getUser(this.state.existing_username, this.state.existing_password);
         } else {
@@ -142,7 +137,6 @@ class Login extends Component {
 
     handleFormSubmitNewUser = event => {
         event.preventDefault();
-        console.log(`New User\n----------------\nUsername: ${this.state.new_username}\nPassword One: ${this.state.new_password_one} \nPassword Two:${this.state.new_password_two}\n--------------`);
         this.addUser(this.state.new_password_one, this.state.new_password_two);
     }
 
@@ -204,10 +198,10 @@ class Login extends Component {
                     </Modal> : null}
 
                     <div className="row">
-                        <div class="col-1"></div>
-                        <div class="card col-4">
+                        <div className="col-1"></div>
+                        <div className="card col-4">
 
-                            <div class="card-body">
+                            <div className="card-body">
                                 <h4>Existing User</h4>
                                 <form>
                                     <input
@@ -228,18 +222,18 @@ class Login extends Component {
                                     <br />
                                     <button
                                         onClick={this.handleFormSubmitExistingUser}
-                                        isOpen={this.state.accountCreatedModal}
+                                       
                                     >Login</button>
                                 </form>
                             </div>
                         </div>
 
-                        <div class="col-2"></div>
+                        <div className="col-2"></div>
 
-                        <div class="card col-4">
-                            <div class="card-body">
+                        <div className="card col-4">
+                            <div className="card-body">
 
-                                <h4 class="card-text">Create New User</h4>
+                                <h4 className="card-text">Create New User</h4>
                                 <form>
                                     <input
                                         type="text"
@@ -266,7 +260,7 @@ class Login extends Component {
                                     />
                                     <br />
                                     <button onClick={this.handleFormSubmitNewUser}
-                                        isOpen={this.state.passwordMatching}>Login</button>
+                                        >Login</button>
                                 </form>
 
 
@@ -275,17 +269,7 @@ class Login extends Component {
                     </div>
 
 
-                    {/* Google sign in */}
-                    <div className="row mt-5">
-                        <div class="col-1"></div>
-                        <div class="card col-4">
-                            <div class="card-body">
-                                <h4>Google Sign</h4>
-                                <GoogleLogin/>
-
-                            </div>
-                        </div>
-                    </div>
+                  
                 </Jumbotron>
             </div >
         );

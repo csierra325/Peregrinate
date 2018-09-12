@@ -37,7 +37,7 @@ class FriendsSearch extends Component {
         API.getUsers(this.state.searchTerm)
             .then(res => this.setState({ searchResults: res.data.dbModel }))
             .catch(err => console.log(err));
-    }
+    };
 
     render() {
         return (

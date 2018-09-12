@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Gallery from "../../components/Gallery/Gallery"
+// import Gallery from "../../components/Gallery/Gallery"
 import NavTabs from "../../components/NavTabs"
 import Dropdown from "../../components/Dropdown/Dropdown";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
@@ -34,6 +34,20 @@ class Wishlist extends Component {
     });
   }
 
+  // componentDidMount() {
+  //   API.getUser(window.id)
+  //     .then(res => {
+  //       const dbUser = res.data;
+      
+  //       console.log(dbUser.bucketlist);
+        
+  //       dbUser.bucketlist.forEach(element => {
+  //         this.state.selectedCities.push(element);
+  //       });
+
+
+  //     }).catch(err => console.log(err));
+  // }
 
 
   handleSubmit = event => {

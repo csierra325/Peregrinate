@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import FriendSearchItem from "../FriendSearchItem/FriendSearchItem";
+// import FriendSearchItem from "../FriendSearchItem/FriendSearchItem";
 import API from "../../utils/API";
 
 
