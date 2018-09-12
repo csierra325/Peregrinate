@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import Jumbotron from "../components/Jumbotron";
+import LoginJumbotron from "../components/LoginJumbotron";
 
 const bcrypt = require('bcryptjs');
 
@@ -143,7 +143,7 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <Jumbotron >
+                <LoginJumbotron >
                     {this.state.accountCreatedModal ? <Modal isOpen={this.state.accountCreatedModal} toggle={this.toggle} className={this.props.className}>
                         <ModalHeader toggle={this.toggle}>Welcome to Peregrinate!</ModalHeader>
                         <ModalBody>
@@ -270,7 +270,7 @@ class Login extends Component {
 
 
                   
-                </Jumbotron>
+                </LoginJumbotron>
             </div >
         );
     }
