@@ -2,7 +2,7 @@ import React from "react";
 
 const LoginJumbotron = ({ children }) => (
   <div
-    style={{ height: 350, clear: "both", textAlign: "center" }}
+    style={{ height: 325, clear: "both", textAlign: "center" }}
     className="jumbotron"
   >
     {children}
