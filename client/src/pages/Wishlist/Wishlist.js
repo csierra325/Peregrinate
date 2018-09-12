@@ -22,6 +22,20 @@ class Wishlist extends Component {
     });
   }
 
+  // componentDidMount() {
+  //   API.getUser(window.id)
+  //     .then(res => {
+  //       const dbUser = res.data;
+      
+  //       console.log(dbUser.bucketlist);
+        
+  //       dbUser.bucketlist.forEach(element => {
+  //         this.state.selectedCities.push(element);
+  //       });
+
+
+  //     }).catch(err => console.log(err));
+  // }
 
 
   handleSubmit = event => {
@@ -32,12 +46,12 @@ class Wishlist extends Component {
       selectedCities: [...this.state.selectedCities, this.state.selectedCity]
     });
  
-    
-    API.updateUser(window.id, {$push:{bucketlist: "New York"}})
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => console.log(err));
+
+    // API.updateUser(window.id, {$push:{bucketlist: "New York"}})
+    //   .then(res => {
+    //     console.log(res.data);
+    //   })
+    //   .catch(err => console.log(err));
 
 
     console.log(this.state.selectedCities)
