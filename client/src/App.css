@@ -142,12 +142,9 @@ ul{
 }
 
 .bucketlistIdeas{
-  color: #bfadc3;
-  -webkit-text-fill-color: #bfadc3; 
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
+  color: black;
   font-size: 4em;
-  background-color: rgba(255, 255, 255, 0.87);
+
   text-align: center;
 }
   
@@ -174,6 +171,8 @@ ul{
     text-align: center;
     font-size: 1.75em;
   }
+
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

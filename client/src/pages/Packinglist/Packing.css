@@ -26,6 +26,10 @@
     height: 25em;
     width: 25em;
 } 
+#essentialSelectMulti{
+    height: 25em;
+    width: 25em;
+}
 
 .helpfulLinks{
     display:flex;
@@ -45,4 +49,6 @@
     margin-top: 2%;
     
 }
+
+
 
