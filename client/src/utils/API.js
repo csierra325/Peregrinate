@@ -33,6 +33,10 @@ export default {
   getFriendSearch: function(id) {
     return axios.get("/api/friendspage/friends/" + id);
   },
+
+ 
+
+  
 };
 
  export function getCities() {

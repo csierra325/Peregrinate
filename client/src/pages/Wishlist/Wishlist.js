@@ -4,6 +4,7 @@ import NavTabs from "../../components/NavTabs"
 import Dropdown from "../../components/Dropdown/Dropdown";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import API from "../../utils/API";
+import ListItem from "../../components/ListItem"
 
 
 class Wishlist extends Component {
@@ -15,6 +16,23 @@ class Wishlist extends Component {
     modal: true
   };
 
+  componentDidMount(){
+    API.getUser(window.id) 
+    .then(res => {
+      const dbBucketlist = res.data;
+      console.log(dbBucketlist)
+     dbBucketlist.bucketlist.forEach(element => {
+      this.state.selectedCities.push(element)         
+     });
+    }).catch(err => console.log(err));
+
+  } 
+
+  delete(id){
+    const selectedCities = this.state.selectedCities.filter(i => i !== id)
+    this.setState({selectedCities})
+  }
+
   handleInputChange = event => {
     const {name, value} = event.target;
     this.setState({
@@ -22,36 +40,24 @@ class Wishlist extends Component {
     });
   }
 
-  // componentDidMount() {
-  //   API.getUser(window.id)
-  //     .then(res => {
-  //       const dbUser = res.data;
-      
-  //       console.log(dbUser.bucketlist);
-        
-  //       dbUser.bucketlist.forEach(element => {
-  //         this.state.selectedCities.push(element);
-  //       });
-
-
-  //     }).catch(err => console.log(err));
-  // }
-
-
   handleSubmit = event => {
     event.preventDefault();
-  
-    console.log(this.state.selectedCity);
-    this.setState({
-      selectedCities: [...this.state.selectedCities, this.state.selectedCity]
-    });
- 
+    // console.log(this.state.selectedCity);
+    // this.setState({
+    //   selectedCities: [...this.state.selectedCities, this.state.selectedCity]
+    // });
+    API.updateUser(window.id, {$push:{bucketlist: this.state.selectedCity }})
+      .then(res => {
+        console.log(res.data);
+        API.getUser(window.id) 
+        .then(res => {
+          this.setState({
+            selectedCities: [...this.state.selectedCities, this.state.selectedCity]
+         });
+        }).catch(err => console.log(err));
 
-    // API.updateUser(window.id, {$push:{bucketlist: "New York"}})
-    //   .then(res => {
-    //     console.log(res.data);
-    //   })
-    //   .catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
 
 
     console.log(this.state.selectedCities)
@@ -78,10 +84,11 @@ class Wishlist extends Component {
         
           <ul>
             {this.state.selectedCities.map((city, i) => (
-              <li>{city}</li> 
+              <ListItem key={i} text={city}  />
             ))} 
           </ul>
         </div>
+
 
         <Modal
           isOpen={this.state.modal}
