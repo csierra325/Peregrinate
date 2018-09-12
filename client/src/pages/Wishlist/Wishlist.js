@@ -28,8 +28,8 @@ class Wishlist extends Component {
 
   } 
 
-  delete(id){
-    const selectedCities = this.state.selectedCities.filter(i => i !== id)
+  delete(city){
+    const selectedCities = this.state.selectedCities.filter(i => i !== city)
     this.setState({selectedCities})
   }
 
@@ -84,7 +84,7 @@ class Wishlist extends Component {
         
           <ul>
             {this.state.selectedCities.map((city, i) => (
-              <ListItem key={i} text={city}  />
+              <ListItem key={i} text={city} onDelete = {() => this.delete(city)}  />
             ))} 
           </ul>
         </div>
