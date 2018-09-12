@@ -6,8 +6,7 @@ import TripGenerator from "../../components/TripGenerator";
 import Globe from "../../components/Globe";
 // import TravelTabs from "../../components/TravelTabs";
 import NavTabs from "../../components/NavTabs";
-// import { Modal, ModalHeader, ModalBody } from "reactstrap";
-import TripResults from "../../components/TripResults/TripResults";
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import Flight from "../../components/PlanATrip/Flight";
 import Car from "../../components/PlanATrip/Car";
 // import Hotel from "../../components/PlanATrip/Hotel";
@@ -32,7 +31,7 @@ class TripPlanner extends Component {
         <div className="wrapper" align="left">
           <NavTabs />
           <TravelJumbotron>
-            {/* <div>
+            <div>
               <Modal
                 isOpen={this.state.modal}
                 toggle={this.toggle}
@@ -45,7 +44,7 @@ class TripPlanner extends Component {
                   welcome.
                 </ModalBody>
               </Modal>
-            </div> */}
+            </div>
 
             <div className="tripGen row" align="center">
               <div class="globe col-12">

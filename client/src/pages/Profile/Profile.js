@@ -27,7 +27,7 @@ class Profile extends Component {
 
         <Jumbotron>
           <Greeting username={this.state.username} />
-          {/* <div>
+          <div>
             <Modal
               isOpen={this.state.modal}
               toggle={this.toggle}
@@ -38,7 +38,7 @@ class Profile extends Component {
                 Fill out the form below to update your profile and save your preferred travel information! Don't forget to add a profile image if you would like!
               </ModalBody>
             </Modal>
-          </div> */}
+          </div>
 
           <div class="rowD">
             <div className="col-s-3">
