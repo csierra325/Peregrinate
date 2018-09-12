@@ -24,7 +24,7 @@ export default class Dropdown extends Component {
     let right = arr.length - 1;
     while (left <= right) {
         const mid = left + Math.floor((right - left) / 2);
-        if (arr[mid] == target) {
+        if (arr[mid] === target) {
             return arr[mid];
         }
         if (arr[mid] < target) {

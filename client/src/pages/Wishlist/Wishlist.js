@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Gallery from "../../components/Gallery/Gallery"
+// import Gallery from "../../components/Gallery/Gallery"
 import NavTabs from "../../components/NavTabs"
 import Dropdown from "../../components/Dropdown/Dropdown";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";

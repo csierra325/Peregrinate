@@ -16,28 +16,35 @@ export default FriendSearchItem;
 //         searchResults: [],
 //         currentFriends:[]
 //     };
-    
+
+//     constructor(props) {
+//         super(props);
+//         this.addButton = this.addButton.bind(this);
+//         this.state = {
+//             searchResults: ""
+//           };
+//       }
+       
 //     addButton = event => {
 //         event.preventDefault();
 
 //         API.updateUser(window.id)
-//         .then(res => this.setState({ currentFriends: res.data.currentFriends }))
+//         .then(res => {
+//           console.log(res);
+//           const results = res.data.dbModel;
+//           this.setState({
+//             searchResults: results.username
+//            });
+//         })
 //         .catch(err => console.log(err));
 //     }
 
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             searchResults: "friend.username"
-//           };
-//         this.addButton = this.addButton.bind(this);
-//       }
-
 //     render() {
+//         // const results = this.state.searchResults;
 //         return (
 //             <div className="friendsSearch" align="left">
 //                 <div>
-//                     <li>{this.searchResults} 
+//                     <li>{this.props.text} 
 //                         <button
 //                         onClick={this.addButton}
 //                         >ADD</button>
