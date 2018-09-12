@@ -41,7 +41,13 @@ class ProfileCard extends Component {
       false
     );
 
-    //API
+    API.getUser(window.id)
+    .then(res => {
+      const dbUser = res.data;
+      this.setState({
+        uploadedFileCloudinaryUrl: dbUser.uploadedFileCloudinaryUrl,
+      })
+    });
   }
 
   render() {
