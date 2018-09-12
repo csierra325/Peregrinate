@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import "./TripPlanner.css";
 
 import TravelJumbotron from "../../components/TravelJumbotron";
 import TripGenerator from "../../components/TripGenerator";
 import Globe from "../../components/Globe";
 // import TravelTabs from "../../components/TravelTabs";
 import NavTabs from "../../components/NavTabs";
-import { Modal, ModalHeader, ModalBody } from "reactstrap";
+// import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import TripResults from "../../components/TripResults/TripResults";
 import Flight from "../../components/PlanATrip/Flight";
 import Car from "../../components/PlanATrip/Car";
@@ -14,7 +15,8 @@ import Car from "../../components/PlanATrip/Car";
 class TripPlanner extends Component {
   state = {
     currentPage: "TripPlanner",
-    username: window.username,
+    userID: window.id,
+    id: window.id,
     modal: true
   };
 
@@ -30,7 +32,7 @@ class TripPlanner extends Component {
         <div className="wrapper" align="left">
           <NavTabs />
           <TravelJumbotron>
-            <div>
+            {/* <div>
               <Modal
                 isOpen={this.state.modal}
                 toggle={this.toggle}
@@ -43,31 +45,19 @@ class TripPlanner extends Component {
                   welcome.
                 </ModalBody>
               </Modal>
-            </div>
+            </div> */}
 
-            <div className="tripGen" align="left">
-              <Globe />
+            <div className="tripGen row" align="center">
+              <div class="globe col-12">
+                <Globe />
+              </div>
             </div>
 
             <br />
             <br />
 
-            <div className="row">
-                <div class="card col-5">
-                  <div class="card-body">
-                    <TripGenerator />
-                  </div>
-                </div>
-
-                <div class="col-1" />
-
-                <div class="card col-6">
-                  <div class="card-body">
-                    <TripResults />
-                  </div>
-                </div>
-            </div>
-
+              <TripGenerator />
+          
             <br />
             <br />
 

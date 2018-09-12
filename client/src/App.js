@@ -17,6 +17,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Packinglist from "./pages/Packinglist";
 import Travelideas from "./pages/Travelideas";
+
 //Import styling
 import "./App.css";    
 
@@ -32,7 +33,7 @@ const IsComponentAuthenticated = ({ component: Component, ...rest }) => {
 class App extends Component {
   componentDidMount() {
     API.getUser(window.id)
-      .then(console.log)
+      .then()
       .catch(err => console.log(err));
   }
 
