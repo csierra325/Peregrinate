@@ -34,9 +34,7 @@ export default {
     return axios.get("/api/friendspage/friends/" + id);
   },
 
-  randomFLight: function (query){
-    return axios.get("api/tripgenerator/random" + BASEURL + query + APIKEY);
-  }
+ 
 
   
 };
