@@ -1,7 +1,7 @@
 // Import React from "react";
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 import Nav from "./components/Nav";
 import API from "./utils/API";
 
@@ -62,5 +62,6 @@ class App extends Component {
   }
 }
 export default App;
+
 
 

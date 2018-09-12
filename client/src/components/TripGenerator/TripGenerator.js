@@ -4,8 +4,6 @@
 //Alternatively, you might want to present a graph of prices to go to that destination on a given date range, in which case you could do an extensive search like this:
 // http://api.sandbox.amadeus.com/v1.2/flights/extensive-search?origin=<origin>&departure_date=<date_range_start--date_range_end>&duration=<min_duration--max_duration>&apikey=<your API key>
 
-
-
 import React, { Component } from "react";
 import TripResults from "../TripResults/TripResults";
 
@@ -33,9 +31,9 @@ class RandomTrip extends Component {
     event.preventDefault();
 
     const BASEURL = "https://api.sandbox.amadeus.com/v1.2/flights/inspiration-search?";
-    const APIKEY = "&apikey=v6GXrGrT04AWCblHYYiKXAznKmyABeKV";
+    const APIKEY = process.env.REACT_APP_APIKEY;
     
-    fetch(BASEURL + `origin=${this.state.origin}&departure_date=${this.state.departureDate}&max_price=${this.state.maxPrice}&limit=500` + APIKEY)
+    fetch(BASEURL + `origin=${this.state.origin}&departure_date=${this.state.departureDate}&max_price=${this.state.maxPrice}&limit=500&apikey=` + APIKEY)
       .then(res => {
         return res.json()
       })
@@ -44,15 +42,13 @@ class RandomTrip extends Component {
             let json = JSON.parse(JSON.stringify({
               origin: results.origin,
               results: results.results,
-              // destination: results.results.destination,
-              // departure_date: results.results.departure_date,
-              // return_date: results.results.return_date,
-              // price: results.results.price,
-              // airline: results.results.airline
             }));
             this.setState({randomResults: this.state.randomResults.concat(json)})
             console.log(this.state.randomResults);
-  });
+        })
+          .catch(err => {
+            console.log("There was an error with your request.")
+          });
 }
 
   render() {
