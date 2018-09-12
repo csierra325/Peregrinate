@@ -253,17 +253,7 @@ export default class Example extends React.Component {
             </div>
           </div>
         </div>
-        <footer
-          style={{ textAlign: "center", padding: "20px", background: "grey" }}
-        >
-          {" "}
-          <a href={"/About"} color="black" className="aboutUs">
-            About Us
-          </a>
-          <a href={"/Contact"} className="contactUs">
-            Contact Us
-          </a>
-        </footer>
+        
       </div>
     );
   }

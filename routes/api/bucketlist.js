@@ -1,19 +1,19 @@
 const router = require("express").Router();
-const bucketList = require("../../controllers/bucketListController");
+const bucketlist = require("../../controllers/bucketListController");
 
 router
   .route('/wishlist/bucketlist/:id')
-  .get(bucketList.findAll)
-  .post(bucketList.create)
+  .get(bucketlist.findAll)
+  .post(bucketlist.create)
 
 router.route("/wishlist")
-  .post(bucketList.create);
+  .post(bucketlist.create);
 
 // Matches with "/api/wishlist/:id"
 router
   .route("/wishlist/:id")
-  .get(bucketList.findById)
-  .put(bucketList.update)
-  .delete(bucketList.remove);
+  .get(bucketlist.findById)
+  .put(bucketlist.update)
+  .delete(bucketlist.remove);
 
 module.exports = router;
