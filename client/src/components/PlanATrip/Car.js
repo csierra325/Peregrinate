@@ -3,10 +3,8 @@ import React, { Component } from "react";
 class Car extends Component {
   // Setting the initial values of this.state.username and this.state.password
   state = {
-    origin: "",
-    destination: "",
-    pickUp: "",
-    dropOff: ""
+    userID: window.id,
+    id: window.id
   };
 
   // componentDidMount() {
@@ -82,7 +80,7 @@ class Car extends Component {
           value={this.state.dropOff}
           onChange={this.handleInputChange}
         /></p>
-        <button onClick={this.handleFormSubmit}>Submit</button>
+        <button className="col-12" onClick={this.handleFormSubmit}>Submit</button>
       </form>
       </div>
     );

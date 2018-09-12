@@ -1,16 +1,18 @@
+//EXAMPLE LOW FAIR API SEARCH URL. You can formulate a low-fare search from your inspiration search like this:
+// http://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?origin=<origin>&destination=<destination>&departure_date=<departure_date>&return_by=<return_date>T23:59&apikey=<your API key>
+
+//Alternatively, you might want to present a graph of prices to go to that destination on a given date range, in which case you could do an extensive search like this:
+// http://api.sandbox.amadeus.com/v1.2/flights/extensive-search?origin=<origin>&departure_date=<date_range_start--date_range_end>&duration=<min_duration--max_duration>&apikey=<your API key>
+
 import React, { Component } from "react";
-import API from "../../utils/API";
+import TripResults from "../TripResults/TripResults";
 
 class RandomTrip extends Component {
   // Setting the initial values of this.state.username and this.state.password
   state = {
-    origin: "",
-    departureDate: "",
-    returnDate: "",
-    duration: "",
-    maxPrice: "",
     userID: window.id,
-    searchResults: []
+    id: window.id,
+    randomResults: []
   };
 
   // handle any changes to the input fields
@@ -27,65 +29,96 @@ class RandomTrip extends Component {
   // When the form is submitted, prevent the default event and alert the username and password
   handleFormSubmit = event => {
     event.preventDefault();
-    alert(`Origin: ${this.state.origin}\nDeparture Date: ${this.state.departureDate}\nReturn Date: ${this.state.returnDate}\nTrip Duration: ${this.state.duration}\nMax Price: ${this.state.maxPrice}`);
-    this.setState({ origin: "", departureDate: "", returnDate: "", duration: "", maxPrice: "" });
+
+    const BASEURL = "https://api.sandbox.amadeus.com/v1.2/flights/inspiration-search?";
+    const APIKEY = process.env.REACT_APP_APIKEY;
     
-    API.randomFLight(this.state.searchResults)
-    .then(res => this.setState({ searchResults: res.data }))
-    .catch(err => console.log(err));
-  };
+    fetch(BASEURL + `origin=${this.state.origin}&departure_date=${this.state.departureDate}&max_price=${this.state.maxPrice}&limit=500&apikey=` + APIKEY)
+      .then(res => {
+        return res.json()
+      })
+        // .then(results => console.log('Success:', JSON.stringify(results)))
+        .then(results => {
+            let json = JSON.parse(JSON.stringify({
+              origin: results.origin,
+              results: results.results,
+            }));
+            this.setState({randomResults: this.state.randomResults.concat(json)})
+            console.log(this.state.randomResults);
+        })
+          .catch(err => {
+            console.log("There was an error with your request.")
+          });
+}
 
   render() {
     return (
-        <div>
-        <h2>Random Trip Generator:</h2>
-      <form>
-        <p>Origin Airport: <input
-          type="text"
-          placeholder="Airport Code"
-          name="origin"
-          value={this.state.origin}
-          onChange={this.handleInputChange}
-        /></p>
-        <p>Departure Date: <input
-          type="date"
-          placeholder="YYYYYYY-MM-DD"
-          name="departureDate"
-          value={this.state.departureDate}
-          onChange={this.handleInputChange}
-        /></p>
-         <p>Return Date: <input
-          type="date"
-          placeholder="YYYYYYY-MM-DD"
-          name="returnDate"
-          value={this.state.returnDate}
-          onChange={this.handleInputChange}
-        /></p>
-        <p>Length of trip: <input
-          type="number"
-          placeholder="Number of Days"
-          name="duration"
-          value={this.state.duration}
-          onChange={this.handleInputChange}
-        /></p>
-        <p>Max Price: <input
-          type="number"
-          placeholder="$"
-          name="maxPrice"
-          value={this.state.maxPrice}
-          onChange={this.handleInputChange}
-        /></p>
-        <button onClick={this.handleFormSubmit}>Submit</button>
-      </form>
-     
+        <div className="row">
+        <div className="card col-5">
+          <div className="card-body">
+            <div>
+              <h2>Random Trip Generator:</h2>
 
-        {/* <div>
-          <ul>
-            {this.state.searchResults.map((randomFlight, i) => (
-                <TripResults key={i} text={randomFlight.searchResults} />
-            ))}
-          </ul>
-        </div> */}
+                <form align="left">
+
+                  <p>Origin Airport: <input
+                    type="text"
+                    placeholder="Airport Code"
+                    name="origin"
+                    value={this.state.origin}
+                    onChange={this.handleInputChange}
+                  /></p>
+
+                  <p>Departure Date: <input
+                    type="date"
+                    placeholder="YYYYYYY-MM-DD"
+                    name="departureDate"
+                    value={this.state.departureDate}
+                    onChange={this.handleInputChange}
+                  /></p>
+
+                  <p>Return Date: <input
+                    type="date"
+                    placeholder="YYYYYYY-MM-DD"
+                    name="returnDate"
+                    value={this.state.returnDate}
+                    onChange={this.handleInputChange}
+                  /></p>
+
+                  <p>Max Price: <input
+                    type="number"
+                    placeholder="$"
+                    name="maxPrice"
+                    value={this.state.maxPrice}
+                    onChange={this.handleInputChange}
+                  /></p>
+
+                  <button className="col-12" onClick={this.handleFormSubmit}>Submit</button>
+
+                </form>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-1"></div>
+
+        <div className="card tripResults col-6">
+            <div className="card-body">
+              <h2 className="card-text">Trip Results:</h2>
+                <ul>
+                  {this.state.randomResults.map((randomResults, i) => (
+                    <TripResults key={i} 
+                    origin={randomResults.origin} 
+                    destination= {randomResults.results[i].destination}
+                    departure_date= {randomResults.results[i].departure_date}
+                    return_date= {randomResults.results[i].return_date}
+                    price= {randomResults.results[i].price}
+                    airline= {randomResults.results[i].airline}
+                    />
+                  ))}
+                </ul>
+            </div>
+        </div>
       </div>
     );
   }

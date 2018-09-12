@@ -1,7 +1,7 @@
 // Import React from "react";
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 import Nav from "./components/Nav";
 import API from "./utils/API";
 
@@ -17,6 +17,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Packinglist from "./pages/Packinglist";
 import Travelideas from "./pages/Travelideas";
+
 //Import styling
 import "./App.css";    
 
@@ -32,7 +33,7 @@ const IsComponentAuthenticated = ({ component: Component, ...rest }) => {
 class App extends Component {
   componentDidMount() {
     API.getUser(window.id)
-      .then(console.log)
+      .then()
       .catch(err => console.log(err));
   }
 
@@ -61,5 +62,6 @@ class App extends Component {
   }
 }
 export default App;
+
 
 
