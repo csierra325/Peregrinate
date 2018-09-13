@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import NavTabs from "../../components/NavTabs"
 import Dropdown from "../../components/Dropdown/Dropdown";
 import API from "../../utils/API";
 import ListItem from "../../components/ListItem"

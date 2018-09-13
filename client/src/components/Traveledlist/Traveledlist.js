@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import NavTabs from "../../components/NavTabs"
+import React, {Component} from "react";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import API from "../../utils/API";
 import ListItem from "../../components/ListItem"
@@ -77,3 +76,4 @@ class Traveledlist extends Component {
 }
 
 export default Traveledlist;
+

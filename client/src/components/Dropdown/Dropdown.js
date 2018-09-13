@@ -54,7 +54,7 @@ export default class Dropdown extends Component {
             {this.state.searchedCities.map((city, i) => (
               <option
                 key={city._id}
-                value={city.state_name}>
+                value={city.state_id}>
                 {city.state_name}
               </option>
             ))}
