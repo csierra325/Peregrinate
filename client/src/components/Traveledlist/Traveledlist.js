@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import ListItem from "../ListItem";
+import React, { Component } from "react";
 import API from "../../utils/API";
-
 
 class Traveledlist extends Component {
   state = {
@@ -47,10 +47,6 @@ class Traveledlist extends Component {
         travelItem: ""
       });
     }
-   
-    //Add API call to api.js 
-    //Add AJAX post call here for API.addTravelItem ****
-
   };
 
 
@@ -74,12 +70,9 @@ class Traveledlist extends Component {
         ))}
         </ul>
     </div>
-
-
    );
  }
 
 } 
-
 
 export default Traveledlist

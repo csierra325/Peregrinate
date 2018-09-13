@@ -16,6 +16,8 @@ class WorldMap extends Component {
     super();
     this.state = {
       modal: true,
+      id: window.id,
+      userID: window.id,
       worlddata: [],
       cities: [
         {
@@ -162,6 +164,8 @@ class WorldMap extends Component {
         }
       ],
       traveledlist: [],
+      bucketlist: [],
+      friendlist: [],
       currentPage: "WorldMap"
     };
 
@@ -197,9 +201,90 @@ class WorldMap extends Component {
     });
 
     API.getUser(window.id)
-      .then(res => this.setState({ traveledlist: res.data.traveledlist }))
+      .then(res => {
+        const dbUser = res.data;
+        this.setState({ 
+        traveledlist: dbUser.traveledlist,
+        friendlist: dbUser.friendlist,
+        bucketlist: dbUser.bucketlist
+       })})
       .catch(err => console.log(err));
   }
+  
+
+  // changeStateNameToAbbreviation = (input, to) => {
+  //     var states = [
+  //         ['Arizona', 'AZ'],
+  //         ['Alabama', 'AL'],
+  //         ['Alaska', 'AK'],
+  //         ['Arizona', 'AZ'],
+  //         ['Arkansas', 'AR'],
+  //         ['California', 'CA'],
+  //         ['Colorado', 'CO'],
+  //         ['Connecticut', 'CT'],
+  //         ['Delaware', 'DE'],
+  //         ['Florida', 'FL'],
+  //         ['Georgia', 'GA'],
+  //         ['Hawaii', 'HI'],
+  //         ['Idaho', 'ID'],
+  //         ['Illinois', 'IL'],
+  //         ['Indiana', 'IN'],
+  //         ['Iowa', 'IA'],
+  //         ['Kansas', 'KS'],
+  //         ['Kentucky', 'KY'],
+  //         ['Kentucky', 'KY'],
+  //         ['Louisiana', 'LA'],
+  //         ['Maine', 'ME'],
+  //         ['Maryland', 'MD'],
+  //         ['Massachusetts', 'MA'],
+  //         ['Michigan', 'MI'],
+  //         ['Minnesota', 'MN'],
+  //         ['Mississippi', 'MS'],
+  //         ['Missouri', 'MO'],
+  //         ['Montana', 'MT'],
+  //         ['Nebraska', 'NE'],
+  //         ['Nevada', 'NV'],
+  //         ['New Hampshire', 'NH'],
+  //         ['New Jersey', 'NJ'],
+  //         ['New Mexico', 'NM'],
+  //         ['New York', 'NY'],
+  //         ['North Carolina', 'NC'],
+  //         ['North Dakota', 'ND'],
+  //         ['Ohio', 'OH'],
+  //         ['Oklahoma', 'OK'],
+  //         ['Oregon', 'OR'],
+  //         ['Pennsylvania', 'PA'],
+  //         ['Rhode Island', 'RI'],
+  //         ['South Carolina', 'SC'],
+  //         ['South Dakota', 'SD'],
+  //         ['Tennessee', 'TN'],
+  //         ['Texas', 'TX'],
+  //         ['Utah', 'UT'],
+  //         ['Vermont', 'VT'],
+  //         ['Virginia', 'VA'],
+  //         ['Washington', 'WA'],
+  //         ['West Virginia', 'WV'],
+  //         ['Wisconsin', 'WI'],
+  //         ['Wyoming', 'WY'],
+  //     ];
+  
+  //     if (to == 'abbr'){
+  //         input = input.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+  //         for(i = 0; i < states.length; i++){
+  //             if(states[i][0] == input){
+  //                 return(states[i][1]);
+  //             }
+  //         }    
+  //     } else if (to == 'name'){
+  //         input = input.toUpperCase();
+  //         for(i = 0; i < states.length; i++){
+  //             if(states[i][1] == input){
+  //                 return(states[i][0]);
+  //             }
+  //         }    
+  //     }
+  // }
+  
 
   //USA MAP
   mapHandler = event => {
@@ -208,39 +293,23 @@ class WorldMap extends Component {
 
   /* optional customization of filling per state and calling custom callbacks per state */
   statesCustomConfig = () => {
-    // concat
     let config = this.state.traveledlist.reduce((configObj, currValue) => {
       configObj[currValue] = { fill: "#f55e60" };
       return configObj;
     }, {});
 
-    // config = this.state.bucketList.reduce((configObj, currValue) => {
-    //   configObj[currValue] = { fill: "#f55e60" };
-    //   return configObj;
-    // }, config);
+    config = this.state.bucketlist.reduce((configObj, currValue) => {
+      configObj[currValue] = { fill: "#8abaa2" };
+      return configObj;
+    }, config);
 
-    // config = this.state.friendsList.reduce((configObj, currValue) => {
-    //   configObj[currValue] = { fill: "#f55e60" };
-    //   return configObj;
-    // }, config);
+    config = this.state.friendlist.reduce((configObj, currValue) => {
+      configObj[currValue] = { fill: "#157efb" };
+      return configObj;
+    }, config);
 
     return config;
   };
-
-  // statesCustomConfig = (traveledlist) => {
-
-  //   const traveledStates = traveledlist.map((states) => {
-  //     traveledStates.array.forEach(element => {
-
-  //     return {
-  //     element: {
-  //       fill: "navy",
-  //       clickHandler: (event) => console.log('Custom handler for NJ', event.target.dataset)
-  //     }
-  //     };
-  //   })
-  // })
-  // }
 
   render() {
     return (
@@ -261,6 +330,7 @@ class WorldMap extends Component {
               </ModalBody>
             </Modal>
           </div>
+
           <div class="card">
             <h2 class="card-text">US States you have traveled to:</h2>
             <div class="card-body">
