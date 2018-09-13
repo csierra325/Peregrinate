@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { getCities } from "../../utils/API";
 
-
-
 export default class Dropdown extends Component {
   state = {
       cities: [],
@@ -14,7 +12,6 @@ export default class Dropdown extends Component {
     getCities()
       .then(res =>  { 
         this.setState({cities: res.data, searchedCities: res.data})
-   
       })
       .catch(err => console.log(err));
   }
@@ -42,17 +39,17 @@ export default class Dropdown extends Component {
    
     return (
       <div className="Dropdown">
-        <h2>Wish List: </h2>
-       <div className="cities">
-       <label htmlFor="choosing-cities">Pick A State</label>
-       <form onSubmit={this.props.handleSubmit}>
-        <input
-          name="selectedCity"
-          id="input-cities"
-          list="options"
-          value={this.props.currentValue}
-          onChange={this.props.handleInputChange}
-        />
+        <form onSubmit={this.props.handleSubmit}>
+
+          <input
+            name="selectedCity"
+            id="input-cities"
+            list="options"
+            value={this.props.currentValue}
+            onChange={this.props.handleInputChange}
+          />
+
+          <span>
           <datalist id="options">
             {this.state.searchedCities.map((city, i) => (
               <option
@@ -61,14 +58,13 @@ export default class Dropdown extends Component {
                 {city.state_name}
               </option>
             ))}
-            
           </datalist>
+          
           <input type="submit" value="select" />
+          </span>
         
         </form>
-         
-        </div>  
-      </div>
+      </div>  
     );
   }
 }

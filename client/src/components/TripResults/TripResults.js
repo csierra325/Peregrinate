@@ -1,9 +1,9 @@
 import React from "react";
 
 const TripResults = props => (
-    <div align="left">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"> 
+    <div className="tripResults" align="left">
+            <ul className="list-group list-group-flush">
+                <li className="list-group-item"> 
                     <p>Destination:  {props.destination}</p>  
                     <p>Origin Airport:  {props.origin} </p> 
                     <p>Departure Date:  {props.departure_date}</p>
