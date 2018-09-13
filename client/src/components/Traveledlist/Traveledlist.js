@@ -1,78 +1,79 @@
 import React, {Component} from "react";
-import ListItem from "../ListItem";
-import React, { Component } from "react";
+import Dropdown from "../../components/Dropdown/Dropdown";
 import API from "../../utils/API";
+import ListItem from "../../components/ListItem"
 
 class Traveledlist extends Component {
   state = {
-    travels: [],
-    travelItem: "",
+    currentPage: "WishList",
+    id: window.id,
     userID: window.id,
-    id: window.id
+    selectedCity: "",
+    selectedCities: [],
   };
 
-  componentDidMount() {
-    API.getUser(window.id)
-      .then(res => this.setState({ travels: res.data.traveledlist }))
-      .catch(err => console.log(err));
-  };
+  componentDidMount(){
+    API.getUser(window.id) 
+    .then(res => {
+      const dbTraveledlist = res.data;
+     dbTraveledlist.traveledlist.forEach(element => {
+      this.state.selectedCities.push(element)         
+     });
+    }).catch(err => console.log(err));
+  } 
 
-  getList = (travels, travelItem) => {
-    // console.log(users_name);
-    API.getTravelList(travels, travelItem)
-        .then(res => {
-          console.log(`travels from database: ${res.data[0].travels}`);
-            console.log(`list items from database: ${res.data[0].travelItem}`);
-        })
-        .catch(err => console.log(err));
-};
+  delete(city){
+    const selectedCities = this.state.selectedCities.filter(i => i !== city)
+    this.setState({selectedCities})
+  }
 
   handleInputChange = event => {
-      const {name, value} = event.target;
-
-      this.setState({
-        [name]: value
-      });
-  };
+    const {name, value} = event.target;
+    this.setState({
+      [name]: value
+    });
+  }
 
   handleSubmit = event => {
     event.preventDefault();
-    const {travelItem, travels} = this.state;
-    
-
-    //This will go away once Camille is done
-    if (travelItem){
-      this.setState({
-        travels: [travelItem, ...travels],
-        travelItem: ""
-      });
-    }
+    API.updateUser(window.id, {$push:{traveledlist: this.state.selectedCity }})
+      .then(res => {
+        API.getUser(window.id) 
+        .then(res => {
+          this.setState({
+            selectedCities: [...this.state.selectedCities, this.state.selectedCity]
+         });
+        }).catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
   };
 
+  render() {
+    window.id = this.state.id;
+    return (
+        <div className = "wishListWrapper">
+          <h2>Traveled List: </h2>
+          <div className="cities">
+          <label htmlFor="choosing-cities">Pick A State</label>
 
- render (){
-   console.log( this.state.travels );
-   return(
-    <div className = "traveledList">
-    <div className = "travelTitle">Traveled List</div>
-      <input
-      onChange = {this.handleInputChange}
-       name = "travelItem"
-       value = {this.state.travelItem}
-       type="text"
-      />
-      <button disabled = {this.state.travelItem === ""} type="submit" value = "Submit" onClick = {this.handleSubmit}
-      >Submit</button>
-      <ul>
-        {this.state.travels.map((travel, i) => (
-            <ListItem key={i} text={travel} />  
+          <Dropdown
+            handleSubmit={this.handleSubmit}
+            handleInputChange={this.handleInputChange}
+            currentValue={this.state.selectedCity}
+          />
+        
+          <br/>
 
-        ))}
-        </ul>
-    </div>
-   );
- }
+          <ul>
+            {this.state.selectedCities.map((city, i) => (
+              <ListItem key={i} text={city} onDelete = {() => this.delete(city)}  />
+            ))} 
+          </ul>
+        </div>
+      </div>
+    );
+  }
+}
 
-} 
+export default Traveledlist;
 
-export default Traveledlist
