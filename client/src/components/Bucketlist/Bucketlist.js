@@ -1,73 +1,82 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
+import NavTabs from "../../components/NavTabs"
+import Dropdown from "../../components/Dropdown/Dropdown";
 import API from "../../utils/API";
-import ListItem from "../ListItem";
+import ListItem from "../../components/ListItem"
 
 class Bucketlist extends Component {
   state = {
-    buckets: [],
-    bucketItem: "",
+    currentPage: "WishList",
+    id: window.id,
     userID: window.id,
-    id: window.id
+    selectedCity: "",
+    selectedCities: [],
   };
 
-  componentDidMount() {
-    API.getUser(window.id)
-      .then(res => this.setState({ buckets: res.data.bucketlist }))
-      .catch(err => console.log(err));
-  };
+  componentDidMount(){
+    API.getUser(window.id) 
+    .then(res => {
+      const dbBucketlist = res.data;
+     dbBucketlist.bucketlist.forEach(element => {
+      this.state.selectedCities.push(element)         
+     });
+    }).catch(err => console.log(err));
+
+  } 
+
+  delete(city){
+    const selectedCities = this.state.selectedCities.filter(i => i !== city)
+    this.setState({selectedCities})
+  }
 
   handleInputChange = event => {
-      const {name, value} = event.target;
-
-      this.setState({
-        [name]: value
-      });
-  };
+    const {name, value} = event.target;
+    this.setState({
+      [name]: value
+    });
+  }
 
   handleSubmit = event => {
     event.preventDefault();
-    const {bucketItem, buckets} = this.state;
-    
-    //This will go away once Camille is done
-    if (bucketItem){
-      this.setState({
-        buckets: [bucketItem, ...buckets],
-        bucketItem: ""
-      });
-    }
-
-     //Add API call to api.js 
-    //Add AJAX post call here for API.addBucketlistItem ****
-   
+    API.updateUser(window.id, {$push:{bucketlist: this.state.selectedCity }})
+      .then(res => {
+        API.getUser(window.id) 
+        .then(res => {
+          this.setState({
+            selectedCities: [...this.state.selectedCities, this.state.selectedCity]
+         });
+        }).catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
   };
 
+  render() {
+    window.id = this.state.id;
 
- render (){
-   return(
-    <div className = "bucketList">
-      <div className = "buckettitle"> My Bucket List</div>
-      <input
-      onChange = {this.handleInputChange}
-       name = "bucketItem"
-       value = {this.state.bucketItem}
-       type="text"
-      />
-      <button disabled = {this.state.bucketItem === ""} type="submit" value = "Submit" onClick = {this.handleSubmit}
-      >Submit</button>
-      <ul>
-        {this.state.buckets.map((bucket, i) => (
-      
-          <ListItem key={i} text={bucket}  /> 
-          
-        ))}
-        </ul>
-    </div>
+    return (
+        <div className = "wishListWrapper">
+          <h2>BucketList: </h2>
+          <div className="cities">
+          <label htmlFor="choosing-cities">Pick A State</label>
+          <br/>
 
+          <Dropdown
+            handleSubmit={this.handleSubmit}
+            handleInputChange={this.handleInputChange}
+            currentValue={this.state.selectedCity}
+          />
 
-   );
- }
+          <br/>
 
-} 
+          <ul>
+            {this.state.selectedCities.map((city, i) => (
+              <ListItem key={i} text={city} onDelete = {() => this.delete(city)}  />
+            ))} 
+          </ul>
+        </div>
+      </div>
+    );
+  }
+}
 
-
-export default Bucketlist
+export default Bucketlist;
